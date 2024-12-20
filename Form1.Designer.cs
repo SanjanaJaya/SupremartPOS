@@ -34,9 +34,10 @@
             // Shehara
             // 
             Shehara.BackColor = SystemColors.MenuHighlight;
-            Shehara.Location = new Point(186, 166);
+            Shehara.Location = new Point(345, 354);
+            Shehara.Margin = new Padding(6, 6, 6, 6);
             Shehara.Name = "Shehara";
-            Shehara.Size = new Size(75, 23);
+            Shehara.Size = new Size(139, 49);
             Shehara.TabIndex = 0;
             Shehara.Text = "Shehara";
             Shehara.UseVisualStyleBackColor = false;
@@ -44,11 +45,11 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1904, 1041);
+            ClientSize = new Size(1894, 1009);
             Controls.Add(Shehara);
-            Margin = new Padding(2, 1, 2, 1);
+            Margin = new Padding(4, 2, 4, 2);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
