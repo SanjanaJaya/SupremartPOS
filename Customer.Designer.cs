@@ -71,14 +71,14 @@
             // 
             addcustomer.BackColor = Color.Transparent;
             addcustomer.BackgroundImage = (Image)resources.GetObject("addcustomer.BackgroundImage");
-            addcustomer.FlatStyle = FlatStyle.Popup;
+            addcustomer.FlatAppearance.BorderSize = 0;
+            addcustomer.FlatStyle = FlatStyle.Flat;
             addcustomer.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             addcustomer.ForeColor = Color.White;
-            addcustomer.Location = new Point(584, 834);
+            addcustomer.Location = new Point(613, 836);
             addcustomer.Name = "addcustomer";
-            addcustomer.Size = new Size(301, 63);
+            addcustomer.Size = new Size(254, 54);
             addcustomer.TabIndex = 3;
-            addcustomer.Text = "Add a Customer";
             addcustomer.UseVisualStyleBackColor = false;
             // 
             // Customer
