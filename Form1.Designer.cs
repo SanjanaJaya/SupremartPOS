@@ -47,30 +47,33 @@
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.ForeColor = SystemColors.ControlDarkDark;
             panel1.Location = new Point(1, 0);
+            panel1.Margin = new Padding(2, 1, 2, 1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1905, 45);
+            panel1.Size = new Size(1904, 57);
             panel1.TabIndex = 0;
             // 
             // panel2
             // 
             panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
-            panel2.Location = new Point(0, 973);
+            panel2.Location = new Point(1, 1010);
+            panel2.Margin = new Padding(2, 1, 2, 1);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1905, 35);
+            panel2.Size = new Size(1904, 32);
             panel2.TabIndex = 1;
             // 
             // panel3
             // 
             panel3.BackColor = Color.Silver;
+            panel3.Controls.Add(Sales);
             panel3.Controls.Add(Employees);
             panel3.Controls.Add(Products);
             panel3.Controls.Add(Purchases);
             panel3.Controls.Add(Suppliers);
             panel3.Controls.Add(Customers);
-            panel3.Controls.Add(Sales);
-            panel3.Location = new Point(2, 45);
+            panel3.Location = new Point(2, 59);
+            panel3.Margin = new Padding(2, 1, 2, 1);
             panel3.Name = "panel3";
-            panel3.Size = new Size(358, 929);
+            panel3.Size = new Size(386, 950);
             panel3.TabIndex = 2;
             panel3.Paint += panel3_Paint;
             // 
@@ -82,7 +85,8 @@
             Employees.FlatStyle = FlatStyle.Flat;
             Employees.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Employees.ForeColor = Color.White;
-            Employees.Location = new Point(28, 617);
+            Employees.Location = new Point(25, 535);
+            Employees.Margin = new Padding(2, 1, 2, 1);
             Employees.Name = "Employees";
             Employees.Size = new Size(301, 75);
             Employees.TabIndex = 5;
@@ -97,7 +101,8 @@
             Products.FlatStyle = FlatStyle.Flat;
             Products.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Products.ForeColor = Color.White;
-            Products.Location = new Point(28, 504);
+            Products.Location = new Point(25, 431);
+            Products.Margin = new Padding(2, 1, 2, 1);
             Products.Name = "Products";
             Products.Size = new Size(301, 75);
             Products.TabIndex = 4;
@@ -111,7 +116,8 @@
             Purchases.FlatStyle = FlatStyle.Flat;
             Purchases.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Purchases.ForeColor = Color.White;
-            Purchases.Location = new Point(28, 387);
+            Purchases.Location = new Point(25, 331);
+            Purchases.Margin = new Padding(2, 1, 2, 1);
             Purchases.Name = "Purchases";
             Purchases.Size = new Size(301, 75);
             Purchases.TabIndex = 3;
@@ -125,7 +131,8 @@
             Suppliers.FlatStyle = FlatStyle.Flat;
             Suppliers.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Suppliers.ForeColor = Color.White;
-            Suppliers.Location = new Point(28, 271);
+            Suppliers.Location = new Point(25, 230);
+            Suppliers.Margin = new Padding(2, 1, 2, 1);
             Suppliers.Name = "Suppliers";
             Suppliers.Size = new Size(301, 75);
             Suppliers.TabIndex = 2;
@@ -139,7 +146,8 @@
             Customers.FlatStyle = FlatStyle.Flat;
             Customers.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Customers.ForeColor = Color.White;
-            Customers.Location = new Point(28, 154);
+            Customers.Location = new Point(25, 129);
+            Customers.Margin = new Padding(2, 1, 2, 1);
             Customers.Name = "Customers";
             Customers.Size = new Size(301, 75);
             Customers.TabIndex = 1;
@@ -154,7 +162,8 @@
             Sales.FlatStyle = FlatStyle.Flat;
             Sales.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Sales.ForeColor = Color.White;
-            Sales.Location = new Point(28, 33);
+            Sales.Location = new Point(25, 28);
+            Sales.Margin = new Padding(2, 1, 2, 1);
             Sales.Name = "Sales";
             Sales.Size = new Size(301, 75);
             Sales.TabIndex = 0;
@@ -163,22 +172,23 @@
             // 
             // panel4
             // 
-            panel4.Location = new Point(361, 47);
+            panel4.Location = new Point(390, 59);
+            panel4.Margin = new Padding(2, 1, 2, 1);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1539, 922);
+            panel4.Size = new Size(1515, 949);
             panel4.TabIndex = 3;
             panel4.Paint += panel4_Paint;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1894, 1009);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Margin = new Padding(4, 2, 4, 2);
+            Margin = new Padding(2, 1, 2, 1);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";

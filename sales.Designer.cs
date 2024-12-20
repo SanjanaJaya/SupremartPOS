@@ -37,9 +37,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            label1.Location = new Point(30, 25);
+            label1.Location = new Point(16, 29);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(118, 54);
+            label1.Size = new Size(60, 28);
             label1.TabIndex = 1;
             label1.Text = "Sales";
             label1.Click += label1_Click;
@@ -47,20 +48,22 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(30, 156);
+            dataGridView1.Location = new Point(16, 73);
+            dataGridView1.Margin = new Padding(2, 1, 2, 1);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 82;
-            dataGridView1.Size = new Size(1463, 649);
+            dataGridView1.Size = new Size(1494, 749);
             dataGridView1.TabIndex = 3;
             // 
             // sales
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(dataGridView1);
             Controls.Add(label1);
+            Margin = new Padding(2, 1, 2, 1);
             Name = "sales";
-            Size = new Size(1539, 922);
+            Size = new Size(1540, 922);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

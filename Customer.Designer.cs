@@ -40,9 +40,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            label1.Location = new Point(30, 25);
+            label1.Location = new Point(16, 12);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(205, 54);
+            label1.Size = new Size(102, 28);
             label1.TabIndex = 0;
             label1.Text = "Customer";
             label1.Click += label1_Click;
@@ -51,9 +52,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(30, 90);
+            label2.Location = new Point(16, 42);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(277, 45);
+            label2.Size = new Size(136, 21);
             label2.TabIndex = 1;
             label2.Text = "Recent Customers";
             label2.Click += label2_Click;
@@ -61,10 +63,11 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(30, 156);
+            dataGridView1.Location = new Point(16, 73);
+            dataGridView1.Margin = new Padding(2, 1, 2, 1);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 82;
-            dataGridView1.Size = new Size(1463, 649);
+            dataGridView1.Size = new Size(1494, 749);
             dataGridView1.TabIndex = 2;
             // 
             // addcustomer
@@ -75,7 +78,8 @@
             addcustomer.FlatStyle = FlatStyle.Flat;
             addcustomer.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             addcustomer.ForeColor = Color.White;
-            addcustomer.Location = new Point(613, 836);
+            addcustomer.Location = new Point(627, 847);
+            addcustomer.Margin = new Padding(2, 1, 2, 1);
             addcustomer.Name = "addcustomer";
             addcustomer.Size = new Size(254, 54);
             addcustomer.TabIndex = 3;
@@ -84,14 +88,16 @@
             // 
             // Customer
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(addcustomer);
             Controls.Add(dataGridView1);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(2, 1, 2, 1);
             Name = "Customer";
-            Size = new Size(1539, 922);
+            Size = new Size(1540, 922);
+            Load += Customer_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
