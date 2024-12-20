@@ -36,6 +36,7 @@
             label2 = new Label();
             label1 = new Label();
             panel3 = new Panel();
+            logout = new Button();
             Sales = new Button();
             Employees = new Button();
             Products = new Button();
@@ -46,7 +47,6 @@
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
-            logout = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -105,7 +105,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(827, 4);
+            label2.Location = new Point(824, 4);
             label2.Name = "label2";
             label2.Size = new Size(86, 21);
             label2.TabIndex = 1;
@@ -117,7 +117,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(932, 4);
+            label1.Location = new Point(935, 4);
             label1.Name = "label1";
             label1.Size = new Size(326, 21);
             label1.TabIndex = 0;
@@ -139,6 +139,22 @@
             panel3.Size = new Size(386, 950);
             panel3.TabIndex = 2;
             panel3.Paint += panel3_Paint;
+            // 
+            // logout
+            // 
+            logout.BackColor = Color.Transparent;
+            logout.BackgroundImage = (Image)resources.GetObject("logout.BackgroundImage");
+            logout.FlatAppearance.BorderSize = 0;
+            logout.FlatStyle = FlatStyle.Flat;
+            logout.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            logout.ForeColor = Color.White;
+            logout.Location = new Point(28, 780);
+            logout.Margin = new Padding(2, 1, 2, 1);
+            logout.Name = "logout";
+            logout.Size = new Size(301, 75);
+            logout.TabIndex = 6;
+            logout.UseVisualStyleBackColor = false;
+            logout.Click += button1_Click_2;
             // 
             // Sales
             // 
@@ -278,22 +294,6 @@
             label3.Size = new Size(355, 86);
             label3.TabIndex = 0;
             label3.Text = "Welcome !";
-            // 
-            // logout
-            // 
-            logout.BackColor = Color.Transparent;
-            logout.BackgroundImage = (Image)resources.GetObject("logout.BackgroundImage");
-            logout.FlatAppearance.BorderSize = 0;
-            logout.FlatStyle = FlatStyle.Flat;
-            logout.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            logout.ForeColor = Color.White;
-            logout.Location = new Point(28, 780);
-            logout.Margin = new Padding(2, 1, 2, 1);
-            logout.Name = "logout";
-            logout.Size = new Size(301, 75);
-            logout.TabIndex = 6;
-            logout.UseVisualStyleBackColor = false;
-            logout.Click += button1_Click_2;
             // 
             // Form1
             // 

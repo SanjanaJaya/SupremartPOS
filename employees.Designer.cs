@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(employees));
             dataGridViewEmplyoee = new DataGridView();
             employee = new Label();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEmplyoee).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewEmplyoee
@@ -46,23 +49,34 @@
             // employee
             // 
             employee.AutoSize = true;
-            employee.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            employee.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             employee.Location = new Point(16, 12);
             employee.Margin = new Padding(2, 0, 2, 0);
             employee.Name = "employee";
-            employee.Size = new Size(113, 28);
+            employee.Size = new Size(209, 50);
             employee.TabIndex = 7;
             employee.Text = "Employees";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.Location = new Point(230, 13);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(48, 49);
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
             // 
             // employees
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(pictureBox1);
             Controls.Add(employee);
             Controls.Add(dataGridViewEmplyoee);
             Name = "employees";
             Size = new Size(1540, 922);
             ((System.ComponentModel.ISupportInitialize)dataGridViewEmplyoee).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -71,5 +85,6 @@
 
         private DataGridView dataGridViewEmplyoee;
         private Label employee;
+        private PictureBox pictureBox1;
     }
 }

@@ -30,35 +30,24 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Customer));
             cust = new Label();
-            label2 = new Label();
             dataGridView1 = new DataGridView();
             addcustomer = new Button();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // cust
             // 
             cust.AutoSize = true;
-            cust.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            cust.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cust.Location = new Point(16, 12);
             cust.Margin = new Padding(2, 0, 2, 0);
             cust.Name = "cust";
-            cust.Size = new Size(102, 28);
+            cust.Size = new Size(189, 50);
             cust.TabIndex = 0;
             cust.Text = "Customer";
             cust.Click += label1_Click;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(16, 42);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(136, 21);
-            label2.TabIndex = 1;
-            label2.Text = "Recent Customers";
-            label2.Click += label2_Click;
             // 
             // dataGridView1
             // 
@@ -86,19 +75,29 @@
             addcustomer.UseVisualStyleBackColor = false;
             addcustomer.Click += addcustomer_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.Location = new Point(210, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(48, 49);
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            // 
             // Customer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(pictureBox1);
             Controls.Add(addcustomer);
             Controls.Add(dataGridView1);
-            Controls.Add(label2);
             Controls.Add(cust);
             Margin = new Padding(2, 1, 2, 1);
             Name = "Customer";
             Size = new Size(1540, 922);
             Load += Customer_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -106,8 +105,8 @@
         #endregion
 
         private Label cust;
-        private Label label2;
         private DataGridView dataGridView1;
         private Button addcustomer;
+        private PictureBox pictureBox1;
     }
 }
