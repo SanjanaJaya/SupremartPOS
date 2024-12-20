@@ -28,8 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            SuspendLayout();
+            // 
+            // supplier
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Name = "supplier";
+            Size = new Size(1539, 922);
+            ResumeLayout(false);
         }
 
         #endregion
