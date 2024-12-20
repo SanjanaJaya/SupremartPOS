@@ -26,5 +26,10 @@ namespace SuprememartPOS
         {
 
         }
+
+        private void addcustomer_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

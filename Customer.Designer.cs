@@ -80,6 +80,7 @@
             addcustomer.Size = new Size(254, 54);
             addcustomer.TabIndex = 3;
             addcustomer.UseVisualStyleBackColor = false;
+            addcustomer.Click += addcustomer_Click;
             // 
             // Customer
             // 

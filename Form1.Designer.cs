@@ -180,6 +180,7 @@
             Controls.Add(panel1);
             Margin = new Padding(4, 2, 4, 2);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
             panel3.ResumeLayout(false);
