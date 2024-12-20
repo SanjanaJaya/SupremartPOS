@@ -31,6 +31,7 @@
             Shehara = new Button();
             button1 = new Button();
             checkBox1 = new CheckBox();
+            monthCalendar1 = new MonthCalendar();
             SuspendLayout();
             // 
             // Shehara
@@ -60,16 +61,23 @@
             checkBox1.AutoSize = true;
             checkBox1.Location = new Point(703, 180);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(82, 19);
+            checkBox1.Size = new Size(83, 19);
             checkBox1.TabIndex = 2;
             checkBox1.Text = "checkBox1";
             checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // monthCalendar1
+            // 
+            monthCalendar1.Location = new Point(199, 213);
+            monthCalendar1.Name = "monthCalendar1";
+            monthCalendar1.TabIndex = 3;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1020, 473);
+            Controls.Add(monthCalendar1);
             Controls.Add(checkBox1);
             Controls.Add(button1);
             Controls.Add(Shehara);
@@ -86,5 +94,6 @@
         private Button Shehara;
         private Button button1;
         private CheckBox checkBox1;
+        private MonthCalendar monthCalendar1;
     }
 }
