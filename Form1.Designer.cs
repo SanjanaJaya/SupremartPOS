@@ -46,7 +46,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1020, 473);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(Shehara);
             Margin = new Padding(2, 1, 2, 1);
             Name = "Form1";
