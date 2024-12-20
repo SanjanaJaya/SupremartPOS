@@ -32,12 +32,12 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
+            Employees = new Button();
+            Products = new Button();
+            Purchases = new Button();
+            Suppliers = new Button();
             Customers = new Button();
             Sales = new Button();
-            Suppliers = new Button();
-            Purchases = new Button();
-            Products = new Button();
-            Employees = new Button();
             panel4 = new Panel();
             panel3.SuspendLayout();
             SuspendLayout();
@@ -74,76 +74,6 @@
             panel3.TabIndex = 2;
             panel3.Paint += panel3_Paint;
             // 
-            // Customers
-            // 
-            Customers.BackColor = Color.Transparent;
-            Customers.BackgroundImage = (Image)resources.GetObject("Customers.BackgroundImage");
-            Customers.FlatStyle = FlatStyle.Popup;
-            Customers.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            Customers.ForeColor = Color.White;
-            Customers.Location = new Point(44, 165);
-            Customers.Name = "Customers";
-            Customers.Size = new Size(271, 87);
-            Customers.TabIndex = 1;
-            Customers.Text = "Customers";
-            Customers.UseVisualStyleBackColor = false;
-            // 
-            // Sales
-            // 
-            Sales.BackColor = Color.Transparent;
-            Sales.BackgroundImage = (Image)resources.GetObject("Sales.BackgroundImage");
-            Sales.FlatStyle = FlatStyle.Popup;
-            Sales.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            Sales.ForeColor = Color.White;
-            Sales.Location = new Point(44, 33);
-            Sales.Name = "Sales";
-            Sales.Size = new Size(271, 87);
-            Sales.TabIndex = 0;
-            Sales.Text = "Sales";
-            Sales.UseVisualStyleBackColor = false;
-            // 
-            // Suppliers
-            // 
-            Suppliers.BackColor = Color.Transparent;
-            Suppliers.BackgroundImage = (Image)resources.GetObject("Suppliers.BackgroundImage");
-            Suppliers.FlatStyle = FlatStyle.Popup;
-            Suppliers.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            Suppliers.ForeColor = Color.White;
-            Suppliers.Location = new Point(44, 294);
-            Suppliers.Name = "Suppliers";
-            Suppliers.Size = new Size(271, 87);
-            Suppliers.TabIndex = 2;
-            Suppliers.Text = "Suppliers";
-            Suppliers.UseVisualStyleBackColor = false;
-            // 
-            // Purchases
-            // 
-            Purchases.BackColor = Color.Transparent;
-            Purchases.BackgroundImage = (Image)resources.GetObject("Purchases.BackgroundImage");
-            Purchases.FlatStyle = FlatStyle.Popup;
-            Purchases.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            Purchases.ForeColor = Color.White;
-            Purchases.Location = new Point(44, 420);
-            Purchases.Name = "Purchases";
-            Purchases.Size = new Size(271, 87);
-            Purchases.TabIndex = 3;
-            Purchases.Text = "Purchases";
-            Purchases.UseVisualStyleBackColor = false;
-            // 
-            // Products
-            // 
-            Products.BackColor = Color.Transparent;
-            Products.BackgroundImage = (Image)resources.GetObject("Products.BackgroundImage");
-            Products.FlatStyle = FlatStyle.Popup;
-            Products.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            Products.ForeColor = Color.White;
-            Products.Location = new Point(44, 547);
-            Products.Name = "Products";
-            Products.Size = new Size(271, 87);
-            Products.TabIndex = 4;
-            Products.Text = "Products";
-            Products.UseVisualStyleBackColor = false;
-            // 
             // Employees
             // 
             Employees.BackColor = Color.Transparent;
@@ -159,12 +89,84 @@
             Employees.UseVisualStyleBackColor = false;
             Employees.Click += Employees_Click;
             // 
+            // Products
+            // 
+            Products.BackColor = Color.Transparent;
+            Products.BackgroundImage = (Image)resources.GetObject("Products.BackgroundImage");
+            Products.FlatStyle = FlatStyle.Popup;
+            Products.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            Products.ForeColor = Color.White;
+            Products.Location = new Point(44, 547);
+            Products.Name = "Products";
+            Products.Size = new Size(271, 87);
+            Products.TabIndex = 4;
+            Products.Text = "Products";
+            Products.UseVisualStyleBackColor = false;
+            // 
+            // Purchases
+            // 
+            Purchases.BackColor = Color.Transparent;
+            Purchases.BackgroundImage = (Image)resources.GetObject("Purchases.BackgroundImage");
+            Purchases.FlatStyle = FlatStyle.Popup;
+            Purchases.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            Purchases.ForeColor = Color.White;
+            Purchases.Location = new Point(44, 420);
+            Purchases.Name = "Purchases";
+            Purchases.Size = new Size(271, 87);
+            Purchases.TabIndex = 3;
+            Purchases.Text = "Purchases";
+            Purchases.UseVisualStyleBackColor = false;
+            // 
+            // Suppliers
+            // 
+            Suppliers.BackColor = Color.Transparent;
+            Suppliers.BackgroundImage = (Image)resources.GetObject("Suppliers.BackgroundImage");
+            Suppliers.FlatStyle = FlatStyle.Popup;
+            Suppliers.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            Suppliers.ForeColor = Color.White;
+            Suppliers.Location = new Point(44, 294);
+            Suppliers.Name = "Suppliers";
+            Suppliers.Size = new Size(271, 87);
+            Suppliers.TabIndex = 2;
+            Suppliers.Text = "Suppliers";
+            Suppliers.UseVisualStyleBackColor = false;
+            // 
+            // Customers
+            // 
+            Customers.BackColor = Color.Transparent;
+            Customers.BackgroundImage = (Image)resources.GetObject("Customers.BackgroundImage");
+            Customers.FlatStyle = FlatStyle.Popup;
+            Customers.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            Customers.ForeColor = Color.White;
+            Customers.Location = new Point(44, 165);
+            Customers.Name = "Customers";
+            Customers.Size = new Size(271, 87);
+            Customers.TabIndex = 1;
+            Customers.Text = "Customers";
+            Customers.UseVisualStyleBackColor = false;
+            Customers.Click += Customers_Click;
+            // 
+            // Sales
+            // 
+            Sales.BackColor = Color.Transparent;
+            Sales.BackgroundImage = (Image)resources.GetObject("Sales.BackgroundImage");
+            Sales.FlatStyle = FlatStyle.Popup;
+            Sales.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            Sales.ForeColor = Color.White;
+            Sales.Location = new Point(44, 33);
+            Sales.Name = "Sales";
+            Sales.Size = new Size(271, 87);
+            Sales.TabIndex = 0;
+            Sales.Text = "Sales";
+            Sales.UseVisualStyleBackColor = false;
+            // 
             // panel4
             // 
             panel4.Location = new Point(361, 47);
             panel4.Name = "panel4";
             panel4.Size = new Size(1539, 922);
             panel4.TabIndex = 3;
+            panel4.Paint += panel4_Paint;
             // 
             // Form1
             // 

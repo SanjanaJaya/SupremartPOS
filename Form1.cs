@@ -31,5 +31,25 @@ namespace SuprememartPOS
         {
 
         }
+
+        private void Customers_Click(object sender, EventArgs e)
+        {
+            // Clear panel4 of any existing controls
+            panel4.Controls.Clear();
+
+            // Instantiate the UserControl
+            Customer customerControl = new Customer
+            {
+                Dock = DockStyle.Fill // Make it fill the panel
+            };
+
+            // Add the UserControl to panel4
+            panel4.Controls.Add(customerControl);
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
