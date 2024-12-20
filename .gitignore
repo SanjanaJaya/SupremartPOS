@@ -1,0 +1,75 @@
+# Visual Studio Files
+.vs/
+*.user
+*.suo
+*.cache
+*.pdb
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+
+# Build Results
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+*.exe
+*.dll
+*.app
+*.log
+*.msi
+*.nupkg
+*.manifest
+*.map
+*.lib
+
+# Temporary Files
+*.tmp
+*.temp
+*.log
+*.pid
+*.csv
+*.bak
+*.swp
+
+# Dependency Directories
+packages/
+node_modules/
+
+# OS Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# IDE-Specific Files
+*.idea/
+.idea/
+*.vs/
+*.vscode/
+
+# NuGet Packages
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+.nuget/
+
+# Publish Files
+*.publishsettings
+publish/
+*.pubxml
+*.pubxml.user
+
+# Resharper Files
+_ReSharper*/
+*.DotSettings.user
+
+# Rider
+.idea/
+
+# JetBrains Rider
+.idea/
+*.iws
+.idea/
