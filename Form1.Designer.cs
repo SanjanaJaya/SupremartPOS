@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
+            label6 = new Label();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             label2 = new Label();
@@ -45,6 +46,8 @@
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
+            logout = new Button();
+            panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
@@ -54,12 +57,25 @@
             // panel1
             // 
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.Controls.Add(label6);
             panel1.ForeColor = SystemColors.ControlDarkDark;
             panel1.Location = new Point(1, 0);
             panel1.Margin = new Padding(2, 1, 2, 1);
             panel1.Name = "panel1";
             panel1.Size = new Size(1904, 57);
             panel1.TabIndex = 0;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold | FontStyle.Italic | FontStyle.Strikeout, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(918, 9);
+            label6.Name = "label6";
+            label6.Size = new Size(187, 40);
+            label6.TabIndex = 0;
+            label6.Text = "SUPREMART";
             // 
             // panel2
             // 
@@ -110,6 +126,7 @@
             // panel3
             // 
             panel3.BackColor = Color.Silver;
+            panel3.Controls.Add(logout);
             panel3.Controls.Add(Sales);
             panel3.Controls.Add(Employees);
             panel3.Controls.Add(Products);
@@ -131,7 +148,7 @@
             Sales.FlatStyle = FlatStyle.Flat;
             Sales.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Sales.ForeColor = Color.White;
-            Sales.Location = new Point(25, 28);
+            Sales.Location = new Point(28, 40);
             Sales.Margin = new Padding(2, 1, 2, 1);
             Sales.Name = "Sales";
             Sales.Size = new Size(301, 75);
@@ -147,7 +164,7 @@
             Employees.FlatStyle = FlatStyle.Flat;
             Employees.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Employees.ForeColor = Color.White;
-            Employees.Location = new Point(25, 535);
+            Employees.Location = new Point(28, 654);
             Employees.Margin = new Padding(2, 1, 2, 1);
             Employees.Name = "Employees";
             Employees.Size = new Size(301, 75);
@@ -163,7 +180,7 @@
             Products.FlatStyle = FlatStyle.Flat;
             Products.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Products.ForeColor = Color.White;
-            Products.Location = new Point(25, 431);
+            Products.Location = new Point(28, 530);
             Products.Margin = new Padding(2, 1, 2, 1);
             Products.Name = "Products";
             Products.Size = new Size(301, 75);
@@ -179,7 +196,7 @@
             Purchases.FlatStyle = FlatStyle.Flat;
             Purchases.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Purchases.ForeColor = Color.White;
-            Purchases.Location = new Point(25, 331);
+            Purchases.Location = new Point(28, 407);
             Purchases.Margin = new Padding(2, 1, 2, 1);
             Purchases.Name = "Purchases";
             Purchases.Size = new Size(301, 75);
@@ -195,7 +212,7 @@
             Suppliers.FlatStyle = FlatStyle.Flat;
             Suppliers.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Suppliers.ForeColor = Color.White;
-            Suppliers.Location = new Point(25, 230);
+            Suppliers.Location = new Point(28, 286);
             Suppliers.Margin = new Padding(2, 1, 2, 1);
             Suppliers.Name = "Suppliers";
             Suppliers.Size = new Size(301, 75);
@@ -211,7 +228,7 @@
             Customers.FlatStyle = FlatStyle.Flat;
             Customers.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Customers.ForeColor = Color.White;
-            Customers.Location = new Point(25, 129);
+            Customers.Location = new Point(28, 163);
             Customers.Margin = new Padding(2, 1, 2, 1);
             Customers.Name = "Customers";
             Customers.Size = new Size(301, 75);
@@ -235,7 +252,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(513, 586);
+            label5.Location = new Point(549, 519);
             label5.Name = "label5";
             label5.Size = new Size(422, 86);
             label5.TabIndex = 2;
@@ -245,7 +262,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Black", 72F, FontStyle.Bold | FontStyle.Italic | FontStyle.Strikeout, GraphicsUnit.Point, 0);
-            label4.Location = new Point(422, 398);
+            label4.Location = new Point(458, 331);
             label4.Name = "label4";
             label4.Size = new Size(655, 128);
             label4.TabIndex = 1;
@@ -256,11 +273,27 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(547, 259);
+            label3.Location = new Point(583, 192);
             label3.Name = "label3";
             label3.Size = new Size(355, 86);
             label3.TabIndex = 0;
             label3.Text = "Welcome !";
+            // 
+            // logout
+            // 
+            logout.BackColor = Color.Transparent;
+            logout.BackgroundImage = (Image)resources.GetObject("logout.BackgroundImage");
+            logout.FlatAppearance.BorderSize = 0;
+            logout.FlatStyle = FlatStyle.Flat;
+            logout.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            logout.ForeColor = Color.White;
+            logout.Location = new Point(28, 780);
+            logout.Margin = new Padding(2, 1, 2, 1);
+            logout.Name = "logout";
+            logout.Size = new Size(301, 75);
+            logout.TabIndex = 6;
+            logout.UseVisualStyleBackColor = false;
+            logout.Click += button1_Click_2;
             // 
             // Form1
             // 
@@ -276,6 +309,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -303,5 +338,7 @@
         private Label label4;
         private Label label3;
         private Label label5;
+        private Label label6;
+        private Button logout;
     }
 }

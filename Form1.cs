@@ -130,5 +130,22 @@ namespace SuprememartPOS
         {
 
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            login login = new login();
+            login.Show();
+
+
+            this.Hide();
+
+
+            login.FormClosed += (s, args) => this.Close();
+        }
     }
 }
