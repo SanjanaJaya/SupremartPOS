@@ -32,6 +32,8 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
+            Sales = new Button();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -53,11 +55,27 @@
             // 
             // panel3
             // 
-            panel3.Location = new Point(0, 38);
+            panel3.BackColor = Color.Silver;
+            panel3.Controls.Add(Sales);
+            panel3.Location = new Point(2, 45);
             panel3.Name = "panel3";
-            panel3.Size = new Size(358, 937);
+            panel3.Size = new Size(358, 929);
             panel3.TabIndex = 2;
             panel3.Paint += panel3_Paint;
+            // 
+            // Sales
+            // 
+            Sales.BackColor = Color.Transparent;
+            Sales.BackgroundImage = (Image)resources.GetObject("Sales.BackgroundImage");
+            Sales.FlatStyle = FlatStyle.Popup;
+            Sales.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            Sales.ForeColor = Color.White;
+            Sales.Location = new Point(30, 55);
+            Sales.Name = "Sales";
+            Sales.Size = new Size(271, 65);
+            Sales.TabIndex = 0;
+            Sales.Text = "Sales";
+            Sales.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -72,6 +90,7 @@
             Text = "Form1";
             WindowState = FormWindowState.Maximized;
             Load += Form1_Load;
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -80,5 +99,6 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
+        private Button Sales;
     }
 }
