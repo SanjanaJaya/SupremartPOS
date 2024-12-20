@@ -28,8 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             salesss = new Label();
             dataGridViewsales = new DataGridView();
+            Sales_Id = new DataGridViewTextBoxColumn();
+            Customer_Id = new DataGridViewTextBoxColumn();
+            Discounts = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridViewsales).BeginInit();
             SuspendLayout();
             // 
@@ -47,18 +52,59 @@
             // 
             // dataGridViewsales
             // 
-            dataGridViewsales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewsales.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.DarkBlue;
+            dataGridViewCellStyle1.Font = new Font("Poppins SemiBold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = Color.LightSkyBlue;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewsales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewsales.ColumnHeadersHeight = 50;
+            dataGridViewsales.Columns.AddRange(new DataGridViewColumn[] { Sales_Id, Customer_Id, Discounts, Column1 });
+            dataGridViewsales.EnableHeadersVisualStyles = false;
             dataGridViewsales.Location = new Point(16, 73);
             dataGridViewsales.Margin = new Padding(2, 1, 2, 1);
             dataGridViewsales.Name = "dataGridViewsales";
             dataGridViewsales.RowHeadersWidth = 82;
             dataGridViewsales.Size = new Size(1494, 749);
             dataGridViewsales.TabIndex = 3;
+            dataGridViewsales.CellContentClick += dataGridViewsales_CellContentClick;
+            // 
+            // Sales_Id
+            // 
+            Sales_Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Sales_Id.FillWeight = 3F;
+            Sales_Id.HeaderText = "Sales ID";
+            Sales_Id.Name = "Sales_Id";
+            // 
+            // Customer_Id
+            // 
+            Customer_Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Customer_Id.FillWeight = 5F;
+            Customer_Id.HeaderText = "Customer ID";
+            Customer_Id.Name = "Customer_Id";
+            // 
+            // Discounts
+            // 
+            Discounts.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Discounts.FillWeight = 5F;
+            Discounts.HeaderText = "Discounts";
+            Discounts.Name = "Discounts";
+            // 
+            // Column1
+            // 
+            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column1.FillWeight = 5F;
+            Column1.HeaderText = "Total Cost";
+            Column1.Name = "Column1";
             // 
             // sales
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LightSkyBlue;
             Controls.Add(dataGridViewsales);
             Controls.Add(salesss);
             Margin = new Padding(2, 1, 2, 1);
@@ -73,5 +119,9 @@
 
         private Label salesss;
         private DataGridView dataGridViewsales;
+        private DataGridViewTextBoxColumn Sales_Id;
+        private DataGridViewTextBoxColumn Customer_Id;
+        private DataGridViewTextBoxColumn Discounts;
+        private DataGridViewTextBoxColumn Column1;
     }
 }

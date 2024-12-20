@@ -21,5 +21,10 @@ namespace SuprememartPOS
         {
 
         }
+
+        private void dataGridViewsales_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
