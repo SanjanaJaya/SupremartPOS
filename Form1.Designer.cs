@@ -37,9 +37,10 @@
             // Shehara
             // 
             Shehara.BackColor = SystemColors.MenuHighlight;
-            Shehara.Location = new Point(186, 166);
+            Shehara.Location = new Point(345, 354);
+            Shehara.Margin = new Padding(6, 6, 6, 6);
             Shehara.Name = "Shehara";
-            Shehara.Size = new Size(75, 23);
+            Shehara.Size = new Size(139, 49);
             Shehara.TabIndex = 0;
             Shehara.Text = "Shehara";
             Shehara.UseVisualStyleBackColor = false;
@@ -47,10 +48,10 @@
             // 
             // button1
             // 
-            button1.Location = new Point(437, 180);
-            button1.Margin = new Padding(2, 1, 2, 1);
+            button1.Location = new Point(812, 384);
+            button1.Margin = new Padding(4, 2, 4, 2);
             button1.Name = "button1";
-            button1.Size = new Size(168, 83);
+            button1.Size = new Size(312, 177);
             button1.TabIndex = 1;
             button1.Text = "Pakaya";
             button1.UseVisualStyleBackColor = true;
@@ -59,9 +60,14 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(703, 180);
+            checkBox1.Location = new Point(1306, 384);
+            checkBox1.Margin = new Padding(6, 6, 6, 6);
             checkBox1.Name = "checkBox1";
+<<<<<<< Updated upstream
             checkBox1.Size = new Size(83, 19);
+=======
+            checkBox1.Size = new Size(159, 36);
+>>>>>>> Stashed changes
             checkBox1.TabIndex = 2;
             checkBox1.Text = "checkBox1";
             checkBox1.UseVisualStyleBackColor = true;
@@ -74,16 +80,21 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+<<<<<<< Updated upstream
             ClientSize = new Size(1020, 473);
             Controls.Add(monthCalendar1);
+=======
+            ClientSize = new Size(1894, 1009);
+>>>>>>> Stashed changes
             Controls.Add(checkBox1);
             Controls.Add(button1);
             Controls.Add(Shehara);
-            Margin = new Padding(2, 1, 2, 1);
+            Margin = new Padding(4, 2, 4, 2);
             Name = "Form1";
             Text = "Form1";
+            WindowState = FormWindowState.Maximized;
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
