@@ -47,7 +47,7 @@
             // 
             supplir.AutoSize = true;
             supplir.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            supplir.Location = new Point(16, 29);
+            supplir.Location = new Point(16, 12);
             supplir.Margin = new Padding(2, 0, 2, 0);
             supplir.Name = "supplir";
             supplir.Size = new Size(99, 28);

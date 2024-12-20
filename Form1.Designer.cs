@@ -123,6 +123,7 @@
             Products.Size = new Size(301, 75);
             Products.TabIndex = 4;
             Products.UseVisualStyleBackColor = false;
+            Products.Click += Products_Click;
             // 
             // Purchases
             // 
@@ -138,6 +139,7 @@
             Purchases.Size = new Size(301, 75);
             Purchases.TabIndex = 3;
             Purchases.UseVisualStyleBackColor = false;
+            Purchases.Click += Purchases_Click;
             // 
             // Suppliers
             // 

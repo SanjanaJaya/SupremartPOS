@@ -37,7 +37,16 @@ namespace SuprememartPOS
 
         private void Employees_Click(object sender, EventArgs e)
         {
+            panel4.Controls.Clear();
 
+
+            employees employeesControl = new employees
+            {
+                Dock = DockStyle.Fill
+            };
+
+
+            panel4.Controls.Add(employeesControl);
         }
 
         private void Customers_Click(object sender, EventArgs e)
@@ -62,22 +71,59 @@ namespace SuprememartPOS
 
         private void Sales_Click(object sender, EventArgs e)
         {
-            
+
             panel4.Controls.Clear();
 
-            
+
             sales salesControl = new sales
             {
                 Dock = DockStyle.Fill
             };
 
-            
+
             panel4.Controls.Add(salesControl);
         }
 
         private void Suppliers_Click(object sender, EventArgs e)
         {
+            panel4.Controls.Clear();
 
+
+            supplier supplierControl = new supplier
+            {
+                Dock = DockStyle.Fill
+            };
+
+
+            panel4.Controls.Add(supplierControl);
+        }
+
+        private void Purchases_Click(object sender, EventArgs e)
+        {
+            panel4.Controls.Clear();
+
+
+            purchases purchasesControl = new purchases
+            {
+                Dock = DockStyle.Fill
+            };
+
+
+            panel4.Controls.Add(purchasesControl);
+        }
+
+        private void Products_Click(object sender, EventArgs e)
+        {
+            panel4.Controls.Clear();
+
+
+            products productsControl = new products
+            {
+                Dock = DockStyle.Fill
+            };
+
+
+            panel4.Controls.Add(productsControl);
         }
     }
 }

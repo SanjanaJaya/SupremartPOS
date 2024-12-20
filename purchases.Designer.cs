@@ -47,7 +47,7 @@
             // 
             purchase.AutoSize = true;
             purchase.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            purchase.Location = new Point(16, 29);
+            purchase.Location = new Point(16, 12);
             purchase.Margin = new Padding(2, 0, 2, 0);
             purchase.Name = "purchase";
             purchase.Size = new Size(106, 28);

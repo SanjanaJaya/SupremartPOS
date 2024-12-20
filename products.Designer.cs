@@ -47,7 +47,7 @@
             // 
             prodct.AutoSize = true;
             prodct.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            prodct.Location = new Point(16, 29);
+            prodct.Location = new Point(16, 12);
             prodct.Margin = new Padding(2, 0, 2, 0);
             prodct.Name = "prodct";
             prodct.Size = new Size(95, 28);
