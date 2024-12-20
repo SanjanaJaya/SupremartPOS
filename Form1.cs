@@ -26,5 +26,10 @@ namespace SuprememartPOS
         {
 
         }
+
+        private void Employees_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
