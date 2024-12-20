@@ -125,5 +125,10 @@ namespace SuprememartPOS
 
             panel4.Controls.Add(productsControl);
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

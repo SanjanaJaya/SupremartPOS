@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
             panel2 = new Panel();
+            pictureBox1 = new PictureBox();
+            label2 = new Label();
+            label1 = new Label();
             panel3 = new Panel();
             Sales = new Button();
             Employees = new Button();
@@ -39,7 +42,13 @@
             Suppliers = new Button();
             Customers = new Button();
             panel4 = new Panel();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -55,11 +64,48 @@
             // panel2
             // 
             panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
+            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(label1);
             panel2.Location = new Point(1, 1010);
             panel2.Margin = new Padding(2, 1, 2, 1);
             panel2.Name = "panel2";
             panel2.Size = new Size(1904, 32);
             panel2.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.Location = new Point(912, 9);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(20, 20);
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(827, 7);
+            label2.Name = "label2";
+            label2.Size = new Size(86, 21);
+            label2.TabIndex = 1;
+            label2.Text = "Copyrights";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(932, 7);
+            label1.Name = "label1";
+            label1.Size = new Size(326, 21);
+            label1.TabIndex = 0;
+            label1.Text = "Group BQ Information Management Retrieval";
             // 
             // panel3
             // 
@@ -175,12 +221,46 @@
             // 
             // panel4
             // 
+            panel4.Controls.Add(label5);
+            panel4.Controls.Add(label4);
+            panel4.Controls.Add(label3);
             panel4.Location = new Point(390, 59);
             panel4.Margin = new Padding(2, 1, 2, 1);
             panel4.Name = "panel4";
             panel4.Size = new Size(1515, 949);
             panel4.TabIndex = 3;
             panel4.Paint += panel4_Paint;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(513, 586);
+            label5.Name = "label5";
+            label5.Size = new Size(422, 86);
+            label5.TabIndex = 2;
+            label5.Text = "POS SYSTEM";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Black", 72F, FontStyle.Bold | FontStyle.Italic | FontStyle.Strikeout, GraphicsUnit.Point, 0);
+            label4.Location = new Point(422, 398);
+            label4.Name = "label4";
+            label4.Size = new Size(655, 128);
+            label4.TabIndex = 1;
+            label4.Text = "SUPREMART";
+            label4.Click += label4_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(547, 259);
+            label3.Name = "label3";
+            label3.Size = new Size(355, 86);
+            label3.TabIndex = 0;
+            label3.Text = "Welcome !";
             // 
             // Form1
             // 
@@ -196,7 +276,12 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel3.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -212,5 +297,11 @@
         private Button Products;
         private Button Employees;
         private Panel panel4;
+        private PictureBox pictureBox1;
+        private Label label2;
+        private Label label1;
+        private Label label4;
+        private Label label3;
+        private Label label5;
     }
 }
