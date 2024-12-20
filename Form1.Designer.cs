@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             Shehara = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // Shehara
@@ -43,11 +44,22 @@
             Shehara.UseVisualStyleBackColor = false;
             Shehara.Click += button1_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(811, 385);
+            button1.Name = "button1";
+            button1.Size = new Size(312, 178);
+            button1.TabIndex = 1;
+            button1.Text = "Pakaya";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1894, 1009);
+            Controls.Add(button1);
             Controls.Add(Shehara);
             Margin = new Padding(4, 2, 4, 2);
             Name = "Form1";
@@ -59,5 +71,6 @@
         #endregion
 
         private Button Shehara;
+        private Button button1;
     }
 }
