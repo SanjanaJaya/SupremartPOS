@@ -47,7 +47,7 @@
             // 
             employee.AutoSize = true;
             employee.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            employee.Location = new Point(16, 29);
+            employee.Location = new Point(16, 12);
             employee.Margin = new Padding(2, 0, 2, 0);
             employee.Name = "employee";
             employee.Size = new Size(113, 28);

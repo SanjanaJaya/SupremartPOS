@@ -12,6 +12,14 @@ namespace SuprememartPOS
 
         }
 
+        public void LoadControlToPanel4(UserControl control)
+        {
+            panel4.Controls.Clear();
+            control.Dock = DockStyle.Fill;
+            panel4.Controls.Add(control);
+        }
+
+
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -54,16 +62,16 @@ namespace SuprememartPOS
 
         private void Sales_Click(object sender, EventArgs e)
         {
-            // Clear panel4 of any existing controls
+            
             panel4.Controls.Clear();
 
-            // Instantiate the UserControl
+            
             sales salesControl = new sales
             {
                 Dock = DockStyle.Fill
             };
 
-            // Add the UserControl to panel4
+            
             panel4.Controls.Add(salesControl);
         }
 

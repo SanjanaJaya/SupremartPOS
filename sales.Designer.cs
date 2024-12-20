@@ -35,10 +35,9 @@
             // 
             // salesss
             // 
-            
             salesss.AutoSize = true;
             salesss.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            salesss.Location = new Point(16, 29);
+            salesss.Location = new Point(16, 12);
             salesss.Margin = new Padding(2, 0, 2, 0);
             salesss.Name = "salesss";
             salesss.Size = new Size(60, 28);

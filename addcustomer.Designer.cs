@@ -52,7 +52,7 @@
             label1.Size = new Size(391, 54);
             label1.TabIndex = 0;
             label1.Text = "Add New Customer";
-            label1.Click += label1_Click;
+            label1.Click += Label1_Click;
             // 
             // label2
             // 
@@ -171,6 +171,7 @@
             Margin = new Padding(2, 1, 2, 1);
             Name = "addcustomer";
             Size = new Size(1540, 922);
+            Load += addcustomer_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

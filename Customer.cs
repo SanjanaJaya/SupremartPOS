@@ -29,7 +29,12 @@ namespace SuprememartPOS
 
         private void addcustomer_Click(object sender, EventArgs e)
         {
+            // Create the AddCustomer user control
+            addcustomer addCustomerControl = new addcustomer();
 
+            // Access the parent Form and call the method to replace the panel content
+            Form1 parentForm = (Form1)this.FindForm();
+            parentForm.LoadControlToPanel4(addCustomerControl);
         }
 
         private void Customer_Load(object sender, EventArgs e)
