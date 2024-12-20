@@ -35,17 +35,7 @@
             // 
             // salesss
             // 
-<<<<<<< HEAD
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            label1.Location = new Point(16, 12);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(60, 28);
-            label1.TabIndex = 1;
-            label1.Text = "Sales";
-            label1.Click += label1_Click;
-=======
+            
             salesss.AutoSize = true;
             salesss.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             salesss.Location = new Point(16, 29);
@@ -55,7 +45,6 @@
             salesss.TabIndex = 1;
             salesss.Text = "Sales";
             salesss.Click += label1_Click;
->>>>>>> 93cb31fdf699c60abca5a4642b7d3c4e39492c17
             // 
             // dataGridViewsales
             // 
