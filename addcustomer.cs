@@ -21,6 +21,7 @@ namespace SuprememartPOS
         {
 
         }
+<<<<<<< HEAD
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -31,5 +32,7 @@ namespace SuprememartPOS
         {
 
         }
+=======
+>>>>>>> 93cb31fdf699c60abca5a4642b7d3c4e39492c17
     }
 }

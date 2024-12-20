@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Customer));
-            label1 = new Label();
+            cust = new Label();
             label2 = new Label();
             dataGridView1 = new DataGridView();
             addcustomer = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // cust
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            label1.Location = new Point(16, 12);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(102, 28);
-            label1.TabIndex = 0;
-            label1.Text = "Customer";
-            label1.Click += label1_Click;
+            cust.AutoSize = true;
+            cust.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            cust.Location = new Point(16, 12);
+            cust.Margin = new Padding(2, 0, 2, 0);
+            cust.Name = "cust";
+            cust.Size = new Size(102, 28);
+            cust.TabIndex = 0;
+            cust.Text = "Customer";
+            cust.Click += label1_Click;
             // 
             // label2
             // 
@@ -93,7 +93,7 @@
             Controls.Add(addcustomer);
             Controls.Add(dataGridView1);
             Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(cust);
             Margin = new Padding(2, 1, 2, 1);
             Name = "Customer";
             Size = new Size(1540, 922);
@@ -105,7 +105,7 @@
 
         #endregion
 
-        private Label label1;
+        private Label cust;
         private Label label2;
         private DataGridView dataGridView1;
         private Button addcustomer;

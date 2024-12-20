@@ -32,12 +32,12 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
+            Sales = new Button();
             Employees = new Button();
             Products = new Button();
             Purchases = new Button();
             Suppliers = new Button();
             Customers = new Button();
-            Sales = new Button();
             panel4 = new Panel();
             panel3.SuspendLayout();
             SuspendLayout();
@@ -76,6 +76,22 @@
             panel3.Size = new Size(386, 950);
             panel3.TabIndex = 2;
             panel3.Paint += panel3_Paint;
+            // 
+            // Sales
+            // 
+            Sales.BackColor = Color.Silver;
+            Sales.BackgroundImage = (Image)resources.GetObject("Sales.BackgroundImage");
+            Sales.FlatAppearance.BorderSize = 0;
+            Sales.FlatStyle = FlatStyle.Flat;
+            Sales.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            Sales.ForeColor = Color.White;
+            Sales.Location = new Point(25, 28);
+            Sales.Margin = new Padding(2, 1, 2, 1);
+            Sales.Name = "Sales";
+            Sales.Size = new Size(301, 75);
+            Sales.TabIndex = 0;
+            Sales.UseVisualStyleBackColor = false;
+            Sales.Click += Sales_Click;
             // 
             // Employees
             // 
@@ -137,6 +153,7 @@
             Suppliers.Size = new Size(301, 75);
             Suppliers.TabIndex = 2;
             Suppliers.UseVisualStyleBackColor = false;
+            Suppliers.Click += Suppliers_Click;
             // 
             // Customers
             // 
@@ -153,22 +170,6 @@
             Customers.TabIndex = 1;
             Customers.UseVisualStyleBackColor = false;
             Customers.Click += Customers_Click;
-            // 
-            // Sales
-            // 
-            Sales.BackColor = Color.Silver;
-            Sales.BackgroundImage = (Image)resources.GetObject("Sales.BackgroundImage");
-            Sales.FlatAppearance.BorderSize = 0;
-            Sales.FlatStyle = FlatStyle.Flat;
-            Sales.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            Sales.ForeColor = Color.White;
-            Sales.Location = new Point(25, 28);
-            Sales.Margin = new Padding(2, 1, 2, 1);
-            Sales.Name = "Sales";
-            Sales.Size = new Size(301, 75);
-            Sales.TabIndex = 0;
-            Sales.UseVisualStyleBackColor = false;
-            Sales.Click += Sales_Click;
             // 
             // panel4
             // 

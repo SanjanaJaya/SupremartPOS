@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(addcustomer));
             label1 = new Label();
             label2 = new Label();
@@ -152,11 +153,40 @@
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
+=======
+            dataGridViewaddcus = new DataGridView();
+            adcust = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewaddcus).BeginInit();
+            SuspendLayout();
+            // 
+            // dataGridViewaddcus
+            // 
+            dataGridViewaddcus.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewaddcus.Location = new Point(16, 74);
+            dataGridViewaddcus.Margin = new Padding(2, 0, 2, 0);
+            dataGridViewaddcus.Name = "dataGridViewaddcus";
+            dataGridViewaddcus.RowHeadersWidth = 82;
+            dataGridViewaddcus.Size = new Size(1494, 749);
+            dataGridViewaddcus.TabIndex = 4;
+            // 
+            // adcust
+            // 
+            adcust.AutoSize = true;
+            adcust.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            adcust.Location = new Point(16, 28);
+            adcust.Margin = new Padding(2, 0, 2, 0);
+            adcust.Name = "adcust";
+            adcust.Size = new Size(146, 28);
+            adcust.TabIndex = 5;
+            adcust.Text = "Add Customer";
+            adcust.Click += label1_Click;
+>>>>>>> 93cb31fdf699c60abca5a4642b7d3c4e39492c17
             // 
             // addcustomer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+<<<<<<< HEAD
             Controls.Add(pictureBox1);
             Controls.Add(add);
             Controls.Add(textBox4);
@@ -172,12 +202,21 @@
             Name = "addcustomer";
             Size = new Size(1540, 922);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+=======
+            Controls.Add(adcust);
+            Controls.Add(dataGridViewaddcus);
+            Margin = new Padding(2, 1, 2, 1);
+            Name = "addcustomer";
+            Size = new Size(1540, 922);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewaddcus).EndInit();
+>>>>>>> 93cb31fdf699c60abca5a4642b7d3c4e39492c17
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
+<<<<<<< HEAD
         private Label label1;
         private Label label2;
         private TextBox textBox1;
@@ -189,5 +228,9 @@
         private TextBox textBox4;
         private Button add;
         private PictureBox pictureBox1;
+=======
+        private DataGridView dataGridViewaddcus;
+        private Label adcust;
+>>>>>>> 93cb31fdf699c60abca5a4642b7d3c4e39492c17
     }
 }

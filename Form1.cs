@@ -34,16 +34,16 @@ namespace SuprememartPOS
 
         private void Customers_Click(object sender, EventArgs e)
         {
-            
+
             panel4.Controls.Clear();
 
-            
+
             Customer customerControl = new Customer
             {
-                Dock = DockStyle.Fill 
+                Dock = DockStyle.Fill
             };
 
-            
+
             panel4.Controls.Add(customerControl);
         }
 
@@ -60,11 +60,16 @@ namespace SuprememartPOS
             // Instantiate the UserControl
             sales salesControl = new sales
             {
-                Dock = DockStyle.Fill 
+                Dock = DockStyle.Fill
             };
 
             // Add the UserControl to panel4
             panel4.Controls.Add(salesControl);
+        }
+
+        private void Suppliers_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

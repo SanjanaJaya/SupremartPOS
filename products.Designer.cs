@@ -28,10 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            dataGridViewproducts = new DataGridView();
+            prodct = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewproducts).BeginInit();
+            SuspendLayout();
+            // 
+            // dataGridViewproducts
+            // 
+            dataGridViewproducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewproducts.Location = new Point(16, 73);
+            dataGridViewproducts.Margin = new Padding(2, 1, 2, 1);
+            dataGridViewproducts.Name = "dataGridViewproducts";
+            dataGridViewproducts.RowHeadersWidth = 82;
+            dataGridViewproducts.Size = new Size(1494, 749);
+            dataGridViewproducts.TabIndex = 4;
+            // 
+            // prodct
+            // 
+            prodct.AutoSize = true;
+            prodct.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            prodct.Location = new Point(16, 29);
+            prodct.Margin = new Padding(2, 0, 2, 0);
+            prodct.Name = "prodct";
+            prodct.Size = new Size(95, 28);
+            prodct.TabIndex = 5;
+            prodct.Text = "Products";
+            // 
+            // products
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(prodct);
+            Controls.Add(dataGridViewproducts);
+            Name = "products";
+            Size = new Size(1540, 922);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewproducts).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private DataGridView dataGridViewproducts;
+        private Label prodct;
     }
 }
