@@ -88,7 +88,6 @@
             Margin = new Padding(4, 2, 4, 2);
             Name = "Form1";
             Text = "Form1";
-            WindowState = FormWindowState.Maximized;
             Load += Form1_Load;
             panel3.ResumeLayout(false);
             ResumeLayout(false);
