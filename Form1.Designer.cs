@@ -159,6 +159,7 @@
             Sales.TabIndex = 0;
             Sales.Text = "Sales";
             Sales.UseVisualStyleBackColor = false;
+            Sales.Click += Sales_Click;
             // 
             // panel4
             // 
