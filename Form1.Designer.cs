@@ -28,18 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Shehara = new Button();
             SuspendLayout();
+            // 
+            // Shehara
+            // 
+            Shehara.BackColor = SystemColors.MenuHighlight;
+            Shehara.Location = new Point(186, 166);
+            Shehara.Name = "Shehara";
+            Shehara.Size = new Size(75, 23);
+            Shehara.TabIndex = 0;
+            Shehara.Text = "Shehara";
+            Shehara.UseVisualStyleBackColor = false;
+            Shehara.Click += button1_Click;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1894, 1009);
+            ClientSize = new Size(1020, 473);
+            Controls.Add(Shehara);
+            Margin = new Padding(2, 1, 2, 1);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Button Shehara;
     }
 }
