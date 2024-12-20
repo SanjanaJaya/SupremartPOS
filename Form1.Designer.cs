@@ -63,31 +63,27 @@
             checkBox1.Location = new Point(1306, 384);
             checkBox1.Margin = new Padding(6, 6, 6, 6);
             checkBox1.Name = "checkBox1";
-<<<<<<< Updated upstream
+
             checkBox1.Size = new Size(83, 19);
-=======
+
             checkBox1.Size = new Size(159, 36);
->>>>>>> Stashed changes
+
             checkBox1.TabIndex = 2;
             checkBox1.Text = "checkBox1";
             checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // monthCalendar1
-            // 
+       
             monthCalendar1.Location = new Point(124, 231);
             monthCalendar1.Name = "monthCalendar1";
             monthCalendar1.TabIndex = 3;
-            // 
-            // Form1
-            // 
+          
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-<<<<<<< Updated upstream
+
             ClientSize = new Size(1020, 473);
             Controls.Add(monthCalendar1);
-=======
+
             ClientSize = new Size(1894, 1009);
->>>>>>> Stashed changes
+
             Controls.Add(checkBox1);
             Controls.Add(button1);
             Controls.Add(Shehara);
