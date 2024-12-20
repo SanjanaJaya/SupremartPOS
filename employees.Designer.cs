@@ -28,10 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            dataGridViewEmplyoee = new DataGridView();
+            employee = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEmplyoee).BeginInit();
+            SuspendLayout();
+            // 
+            // dataGridViewEmplyoee
+            // 
+            dataGridViewEmplyoee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewEmplyoee.Location = new Point(16, 73);
+            dataGridViewEmplyoee.Margin = new Padding(2, 1, 2, 1);
+            dataGridViewEmplyoee.Name = "dataGridViewEmplyoee";
+            dataGridViewEmplyoee.RowHeadersWidth = 82;
+            dataGridViewEmplyoee.Size = new Size(1494, 749);
+            dataGridViewEmplyoee.TabIndex = 6;
+            // 
+            // employee
+            // 
+            employee.AutoSize = true;
+            employee.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            employee.Location = new Point(16, 29);
+            employee.Margin = new Padding(2, 0, 2, 0);
+            employee.Name = "employee";
+            employee.Size = new Size(113, 28);
+            employee.TabIndex = 7;
+            employee.Text = "Employees";
+            // 
+            // employees
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(employee);
+            Controls.Add(dataGridViewEmplyoee);
+            Name = "employees";
+            Size = new Size(1540, 922);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEmplyoee).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private DataGridView dataGridViewEmplyoee;
+        private Label employee;
     }
 }

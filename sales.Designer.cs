@@ -28,50 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            salesss = new Label();
+            dataGridViewsales = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewsales).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // salesss
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            label1.Location = new Point(16, 29);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(60, 28);
-            label1.TabIndex = 1;
-            label1.Text = "Sales";
-            label1.Click += label1_Click;
+            salesss.AutoSize = true;
+            salesss.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            salesss.Location = new Point(16, 29);
+            salesss.Margin = new Padding(2, 0, 2, 0);
+            salesss.Name = "salesss";
+            salesss.Size = new Size(60, 28);
+            salesss.TabIndex = 1;
+            salesss.Text = "Sales";
+            salesss.Click += label1_Click;
             // 
-            // dataGridView1
+            // dataGridViewsales
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(16, 73);
-            dataGridView1.Margin = new Padding(2, 1, 2, 1);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 82;
-            dataGridView1.Size = new Size(1494, 749);
-            dataGridView1.TabIndex = 3;
+            dataGridViewsales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewsales.Location = new Point(16, 73);
+            dataGridViewsales.Margin = new Padding(2, 1, 2, 1);
+            dataGridViewsales.Name = "dataGridViewsales";
+            dataGridViewsales.RowHeadersWidth = 82;
+            dataGridViewsales.Size = new Size(1494, 749);
+            dataGridViewsales.TabIndex = 3;
             // 
             // sales
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(dataGridView1);
-            Controls.Add(label1);
+            Controls.Add(dataGridViewsales);
+            Controls.Add(salesss);
             Margin = new Padding(2, 1, 2, 1);
             Name = "sales";
             Size = new Size(1540, 922);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewsales).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
-        private DataGridView dataGridView1;
+        private Label salesss;
+        private DataGridView dataGridViewsales;
     }
 }
