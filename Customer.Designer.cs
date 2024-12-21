@@ -68,6 +68,7 @@
             dataGridView1.RowHeadersWidth = 82;
             dataGridView1.Size = new Size(1494, 449);
             dataGridView1.TabIndex = 2;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // addcustomer
             // 

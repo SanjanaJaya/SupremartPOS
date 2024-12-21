@@ -29,10 +29,15 @@ namespace SuprememartPOS
 
         private void addcustomer_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Customer_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
