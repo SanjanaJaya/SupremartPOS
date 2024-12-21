@@ -223,6 +223,7 @@
             Controls.Add(dataGridViewEmplyoee);
             Name = "employees";
             Size = new Size(1540, 922);
+            Load += employees_Load_1;
             ((System.ComponentModel.ISupportInitialize)dataGridViewEmplyoee).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

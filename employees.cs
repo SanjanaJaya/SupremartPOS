@@ -112,5 +112,10 @@ namespace SuprememartPOS
         {
 
         }
+
+        private void employees_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
