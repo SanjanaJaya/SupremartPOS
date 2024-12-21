@@ -90,15 +90,7 @@ namespace SuprememartPOS
 
         private void addcustomer_Click(object sender, EventArgs e)
         {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
             // Retrieve values from textboxes
             string firstName = textBox1.Text;
             string lastName = textBox2.Text;
@@ -170,15 +162,7 @@ namespace SuprememartPOS
             }
 
             LoadCustomerData(); // Refresh DataGridView
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         }
-
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -207,18 +191,7 @@ namespace SuprememartPOS
 
         }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
@@ -299,12 +272,5 @@ namespace SuprememartPOS
             }
         }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     }
 }
