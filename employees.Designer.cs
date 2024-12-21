@@ -96,6 +96,7 @@
             empcon.Name = "empcon";
             empcon.Size = new Size(350, 35);
             empcon.TabIndex = 20;
+            empcon.TextChanged += empcon_TextChanged;
             // 
             // label5
             // 
@@ -125,6 +126,7 @@
             emplname.Name = "emplname";
             emplname.Size = new Size(350, 35);
             emplname.TabIndex = 17;
+            emplname.TextChanged += emplname_TextChanged;
             // 
             // label3
             // 
@@ -132,9 +134,9 @@
             label3.Font = new Font("Segoe UI", 15.75F);
             label3.Location = new Point(59, 657);
             label3.Name = "label3";
-            label3.Size = new Size(117, 30);
+            label3.Size = new Size(91, 30);
             label3.TabIndex = 16;
-            label3.Text = "Last Name:";
+            label3.Text = "Position:";
             // 
             // empfname
             // 
@@ -144,6 +146,7 @@
             empfname.Name = "empfname";
             empfname.Size = new Size(350, 35);
             empfname.TabIndex = 15;
+            empfname.TextChanged += empfname_TextChanged;
             // 
             // label2
             // 
@@ -151,9 +154,9 @@
             label2.Font = new Font("Segoe UI", 15.75F);
             label2.Location = new Point(59, 585);
             label2.Name = "label2";
-            label2.Size = new Size(118, 30);
+            label2.Size = new Size(74, 30);
             label2.TabIndex = 14;
-            label2.Text = "First Name:";
+            label2.Text = "Name:";
             // 
             // updateemp
             // 
@@ -166,6 +169,7 @@
             updateemp.Size = new Size(254, 54);
             updateemp.TabIndex = 24;
             updateemp.UseVisualStyleBackColor = false;
+            updateemp.Click += updateemp_Click;
             // 
             // deleteemp
             // 
@@ -181,6 +185,7 @@
             deleteemp.Size = new Size(254, 54);
             deleteemp.TabIndex = 23;
             deleteemp.UseVisualStyleBackColor = false;
+            deleteemp.Click += deleteemp_Click;
             // 
             // addemp
             // 
@@ -196,6 +201,7 @@
             addemp.Size = new Size(254, 54);
             addemp.TabIndex = 22;
             addemp.UseVisualStyleBackColor = false;
+            addemp.Click += addemp_Click;
             // 
             // employees
             // 
