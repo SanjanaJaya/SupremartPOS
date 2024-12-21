@@ -43,7 +43,7 @@
             dataGridViewPurchase.Margin = new Padding(2, 1, 2, 1);
             dataGridViewPurchase.Name = "dataGridViewPurchase";
             dataGridViewPurchase.RowHeadersWidth = 82;
-            dataGridViewPurchase.Size = new Size(1494, 749);
+            dataGridViewPurchase.Size = new Size(1494, 302);
             dataGridViewPurchase.TabIndex = 5;
             // 
             // purchase
