@@ -196,7 +196,7 @@
             Products.FlatStyle = FlatStyle.Flat;
             Products.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Products.ForeColor = Color.White;
-            Products.Location = new Point(28, 530);
+            Products.Location = new Point(28, 281);
             Products.Margin = new Padding(2, 1, 2, 1);
             Products.Name = "Products";
             Products.Size = new Size(301, 75);
@@ -212,7 +212,7 @@
             Purchases.FlatStyle = FlatStyle.Flat;
             Purchases.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Purchases.ForeColor = Color.White;
-            Purchases.Location = new Point(28, 407);
+            Purchases.Location = new Point(28, 158);
             Purchases.Margin = new Padding(2, 1, 2, 1);
             Purchases.Name = "Purchases";
             Purchases.Size = new Size(301, 75);
@@ -228,7 +228,7 @@
             Suppliers.FlatStyle = FlatStyle.Flat;
             Suppliers.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Suppliers.ForeColor = Color.White;
-            Suppliers.Location = new Point(28, 286);
+            Suppliers.Location = new Point(28, 530);
             Suppliers.Margin = new Padding(2, 1, 2, 1);
             Suppliers.Name = "Suppliers";
             Suppliers.Size = new Size(301, 75);
@@ -244,7 +244,7 @@
             Customers.FlatStyle = FlatStyle.Flat;
             Customers.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Customers.ForeColor = Color.White;
-            Customers.Location = new Point(28, 163);
+            Customers.Location = new Point(28, 409);
             Customers.Margin = new Padding(2, 1, 2, 1);
             Customers.Name = "Customers";
             Customers.Size = new Size(301, 75);
