@@ -161,6 +161,7 @@
             Controls.Add(label5);
             Name = "login";
             Text = "login";
+            Load += login_Load;
             loginbtn.ResumeLayout(false);
             loginbtn.PerformLayout();
             ResumeLayout(false);

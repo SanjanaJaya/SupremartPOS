@@ -67,5 +67,15 @@ namespace SuprememartPOS
         {
             // Handle cell click event if needed
         }
+
+        private void prodct_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

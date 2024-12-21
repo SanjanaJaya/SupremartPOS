@@ -56,6 +56,7 @@
             dataGridViewSuppliers.RowHeadersWidth = 82;
             dataGridViewSuppliers.Size = new Size(1494, 449);
             dataGridViewSuppliers.TabIndex = 4;
+            dataGridViewSuppliers.CellContentClick += dataGridViewSuppliers_CellContentClick;
             // 
             // supplir
             // 

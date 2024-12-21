@@ -22,11 +22,16 @@ namespace SuprememartPOS
             Form1 form1 = new Form1();
             form1.Show();
 
-            
-            this.Hide(); 
 
-            
+            this.Hide();
+
+
             form1.FormClosed += (s, args) => this.Close();
+        }
+
+        private void login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

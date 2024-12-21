@@ -57,6 +57,7 @@
             dataGridViewEmplyoee.RowHeadersWidth = 82;
             dataGridViewEmplyoee.Size = new Size(1494, 449);
             dataGridViewEmplyoee.TabIndex = 6;
+            dataGridViewEmplyoee.CellContentClick += dataGridViewEmplyoee_CellContentClick;
             // 
             // employee
             // 
