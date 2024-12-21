@@ -43,6 +43,7 @@
             label4 = new Label();
             dltcustomer = new Button();
             updateproduct = new Button();
+            button4 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -103,6 +104,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(350, 35);
             textBox1.TabIndex = 7;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label2
             // 
@@ -122,6 +124,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(350, 35);
             textBox2.TabIndex = 9;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label3
             // 
@@ -141,6 +144,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(350, 35);
             textBox4.TabIndex = 13;
+            textBox4.TextChanged += textBox4_TextChanged;
             // 
             // textBox3
             // 
@@ -150,6 +154,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(350, 35);
             textBox3.TabIndex = 12;
+            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // label5
             // 
@@ -185,6 +190,7 @@
             dltcustomer.Size = new Size(254, 54);
             dltcustomer.TabIndex = 14;
             dltcustomer.UseVisualStyleBackColor = false;
+            dltcustomer.Click += dltcustomer_Click;
             // 
             // updateproduct
             // 
@@ -197,11 +203,26 @@
             updateproduct.Size = new Size(254, 54);
             updateproduct.TabIndex = 18;
             updateproduct.UseVisualStyleBackColor = false;
+            updateproduct.Click += updateproduct_Click;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.Transparent;
+            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Location = new Point(909, 805);
+            button4.Name = "button4";
+            button4.Size = new Size(254, 54);
+            button4.TabIndex = 20;
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // Customer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button4);
             Controls.Add(updateproduct);
             Controls.Add(dltcustomer);
             Controls.Add(textBox4);
@@ -242,5 +263,6 @@
         private Label label4;
         private Button dltcustomer;
         private Button updateproduct;
+        private Button button4;
     }
 }
