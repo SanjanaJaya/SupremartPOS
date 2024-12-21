@@ -40,6 +40,9 @@
             label3 = new Label();
             empfname = new TextBox();
             label2 = new Label();
+            button2 = new Button();
+            button1 = new Button();
+            addcustomer = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEmplyoee).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -151,10 +154,55 @@
             label2.TabIndex = 14;
             label2.Text = "First Name:";
             // 
+            // button2
+            // 
+            button2.BackColor = Color.Transparent;
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Location = new Point(907, 659);
+            button2.Name = "button2";
+            button2.Size = new Size(254, 54);
+            button2.TabIndex = 24;
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(907, 732);
+            button1.Margin = new Padding(2, 1, 2, 1);
+            button1.Name = "button1";
+            button1.Size = new Size(254, 54);
+            button1.TabIndex = 23;
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // addcustomer
+            // 
+            addcustomer.BackColor = Color.Transparent;
+            addcustomer.BackgroundImage = (Image)resources.GetObject("addcustomer.BackgroundImage");
+            addcustomer.FlatAppearance.BorderSize = 0;
+            addcustomer.FlatStyle = FlatStyle.Flat;
+            addcustomer.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            addcustomer.ForeColor = Color.White;
+            addcustomer.Location = new Point(907, 587);
+            addcustomer.Margin = new Padding(2, 1, 2, 1);
+            addcustomer.Name = "addcustomer";
+            addcustomer.Size = new Size(254, 54);
+            addcustomer.TabIndex = 22;
+            addcustomer.UseVisualStyleBackColor = false;
+            // 
             // employees
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(addcustomer);
             Controls.Add(empnic);
             Controls.Add(empcon);
             Controls.Add(label5);
@@ -187,5 +235,8 @@
         private Label label3;
         private TextBox empfname;
         private Label label2;
+        private Button button2;
+        private Button button1;
+        private Button addcustomer;
     }
 }
