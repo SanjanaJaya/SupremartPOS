@@ -43,6 +43,7 @@
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
+            button4 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewproducts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -56,6 +57,7 @@
             dataGridViewproducts.RowHeadersWidth = 82;
             dataGridViewproducts.Size = new Size(1494, 449);
             dataGridViewproducts.TabIndex = 4;
+            dataGridViewproducts.CellContentClick += dataGridViewproducts_CellContentClick;
             // 
             // prodct
             // 
@@ -85,6 +87,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(350, 35);
             textBox1.TabIndex = 8;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
@@ -114,6 +117,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(350, 35);
             textBox2.TabIndex = 10;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label3
             // 
@@ -129,10 +133,11 @@
             // 
             textBox3.BackColor = Color.Silver;
             textBox3.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox3.Location = new Point(238, 800);
+            textBox3.Location = new Point(238, 735);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(350, 35);
             textBox3.TabIndex = 12;
+            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // label4
             // 
@@ -148,10 +153,11 @@
             // 
             textBox4.BackColor = Color.Silver;
             textBox4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox4.Location = new Point(238, 735);
+            textBox4.Location = new Point(238, 800);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(350, 35);
             textBox4.TabIndex = 14;
+            textBox4.TextChanged += textBox4_TextChanged;
             // 
             // button1
             // 
@@ -164,6 +170,7 @@
             button1.Size = new Size(254, 54);
             button1.TabIndex = 16;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -176,6 +183,7 @@
             button2.Size = new Size(254, 54);
             button2.TabIndex = 17;
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -188,11 +196,26 @@
             button3.Size = new Size(254, 54);
             button3.TabIndex = 18;
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.Transparent;
+            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Location = new Point(909, 814);
+            button4.Name = "button4";
+            button4.Size = new Size(254, 54);
+            button4.TabIndex = 19;
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // products
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -209,6 +232,7 @@
             Controls.Add(dataGridViewproducts);
             Name = "products";
             Size = new Size(1540, 922);
+            Load += products_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewproducts).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -231,5 +255,6 @@
         private Button button1;
         private Button button2;
         private Button button3;
+        private Button button4;
     }
 }
