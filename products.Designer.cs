@@ -40,6 +40,9 @@
             textBox3 = new TextBox();
             label4 = new Label();
             textBox4 = new TextBox();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewproducts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -80,7 +83,7 @@
             textBox1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox1.Location = new Point(238, 588);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(346, 35);
+            textBox1.Size = new Size(350, 35);
             textBox1.TabIndex = 8;
             // 
             // label1
@@ -109,7 +112,7 @@
             textBox2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox2.Location = new Point(238, 660);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(346, 35);
+            textBox2.Size = new Size(350, 35);
             textBox2.TabIndex = 10;
             // 
             // label3
@@ -128,7 +131,7 @@
             textBox3.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox3.Location = new Point(238, 800);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(346, 35);
+            textBox3.Size = new Size(350, 35);
             textBox3.TabIndex = 12;
             // 
             // label4
@@ -147,13 +150,52 @@
             textBox4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox4.Location = new Point(238, 735);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(346, 35);
+            textBox4.Size = new Size(350, 35);
             textBox4.TabIndex = 14;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Location = new Point(909, 588);
+            button1.Name = "button1";
+            button1.Size = new Size(254, 54);
+            button1.TabIndex = 16;
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Transparent;
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Location = new Point(909, 660);
+            button2.Name = "button2";
+            button2.Size = new Size(254, 54);
+            button2.TabIndex = 17;
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.Transparent;
+            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Location = new Point(909, 735);
+            button3.Name = "button3";
+            button3.Size = new Size(254, 54);
+            button3.TabIndex = 18;
+            button3.UseVisualStyleBackColor = false;
             // 
             // products
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(label4);
             Controls.Add(textBox4);
             Controls.Add(label3);
@@ -186,5 +228,8 @@
         private TextBox textBox3;
         private Label label4;
         private TextBox textBox4;
+        private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }
