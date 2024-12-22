@@ -225,6 +225,7 @@ namespace SuprememartPOS
                 }
 
                 // Refresh the display
+                dataGridView1.Refresh();
                 dataGridView2.Refresh();
                 UpdateTotalPriceLabel();
             }
@@ -338,59 +339,80 @@ namespace SuprememartPOS
 
             try
             {
-                con.Open();
-
-                // Prepare the data for insertion
-                string products = string.Join(", ", purchaseTable.AsEnumerable()
-                    .Select(row => $"{row["ProductName"]} (Qty: {row["Quantity"]})"));
-                decimal totalBillAmount = purchaseTable.AsEnumerable()
-                    .Sum(row => Convert.ToDecimal(row["Total"]));
-
-                // Insert data into the sales table and get the OrderID
-                string query = "INSERT INTO sales (Products, TotalBillAmount) OUTPUT INSERTED.OrderID VALUES (@Products, @TotalBillAmount)";
-                int orderId;
-
-                using (SqlCommand cmd = new SqlCommand(query, con))
+                // Open the connection at the start of the method
+                using (SqlConnection con = new SqlConnection("Server=SANJANAXPRO\\SQLEXPRESS;Database=pos;Integrated Security=True;"))
                 {
-                    cmd.Parameters.AddWithValue("@Products", products);
-                    cmd.Parameters.AddWithValue("@TotalBillAmount", totalBillAmount);
-                    orderId = (int)cmd.ExecuteScalar(); // Get the inserted OrderID
+                    con.Open();
+
+                    // Prepare the data for insertion
+                    string products = string.Join(", ", purchaseTable.AsEnumerable()
+                        .Select(row => $"{row["ProductName"]} (Qty: {row["Quantity"]})"));
+                    decimal totalBillAmount = purchaseTable.AsEnumerable()
+                        .Sum(row => Convert.ToDecimal(row["Total"]));
+
+                    // Insert data into the sales table and get the OrderID
+                    string query = "INSERT INTO sales (Products, TotalBillAmount) OUTPUT INSERTED.OrderID VALUES (@Products, @TotalBillAmount)";
+                    int orderId;
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@Products", products);
+                        cmd.Parameters.AddWithValue("@TotalBillAmount", totalBillAmount);
+                        orderId = (int)cmd.ExecuteScalar(); // Get the inserted OrderID
+                    }
+
+                    // Loop through the purchased products and update the quantity in the Product table
+                    foreach (DataRow row in purchaseTable.Rows)
+                    {
+                        int productId = Convert.ToInt32(row["ProductID"]);
+                        int purchasedQuantity = Convert.ToInt32(row["Quantity"]);
+
+                        // Update the Product table to deduct the purchased quantity
+                        string updateQuery = "UPDATE Product SET Quantity = Quantity - @PurchasedQuantity WHERE ProductID = @ProductID";
+                        using (SqlCommand updateCmd = new SqlCommand(updateQuery, con))
+                        {
+                            updateCmd.Parameters.AddWithValue("@PurchasedQuantity", purchasedQuantity);
+                            updateCmd.Parameters.AddWithValue("@ProductID", productId);
+                            updateCmd.ExecuteNonQuery(); // Execute the update
+                        }
+                    }
+
+                    // Use SaveFileDialog to select the save location
+                    SaveFileDialog saveFileDialog = new SaveFileDialog
+                    {
+                        Filter = "PDF Files|*.pdf",
+                        Title = "Save Bill"
+                    };
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Generate the PDF bill with a unique file name
+                        GeneratePDFBill(products, totalBillAmount, saveFileDialog.FileName, orderId);
+                    }
+
+                    MessageBox.Show("Sales data saved and bill generated successfully.", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Clear the purchaseTable after saving
+                    purchaseTable.Clear();
+                    dataGridView2.Refresh();
+                    UpdateTotalPriceLabel();
+
+                    // Refresh DataGridView1 to show updated inventory
+                    FILLDGV();  // This will reload the data from the database to DataGridView1
                 }
-
-                // Use SaveFileDialog to select the save location
-                SaveFileDialog saveFileDialog = new SaveFileDialog
-                {
-                    Filter = "PDF Files|*.pdf",
-                    Title = "Save Bill"
-                };
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    // Generate the PDF bill with a unique file name
-                    GeneratePDFBill(products, totalBillAmount, saveFileDialog.FileName, orderId);
-                }
-
-                MessageBox.Show("Sales data saved and bill generated successfully.", "Success",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Clear the purchaseTable after saving
-                purchaseTable.Clear();
-                dataGridView2.Refresh();
-                UpdateTotalPriceLabel();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error saving sales data: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
-            {
-                con.Close();
-            }
         }
+
 
 
     }
 }
+
 
 
