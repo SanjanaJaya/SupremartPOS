@@ -211,6 +211,78 @@ namespace SuprememartPOS
                 dataGridView2.Refresh();
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // If items are selected in dataGridView2, delete them
+            if (dataGridView2.SelectedRows.Count > 0)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Are you sure you want to delete the selected items?",
+                    "Confirm Delete",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    // Remove selected rows in reverse order
+                    for (int i = dataGridView2.SelectedRows.Count - 1; i >= 0; i--)
+                    {
+                        dataGridView2.Rows.Remove(dataGridView2.SelectedRows[i]);
+                    }
+                }
+                return;
+            }
+
+            // If items are selected in dataGridView1, add them
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow selectedRow in dataGridView1.SelectedRows)
+                {
+                    // Get the values from the selected row
+                    int productId = Convert.ToInt32(selectedRow.Cells["ProductID"].Value);
+                    string productName = selectedRow.Cells["ProductName"].Value.ToString();
+                    decimal price = Convert.ToDecimal(selectedRow.Cells["Price"].Value);
+                    string size = selectedRow.Cells["Size"].Value.ToString();
+
+                    // Check if product already exists in dataGridView2
+                    bool productExists = false;
+                    foreach (DataGridViewRow row in dataGridView2.Rows)
+                    {
+                        if (row.Cells["ProductID"].Value != null &&
+                            Convert.ToInt32(row.Cells["ProductID"].Value) == productId)
+                        {
+                            // Update quantity if product exists
+                            int currentQty = Convert.ToInt32(row.Cells["Quantity"].Value);
+                            row.Cells["Quantity"].Value = currentQty + 1;
+                            row.Cells["Total"].Value = (currentQty + 1) * price;
+                            productExists = true;
+                            break;
+                        }
+                    }
+
+                    if (!productExists)
+                    {
+                        // Add new row if product doesn't exist
+                        int rowIndex = dataGridView2.Rows.Add();
+                        DataGridViewRow newRow = dataGridView2.Rows[rowIndex];
+                        newRow.Cells["ProductID"].Value = productId;
+                        newRow.Cells["ProductName"].Value = productName;
+                        newRow.Cells["Price"].Value = price;
+                        newRow.Cells["Size"].Value = size;
+                        newRow.Cells["Quantity"].Value = 1;
+                        newRow.Cells["Total"].Value = price;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a product first.", "No Selection",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            dataGridView2.Refresh();
+        }
     }
 }
 
