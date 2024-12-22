@@ -262,49 +262,66 @@ namespace SuprememartPOS
         {
 
         }
-        private void GeneratePDFBill(string products, decimal totalBillAmount, string filePath)
+        private void GeneratePDFBill(string products, decimal totalBillAmount, string filePath, int orderId)
         {
             try
             {
+                // Create a unique file name using the order ID and timestamp
+                string uniqueFileName = $"Bill_{orderId}_{DateTime.Now:yyyyMMddHHmmss}.pdf";
+                string uniqueFilePath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(filePath), uniqueFileName);
+
                 // Create a new PDF document
-                using (System.IO.FileStream fs = new System.IO.FileStream(filePath, System.IO.FileMode.Create, System.IO.FileAccess.Write))
+                using (System.IO.FileStream fs = new System.IO.FileStream(uniqueFilePath, System.IO.FileMode.Create, System.IO.FileAccess.Write))
                 {
                     using (iTextSharp.text.Document doc = new iTextSharp.text.Document())
                     {
                         iTextSharp.text.pdf.PdfWriter.GetInstance(doc, fs);
                         doc.Open();
 
-                        // Add title
+                        // Define fonts
                         iTextSharp.text.Font titleFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 18, iTextSharp.text.Font.BOLD);
+                        iTextSharp.text.Font regularFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12);
+                        iTextSharp.text.Font headerFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD);
+
+                        // Add Title
                         doc.Add(new iTextSharp.text.Paragraph("Supreme Mart POS", titleFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
-                        doc.Add(new iTextSharp.text.Paragraph($"Date: {DateTime.Now:yyyy-MM-dd HH:mm:ss}\n\n"));
+                        doc.Add(new iTextSharp.text.Paragraph($"Date: {DateTime.Now:yyyy-MM-dd HH:mm:ss}", regularFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
+                        doc.Add(new iTextSharp.text.Paragraph("\n"));
+
+                        // Add Order ID with #
+                        doc.Add(new iTextSharp.text.Paragraph($"Order ID: #{orderId}", headerFont) { Alignment = iTextSharp.text.Element.ALIGN_LEFT });
+                        doc.Add(new iTextSharp.text.Paragraph("\n"));
 
                         // Add product details
-                        iTextSharp.text.Font tableFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12);
-                        doc.Add(new iTextSharp.text.Paragraph("Products:", tableFont));
+                        doc.Add(new iTextSharp.text.Paragraph("Products:", headerFont) { Alignment = iTextSharp.text.Element.ALIGN_LEFT });
                         foreach (DataRow row in purchaseTable.Rows)
                         {
                             string productLine = $"{row["ProductName"]} (Qty: {row["Quantity"]}) - LKR {Convert.ToDecimal(row["Total"]):0.00}";
-                            doc.Add(new iTextSharp.text.Paragraph(productLine));
+                            doc.Add(new iTextSharp.text.Paragraph(productLine, regularFont));
                         }
 
                         // Add total amount
-                        doc.Add(new iTextSharp.text.Paragraph($"\nTotal Bill Amount: LKR {totalBillAmount:0.00}", titleFont));
+                        doc.Add(new iTextSharp.text.Paragraph("\n", regularFont)); // Blank line
+                        doc.Add(new iTextSharp.text.Paragraph($"Total Bill Amount: LKR {totalBillAmount:0.00}", headerFont) { Alignment = iTextSharp.text.Element.ALIGN_RIGHT });
 
                         // Add footer
-                        doc.Add(new iTextSharp.text.Paragraph("\n\nThank you for shopping with us!", tableFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
+                        doc.Add(new iTextSharp.text.Paragraph("\n\nThank you for shopping with us!", regularFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
 
+                        // Close the document
                         doc.Close();
                     }
                 }
 
-                MessageBox.Show($"Bill successfully saved to {filePath}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Bill successfully saved to {uniqueFilePath}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error generating PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
 
 
 
@@ -329,36 +346,32 @@ namespace SuprememartPOS
                 decimal totalBillAmount = purchaseTable.AsEnumerable()
                     .Sum(row => Convert.ToDecimal(row["Total"]));
 
-                // Insert data into the sales table
-                string query = "INSERT INTO sales (Products, TotalBillAmount) VALUES (@Products, @TotalBillAmount)";
+                // Insert data into the sales table and get the OrderID
+                string query = "INSERT INTO sales (Products, TotalBillAmount) OUTPUT INSERTED.OrderID VALUES (@Products, @TotalBillAmount)";
+                int orderId;
+
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@Products", products);
                     cmd.Parameters.AddWithValue("@TotalBillAmount", totalBillAmount);
-                    cmd.ExecuteNonQuery();
+                    orderId = (int)cmd.ExecuteScalar(); // Get the inserted OrderID
                 }
 
-                // Prompt user to choose save location and file name for the bill PDF
-                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                // Use SaveFileDialog to select the save location
+                SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
-                    saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
-                    saveFileDialog.DefaultExt = "pdf";
-                    saveFileDialog.Title = "Save Bill As";
-                    saveFileDialog.FileName = $"Bill_{DateTime.Now:yyyyMMddHHmmss}.pdf"; // Default filename with timestamp
+                    Filter = "PDF Files|*.pdf",
+                    Title = "Save Bill"
+                };
 
-                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        // Generate the PDF bill and save it to the selected file location
-                        GeneratePDFBill(products, totalBillAmount, saveFileDialog.FileName);
-
-                        MessageBox.Show("Sales data saved and bill generated successfully.", "Success",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Bill saving canceled.", "Canceled", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Generate the PDF bill with a unique file name
+                    GeneratePDFBill(products, totalBillAmount, saveFileDialog.FileName, orderId);
                 }
+
+                MessageBox.Show("Sales data saved and bill generated successfully.", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Clear the purchaseTable after saving
                 purchaseTable.Clear();
@@ -375,7 +388,6 @@ namespace SuprememartPOS
                 con.Close();
             }
         }
-
 
 
     }
