@@ -60,6 +60,7 @@
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(1494, 265);
             dataGridView2.TabIndex = 1;
+            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
             // 
             // purchs
             // 
@@ -137,11 +138,12 @@
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(788, 416);
+            button2.Location = new Point(875, 416);
             button2.Name = "button2";
             button2.Size = new Size(254, 54);
             button2.TabIndex = 17;
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -149,7 +151,7 @@
             button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
-            button3.Location = new Point(1068, 416);
+            button3.Location = new Point(1155, 416);
             button3.Name = "button3";
             button3.Size = new Size(254, 54);
             button3.TabIndex = 19;

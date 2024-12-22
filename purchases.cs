@@ -118,10 +118,16 @@ namespace SuprememartPOS
                 }
             }
         }
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
-        private void addcustomer_Click(object sender, EventArgs e)
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }
     }
 }
+
+
