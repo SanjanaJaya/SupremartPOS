@@ -106,6 +106,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(350, 35);
             textBox4.TabIndex = 27;
+            textBox4.TextChanged += textBox4_TextChanged;
             // 
             // textBox3
             // 
@@ -115,6 +116,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(350, 35);
             textBox3.TabIndex = 26;
+            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // label5
             // 
@@ -144,6 +146,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(350, 35);
             textBox2.TabIndex = 23;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label3
             // 
@@ -211,6 +214,7 @@
             button4.Size = new Size(254, 54);
             button4.TabIndex = 31;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // supplier
             // 
