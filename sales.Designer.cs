@@ -64,6 +64,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(1494, 679);
             dataGridView1.TabIndex = 5;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // sales
             // 
@@ -76,6 +77,7 @@
             Margin = new Padding(2, 1, 2, 1);
             Name = "sales";
             Size = new Size(1540, 922);
+            Load += sales_Load_1;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

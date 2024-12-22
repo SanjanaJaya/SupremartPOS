@@ -262,7 +262,49 @@ namespace SuprememartPOS
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (purchaseTable.Rows.Count == 0)
+            {
+                MessageBox.Show("No products in the purchase list to save.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            try
+            {
+                con.Open();
+
+                // Prepare the data for insertion
+                string products = string.Join(", ", purchaseTable.AsEnumerable()
+                    .Select(row => $"{row["ProductName"]} (Qty: {row["Quantity"]})"));
+                decimal totalBillAmount = purchaseTable.AsEnumerable()
+                    .Sum(row => Convert.ToDecimal(row["Total"]));
+
+                // Insert data into the sales table
+                string query = "INSERT INTO sales (Products, TotalBillAmount) VALUES (@Products, @TotalBillAmount)";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Products", products);
+                    cmd.Parameters.AddWithValue("@TotalBillAmount", totalBillAmount);
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Sales data saved successfully.", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Clear the purchaseTable after saving
+                purchaseTable.Clear();
+                dataGridView2.Refresh();
+                UpdateTotalPriceLabel();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving sales data: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
     }
 }
