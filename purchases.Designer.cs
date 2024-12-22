@@ -41,6 +41,7 @@
             button3 = new Button();
             label2 = new Label();
             label3 = new Label();
+            button4 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -181,10 +182,24 @@
             label3.Text = "Total Price:";
             label3.Click += label3_Click;
             // 
+            // button4
+            // 
+            button4.BackColor = Color.Transparent;
+            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Location = new Point(828, 813);
+            button4.Name = "button4";
+            button4.Size = new Size(301, 74);
+            button4.TabIndex = 22;
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
             // purchases
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(button3);
@@ -221,5 +236,6 @@
         private Button button3;
         private Label label2;
         private Label label3;
+        private Button button4;
     }
 }
