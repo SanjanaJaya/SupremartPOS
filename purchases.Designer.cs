@@ -112,6 +112,7 @@
             Controls.Add(dataGridView1);
             Name = "purchases";
             Size = new Size(1540, 922);
+            Load += purchases_Load_1;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
