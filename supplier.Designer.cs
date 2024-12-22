@@ -233,6 +233,7 @@
             Controls.Add(supplir);
             Name = "supplier";
             Size = new Size(1539, 922);
+            Load += supplier_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSuppliers).EndInit();
             ResumeLayout(false);
