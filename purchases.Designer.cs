@@ -28,22 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(purchases));
             dataGridView1 = new DataGridView();
             dataGridView2 = new DataGridView();
             purchs = new Label();
             pictureBox1 = new PictureBox();
             summry = new Label();
-            pictureBox2 = new PictureBox();
+            label1 = new Label();
+            textBox1 = new TextBox();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(16, 85);
+            dataGridView1.Location = new Point(16, 113);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(1494, 265);
             dataGridView1.TabIndex = 0;
@@ -82,29 +86,84 @@
             // summry
             // 
             summry.AutoSize = true;
-            summry.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            summry.Location = new Point(29, 451);
+            summry.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            summry.Location = new Point(16, 474);
             summry.Margin = new Padding(2, 0, 2, 0);
             summry.Name = "summry";
-            summry.Size = new Size(189, 50);
+            summry.Size = new Size(143, 42);
             summry.TabIndex = 8;
-            summry.Text = "Summary";
+            summry.Text = "Current Bill";
+            summry.UseCompatibleTextRendering = true;
             summry.Click += label1_Click;
             // 
-            // pictureBox2
+            // label1
             // 
-            pictureBox2.Image = Properties.Resources.Delete_mployee;
-            pictureBox2.Location = new Point(1234, 381);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(262, 65);
-            pictureBox2.TabIndex = 9;
-            pictureBox2.TabStop = false;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(16, 68);
+            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(152, 42);
+            label1.TabIndex = 9;
+            label1.Text = "Product List";
+            label1.UseCompatibleTextRendering = true;
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = SystemColors.ScrollBar;
+            textBox1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(946, 68);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(347, 39);
+            textBox1.TabIndex = 10;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Location = new Point(1299, 70);
+            button1.Name = "button1";
+            button1.Size = new Size(42, 37);
+            button1.TabIndex = 11;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Transparent;
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Location = new Point(788, 416);
+            button2.Name = "button2";
+            button2.Size = new Size(254, 54);
+            button2.TabIndex = 17;
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.Transparent;
+            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Location = new Point(1068, 416);
+            button3.Name = "button3";
+            button3.Size = new Size(254, 54);
+            button3.TabIndex = 19;
+            button3.UseVisualStyleBackColor = false;
             // 
             // purchases
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(pictureBox2);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(textBox1);
+            Controls.Add(label1);
             Controls.Add(summry);
             Controls.Add(pictureBox1);
             Controls.Add(purchs);
@@ -116,7 +175,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -128,6 +186,10 @@
         private Label purchs;
         private PictureBox pictureBox1;
         private Label summry;
-        private PictureBox pictureBox2;
+        private Label label1;
+        private TextBox textBox1;
+        private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }

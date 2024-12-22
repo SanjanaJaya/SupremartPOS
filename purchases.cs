@@ -16,7 +16,7 @@ namespace SuprememartPOS
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void prodct_Click(object sender, EventArgs e)
@@ -28,13 +28,27 @@ namespace SuprememartPOS
         {
 
         }
-        private void FILLDGV()
+        private void FILLDGV(string searchQuery = "")
         {
             try
             {
                 con.Open();
                 string query = "SELECT * FROM Product";
+
+                // If there is a search query, modify the query to include a WHERE clause
+                if (!string.IsNullOrEmpty(searchQuery))
+                {
+                    query += " WHERE ProductName LIKE @SearchQuery";
+                }
+
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
+
+                // If searching, add the parameter to the query
+                if (!string.IsNullOrEmpty(searchQuery))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@SearchQuery", "%" + searchQuery + "%");
+                }
+
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 dataGridView1.DataSource = dt; // Bind the DataTable to the DataGridView
@@ -47,39 +61,67 @@ namespace SuprememartPOS
             {
                 con.Close(); // Ensure the connection is always closed
             }
+
+            // Style the DataGridView
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
                 column.ReadOnly = true; // Prevent editing in the DataGridView directly
             }
 
-            // Fit the columns to the content width
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
-            // Change column headers
             dataGridView1.Columns["ProductID"].HeaderText = "ID";
             dataGridView1.Columns["ProductName"].HeaderText = "Product Name";
             dataGridView1.Columns["Price"].HeaderText = "Price (LKR)";
             dataGridView1.Columns["Size"].HeaderText = "Size";
             dataGridView1.Columns["Quantity"].HeaderText = "Quantity";
 
-            // Additional styling (optional)
-            dataGridView1.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10); // Set font
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12, System.Drawing.FontStyle.Bold); // Header style
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DarkSlateGray; // Header background color
-            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White; // Header text color
+            dataGridView1.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12, System.Drawing.FontStyle.Bold);
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
 
-            // Set row selection mode to full row
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-            // Set alternating row styles
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
             dataGridView1.AlternatingRowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
         }
 
+        // Load event to initialize the DataGridView
         private void purchases_Load_1(object sender, EventArgs e)
         {
-            FILLDGV();
+            FILLDGV(); // Load all products initially
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            {
+                string searchQuery = textBox1.Text.Trim(); // Get the search term from textBox1
+
+                if (!string.IsNullOrEmpty(searchQuery))
+                {
+                    FILLDGV(searchQuery); // Call FILLDGV with search query to filter products
+                }
+                else
+                {
+                    FILLDGV(); // If no search term, load all products
+                }
+            }
+        }
+
+        private void addcustomer_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
