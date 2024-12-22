@@ -32,17 +32,18 @@
             dataGridViewEmplyoee = new DataGridView();
             employee = new Label();
             pictureBox1 = new PictureBox();
-            empnic = new TextBox();
-            empcon = new TextBox();
             label5 = new Label();
             label4 = new Label();
-            emplname = new TextBox();
             label3 = new Label();
-            empfname = new TextBox();
             label2 = new Label();
             updateemp = new Button();
             deleteemp = new Button();
             addemp = new Button();
+            button4 = new Button();
+            textBox4 = new TextBox();
+            textBox3 = new TextBox();
+            textBox2 = new TextBox();
+            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEmplyoee).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -79,25 +80,6 @@
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
             // 
-            // empnic
-            // 
-            empnic.BackColor = SystemColors.ScrollBar;
-            empnic.Font = new Font("Segoe UI", 15.75F);
-            empnic.Location = new Point(237, 799);
-            empnic.Name = "empnic";
-            empnic.Size = new Size(350, 35);
-            empnic.TabIndex = 21;
-            // 
-            // empcon
-            // 
-            empcon.BackColor = SystemColors.ScrollBar;
-            empcon.Font = new Font("Segoe UI", 15.75F);
-            empcon.Location = new Point(237, 730);
-            empcon.Name = "empcon";
-            empcon.Size = new Size(350, 35);
-            empcon.TabIndex = 20;
-            empcon.TextChanged += empcon_TextChanged;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -118,16 +100,6 @@
             label4.TabIndex = 18;
             label4.Text = "Contact Number:";
             // 
-            // emplname
-            // 
-            emplname.BackColor = SystemColors.ScrollBar;
-            emplname.Font = new Font("Segoe UI", 15.75F);
-            emplname.Location = new Point(237, 652);
-            emplname.Name = "emplname";
-            emplname.Size = new Size(350, 35);
-            emplname.TabIndex = 17;
-            emplname.TextChanged += emplname_TextChanged;
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -137,16 +109,6 @@
             label3.Size = new Size(91, 30);
             label3.TabIndex = 16;
             label3.Text = "Position:";
-            // 
-            // empfname
-            // 
-            empfname.BackColor = SystemColors.ScrollBar;
-            empfname.Font = new Font("Segoe UI", 15.75F);
-            empfname.Location = new Point(237, 585);
-            empfname.Name = "empfname";
-            empfname.Size = new Size(350, 35);
-            empfname.TabIndex = 15;
-            empfname.TextChanged += empfname_TextChanged;
             // 
             // label2
             // 
@@ -203,20 +165,71 @@
             addemp.UseVisualStyleBackColor = false;
             addemp.Click += addemp_Click;
             // 
+            // button4
+            // 
+            button4.BackColor = Color.Transparent;
+            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Location = new Point(907, 803);
+            button4.Name = "button4";
+            button4.Size = new Size(254, 54);
+            button4.TabIndex = 32;
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
+            // textBox4
+            // 
+            textBox4.BackColor = SystemColors.ScrollBar;
+            textBox4.Font = new Font("Segoe UI", 15.75F);
+            textBox4.Location = new Point(245, 797);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(350, 35);
+            textBox4.TabIndex = 36;
+            // 
+            // textBox3
+            // 
+            textBox3.BackColor = SystemColors.ScrollBar;
+            textBox3.Font = new Font("Segoe UI", 15.75F);
+            textBox3.Location = new Point(245, 729);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(350, 35);
+            textBox3.TabIndex = 35;
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = SystemColors.ScrollBar;
+            textBox2.Font = new Font("Segoe UI", 15.75F);
+            textBox2.Location = new Point(245, 654);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(350, 35);
+            textBox2.TabIndex = 34;
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = SystemColors.ScrollBar;
+            textBox1.Font = new Font("Segoe UI", 15.75F);
+            textBox1.Location = new Point(245, 587);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(350, 35);
+            textBox1.TabIndex = 33;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
             // employees
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(textBox4);
+            Controls.Add(textBox3);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
+            Controls.Add(button4);
             Controls.Add(updateemp);
             Controls.Add(deleteemp);
             Controls.Add(addemp);
-            Controls.Add(empnic);
-            Controls.Add(empcon);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(emplname);
             Controls.Add(label3);
-            Controls.Add(empfname);
             Controls.Add(label2);
             Controls.Add(pictureBox1);
             Controls.Add(employee);
@@ -235,16 +248,17 @@
         private DataGridView dataGridViewEmplyoee;
         private Label employee;
         private PictureBox pictureBox1;
-        private TextBox empnic;
-        private TextBox empcon;
         private Label label5;
         private Label label4;
-        private TextBox emplname;
         private Label label3;
-        private TextBox empfname;
         private Label label2;
         private Button updateemp;
         private Button deleteemp;
         private Button addemp;
+        private Button button4;
+        private TextBox textBox4;
+        private TextBox textBox3;
+        private TextBox textBox2;
+        private TextBox textBox1;
     }
 }

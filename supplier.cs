@@ -47,15 +47,16 @@ namespace SuprememartPOS
 
         private void addcustomer_Click(object sender, EventArgs e)
         {
-            string supplierName = textBox1.Text;
-            string productName = textBox2.Text;
-            string size = textBox3.Text;
-            int quantity;
+            string employeeName = textBox1.Text;
+            string position = textBox2.Text;
+            string contactNumber = textBox3.Text;
+            string nicNumber = textBox4.Text;
 
             // Validate input
-            if (string.IsNullOrEmpty(supplierName) ||
-                string.IsNullOrEmpty(productName) ||
-                !int.TryParse(textBox4.Text, out quantity))
+            if (string.IsNullOrEmpty(employeeName) ||
+                string.IsNullOrEmpty(position) ||
+                string.IsNullOrEmpty(contactNumber) ||
+                string.IsNullOrEmpty(nicNumber))
             {
                 MessageBox.Show("Please fill all fields correctly.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -65,39 +66,39 @@ namespace SuprememartPOS
             {
                 con.Open();
 
-                if (textBox4.Tag == null) // No supplier selected, so it's a new supplier (insert)
+                if (textBox4.Tag == null) // No employee selected, so it's a new employee (insert)
                 {
-                    // Insert new supplier
-                    string query = "INSERT INTO Supplier (SupplierName, ProductName, Size, Quantity) VALUES (@SupplierName, @ProductName, @Size, @Quantity)";
+                    // Insert new employee
+                    string query = "INSERT INTO Employee (Name, Position, ContactNumber, NICNumber) VALUES (@Name, @Position, @ContactNumber, @NICNumber)";
                     using (SqlCommand command = new SqlCommand(query, con))
                     {
-                        command.Parameters.AddWithValue("@SupplierName", supplierName);
-                        command.Parameters.AddWithValue("@ProductName", productName);
-                        command.Parameters.AddWithValue("@Size", string.IsNullOrEmpty(size) ? (object)DBNull.Value : size); // Allow NULL for Size
-                        command.Parameters.AddWithValue("@Quantity", quantity);
+                        command.Parameters.AddWithValue("@Name", employeeName);
+                        command.Parameters.AddWithValue("@Position", position);
+                        command.Parameters.AddWithValue("@ContactNumber", contactNumber);
+                        command.Parameters.AddWithValue("@NICNumber", nicNumber);
                         command.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Supplier added successfully.");
+                    MessageBox.Show("Employee added successfully.");
                 }
-                else // A supplier is selected, so it's an update
+                else // An employee is selected, so it's an update
                 {
-                    int supplierId = Convert.ToInt32(textBox4.Tag); // Get the SupplierID from the Tag
-                    string query = "UPDATE Supplier SET SupplierName = @SupplierName, ProductName = @ProductName, Size = @Size, Quantity = @Quantity WHERE SupplierID = @SupplierID";
+                    int employeeId = Convert.ToInt32(textBox4.Tag); // Get the EmployeeID from the Tag
+                    string query = "UPDATE Employee SET Name = @Name, Position = @Position, ContactNumber = @ContactNumber, NICNumber = @NICNumber WHERE EmployeeID = @EmployeeID";
                     using (SqlCommand command = new SqlCommand(query, con))
                     {
-                        command.Parameters.AddWithValue("@SupplierID", supplierId);
-                        command.Parameters.AddWithValue("@SupplierName", supplierName);
-                        command.Parameters.AddWithValue("@ProductName", productName);
-                        command.Parameters.AddWithValue("@Size", string.IsNullOrEmpty(size) ? (object)DBNull.Value : size); // Allow NULL for Size
-                        command.Parameters.AddWithValue("@Quantity", quantity);
+                        command.Parameters.AddWithValue("@EmployeeID", employeeId);
+                        command.Parameters.AddWithValue("@Name", employeeName);
+                        command.Parameters.AddWithValue("@Position", position);
+                        command.Parameters.AddWithValue("@ContactNumber", contactNumber);
+                        command.Parameters.AddWithValue("@NICNumber", nicNumber);
                         command.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Supplier updated successfully.");
+                    MessageBox.Show("Employee updated successfully.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error saving supplier data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error saving employee data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
