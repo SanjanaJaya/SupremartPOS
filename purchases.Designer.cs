@@ -39,6 +39,8 @@
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
+            label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -158,10 +160,33 @@
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(1308, 826);
+            label2.Name = "label2";
+            label2.Size = new Size(0, 37);
+            label2.TabIndex = 20;
+            label2.Click += label2_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(1155, 825);
+            label3.Name = "label3";
+            label3.Size = new Size(160, 37);
+            label3.TabIndex = 21;
+            label3.Text = "Total Price:";
+            label3.Click += label3_Click;
+            // 
             // purchases
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -194,5 +219,7 @@
         private Button button1;
         private Button button2;
         private Button button3;
+        private Label label2;
+        private Label label3;
     }
 }
