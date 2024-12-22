@@ -3,6 +3,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+
 
 namespace SuprememartPOS
 {
@@ -259,6 +262,53 @@ namespace SuprememartPOS
         {
 
         }
+        private void GeneratePDFBill(string products, decimal totalBillAmount, string filePath)
+        {
+            try
+            {
+                // Create a new PDF document
+                using (System.IO.FileStream fs = new System.IO.FileStream(filePath, System.IO.FileMode.Create, System.IO.FileAccess.Write))
+                {
+                    using (iTextSharp.text.Document doc = new iTextSharp.text.Document())
+                    {
+                        iTextSharp.text.pdf.PdfWriter.GetInstance(doc, fs);
+                        doc.Open();
+
+                        // Add title
+                        iTextSharp.text.Font titleFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 18, iTextSharp.text.Font.BOLD);
+                        doc.Add(new iTextSharp.text.Paragraph("Supreme Mart POS", titleFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
+                        doc.Add(new iTextSharp.text.Paragraph($"Date: {DateTime.Now:yyyy-MM-dd HH:mm:ss}\n\n"));
+
+                        // Add product details
+                        iTextSharp.text.Font tableFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12);
+                        doc.Add(new iTextSharp.text.Paragraph("Products:", tableFont));
+                        foreach (DataRow row in purchaseTable.Rows)
+                        {
+                            string productLine = $"{row["ProductName"]} (Qty: {row["Quantity"]}) - LKR {Convert.ToDecimal(row["Total"]):0.00}";
+                            doc.Add(new iTextSharp.text.Paragraph(productLine));
+                        }
+
+                        // Add total amount
+                        doc.Add(new iTextSharp.text.Paragraph($"\nTotal Bill Amount: LKR {totalBillAmount:0.00}", titleFont));
+
+                        // Add footer
+                        doc.Add(new iTextSharp.text.Paragraph("\n\nThank you for shopping with us!", tableFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
+
+                        doc.Close();
+                    }
+                }
+
+                MessageBox.Show($"Bill successfully saved to {filePath}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error generating PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -288,8 +338,27 @@ namespace SuprememartPOS
                     cmd.ExecuteNonQuery();
                 }
 
-                MessageBox.Show("Sales data saved successfully.", "Success",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Prompt user to choose save location and file name for the bill PDF
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+                    saveFileDialog.DefaultExt = "pdf";
+                    saveFileDialog.Title = "Save Bill As";
+                    saveFileDialog.FileName = $"Bill_{DateTime.Now:yyyyMMddHHmmss}.pdf"; // Default filename with timestamp
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Generate the PDF bill and save it to the selected file location
+                        GeneratePDFBill(products, totalBillAmount, saveFileDialog.FileName);
+
+                        MessageBox.Show("Sales data saved and bill generated successfully.", "Success",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Bill saving canceled.", "Canceled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
 
                 // Clear the purchaseTable after saving
                 purchaseTable.Clear();
@@ -306,6 +375,9 @@ namespace SuprememartPOS
                 con.Close();
             }
         }
+
+
+
     }
 }
 
