@@ -8,9 +8,11 @@ namespace SuprememartPOS
 {
     public partial class purchases : UserControl
     {
+        private DataTable purchaseTable;
         public purchases()
         {
             InitializeComponent();
+            InitializePurchaseTable();
         }
         private SqlConnection con = new SqlConnection("Server=SANJANAXPRO\\SQLEXPRESS;Database=pos;Integrated Security=True;");
 
@@ -123,9 +125,91 @@ namespace SuprememartPOS
 
         }
 
+        private void InitializePurchaseTable()
+        {
+            // Create a new DataTable for dataGridView2
+            purchaseTable = new DataTable();
+            purchaseTable.Columns.Add("ProductID", typeof(int));
+            purchaseTable.Columns.Add("ProductName", typeof(string));
+            purchaseTable.Columns.Add("Price", typeof(decimal));
+            purchaseTable.Columns.Add("Size", typeof(string));
+            purchaseTable.Columns.Add("Quantity", typeof(int));
+            purchaseTable.Columns.Add("Total", typeof(decimal));
+
+            // Bind the DataTable to dataGridView2
+            dataGridView2.DataSource = purchaseTable;
+
+            // Style dataGridView2
+            StylePurchaseDataGridView();
+        }
+
+        private void StylePurchaseDataGridView()
+        {
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            dataGridView2.Columns["ProductID"].HeaderText = "ID";
+            dataGridView2.Columns["ProductName"].HeaderText = "Product Name";
+            dataGridView2.Columns["Price"].HeaderText = "Price (LKR)";
+            dataGridView2.Columns["Size"].HeaderText = "Size";
+            dataGridView2.Columns["Quantity"].HeaderText = "Quantity";
+            dataGridView2.Columns["Total"].HeaderText = "Total (LKR)";
+
+            dataGridView2.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10);
+            dataGridView2.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12, System.Drawing.FontStyle.Bold);
+            dataGridView2.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
+            dataGridView2.AlternatingRowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
+            {
+                if (dataGridView1.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Please select a product first.", "No Selection",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                foreach (DataGridViewRow selectedRow in dataGridView1.SelectedRows)
+                {
+                    // Get the values from the selected row
+                    int productId = Convert.ToInt32(selectedRow.Cells["ProductID"].Value);
+                    string productName = selectedRow.Cells["ProductName"].Value.ToString();
+                    decimal price = Convert.ToDecimal(selectedRow.Cells["Price"].Value);
+                    string size = selectedRow.Cells["Size"].Value.ToString();
+
+                    // Check if product already exists in purchaseTable
+                    DataRow[] existingRows = purchaseTable.Select($"ProductID = {productId}");
+
+                    if (existingRows.Length > 0)
+                    {
+                        // Update quantity if product already exists
+                        int currentQty = Convert.ToInt32(existingRows[0]["Quantity"]);
+                        existingRows[0]["Quantity"] = currentQty + 1;
+                        existingRows[0]["Total"] = (currentQty + 1) * price;
+                    }
+                    else
+                    {
+                        // Add new row if product doesn't exist
+                        DataRow newRow = purchaseTable.NewRow();
+                        newRow["ProductID"] = productId;
+                        newRow["ProductName"] = productName;
+                        newRow["Price"] = price;
+                        newRow["Size"] = size;
+                        newRow["Quantity"] = 1;
+                        newRow["Total"] = price;
+                        purchaseTable.Rows.Add(newRow);
+                    }
+                }
+
+                // Refresh the display
+                dataGridView2.Refresh();
+            }
         }
     }
 }
