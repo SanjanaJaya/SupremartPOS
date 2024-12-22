@@ -18,65 +18,8 @@ namespace SuprememartPOS
             InitializeComponent();
         }
 
-        private string connectionString = "Server=SANJANAXPRO\\SQLEXPRESS;Database=pos;Integrated Security=True;"; // Connection string
+        private SqlConnection con = new SqlConnection("Server=SANJANAXPRO\\SQLEXPRESS;Database=pos;Integrated Security=True;");
 
-        private void employees_Load(object sender, EventArgs e)
-        {
-            LoadEmployeesData(); // Load products when the control is loaded
-        }
-        private void LoadEmployeesData()
-        {
-            string query = "SELECT * FROM Employee";
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        SqlDataAdapter adapter = new SqlDataAdapter(command);
-                        DataTable table = new DataTable();
-                        adapter.Fill(table);
-                        dataGridViewEmplyoee.DataSource = table; // Bind the data to DataGridView
-
-                        // Make DataGridView columns read-only
-                        foreach (DataGridViewColumn column in dataGridViewEmplyoee.Columns)
-                        {
-                            column.ReadOnly = true; // Prevent editing in the DataGridView directly
-                        }
-
-                        // Fit the columns to the content width
-                        dataGridViewEmplyoee.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                        dataGridViewEmplyoee.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-
-                        // Change column headers
-                        dataGridViewEmplyoee.Columns["EmployeeID"].HeaderText = "ID";
-                        dataGridViewEmplyoee.Columns["Name"].HeaderText = "First Name";
-                        dataGridViewEmplyoee.Columns["Position"].HeaderText = "Last Name";
-                        dataGridViewEmplyoee.Columns["ContactNumber"].HeaderText = "Contact Number";
-                        dataGridViewEmplyoee.Columns["NICNumber"].HeaderText = "NIC";
-
-                        // Additional styling (optional)
-                        dataGridViewEmplyoee.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10); // Set font
-                        dataGridViewEmplyoee.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12, System.Drawing.FontStyle.Bold); // Header style
-                        dataGridViewEmplyoee.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DarkSlateGray; // Header background color
-                        dataGridViewEmplyoee.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White; // Header text color
-
-                        // Set row selection mode to full row
-                        dataGridViewEmplyoee.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-                        // Set alternating row styles
-                        dataGridViewEmplyoee.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
-                        dataGridViewEmplyoee.AlternatingRowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading products: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void dataGridViewEmplyoee_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -115,7 +58,57 @@ namespace SuprememartPOS
 
         private void employees_Load_1(object sender, EventArgs e)
         {
-
+            FILLDGV();
         }
+
+        private void FILLDGV()
+        {
+            try
+            {
+                con.Open();
+                string query = "SELECT * FROM Employee";
+                SqlDataAdapter da = new SqlDataAdapter(query, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridViewEmplyoee.DataSource = dt; // Bind the DataTable to the DataGridView
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close(); // Ensure the connection is always closed
+            }
+            foreach (DataGridViewColumn column in dataGridViewEmplyoee.Columns)
+            {
+                column.ReadOnly = true; // Prevent editing in the DataGridView directly
+            }
+
+            // Fit the columns to the content width
+            dataGridViewEmplyoee.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewEmplyoee.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            // Change column headers
+            dataGridViewEmplyoee.Columns["EmployeeID"].HeaderText = "ID";
+            dataGridViewEmplyoee.Columns["Name"].HeaderText = "Name";
+            dataGridViewEmplyoee.Columns["Position"].HeaderText = "Position";
+            dataGridViewEmplyoee.Columns["ContactNumber"].HeaderText = "Contact Number";
+            dataGridViewEmplyoee.Columns["NICNumber"].HeaderText = "NIC";
+
+            // Additional styling (optional)
+            dataGridViewEmplyoee.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10); // Set font
+            dataGridViewEmplyoee.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12, System.Drawing.FontStyle.Bold); // Header style
+            dataGridViewEmplyoee.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DarkSlateGray; // Header background color
+            dataGridViewEmplyoee.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White; // Header text color
+
+            // Set row selection mode to full row
+            dataGridViewEmplyoee.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            // Set alternating row styles
+            dataGridViewEmplyoee.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewEmplyoee.AlternatingRowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+        }
+
     }
 }
