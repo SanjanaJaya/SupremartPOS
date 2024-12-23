@@ -25,19 +25,19 @@ namespace SuprememartPOS
 
         private void dataGridViewSuppliers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // Make sure the clicked cell is not the header row
+            if (e.RowIndex >= 0) 
             {
-                // Get the values from the clicked row and fill the textboxes
+                
                 DataGridViewRow row = dataGridViewSuppliers.Rows[e.RowIndex];
                 textBox1.Text = row.Cells["SupplierName"].Value.ToString();
                 textBox2.Text = row.Cells["ProductName"].Value.ToString();
                 textBox3.Text = row.Cells["Size"].Value.ToString();
                 textBox4.Text = row.Cells["Quantity"].Value.ToString();
 
-                // Store the ProductID for future use (for deletion and update)
+               
                 textBox4.Tag = row.Cells["SupplierID"].Value;
 
-                // Disable textboxes initially to prevent editing
+                
                 textBox1.Enabled = false;
                 textBox2.Enabled = false;
                 textBox3.Enabled = false;
@@ -52,7 +52,7 @@ namespace SuprememartPOS
             string size = textBox3.Text;
             string quantityText = textBox4.Text;
 
-            // Validate input
+            
             if (string.IsNullOrEmpty(supplierName) ||
                 string.IsNullOrEmpty(productName) ||
                 string.IsNullOrEmpty(quantityText))
@@ -61,7 +61,7 @@ namespace SuprememartPOS
                 return;
             }
 
-            // Try to parse the quantity
+           
             int quantity;
             if (!int.TryParse(quantityText, out quantity) || quantity < 1)
             {
@@ -73,30 +73,30 @@ namespace SuprememartPOS
             {
                 con.Open();
 
-                if (textBox4.Tag == null) // No supplier selected, so it's a new supplier (insert)
+                if (textBox4.Tag == null) 
                 {
-                    // Insert new supplier
+                    
                     string query = "INSERT INTO Supplier (SupplierName, ProductName, Size, Quantity) VALUES (@SupplierName, @ProductName, @Size, @Quantity)";
                     using (SqlCommand command = new SqlCommand(query, con))
                     {
                         command.Parameters.AddWithValue("@SupplierName", supplierName);
                         command.Parameters.AddWithValue("@ProductName", productName);
-                        command.Parameters.AddWithValue("@Size", size ?? (object)DBNull.Value); // Handle null Size
+                        command.Parameters.AddWithValue("@Size", size ?? (object)DBNull.Value); 
                         command.Parameters.AddWithValue("@Quantity", quantity);
                         command.ExecuteNonQuery();
                     }
                     MessageBox.Show("Supplier added successfully.");
                 }
-                else // A supplier is selected, so it's an update
+                else 
                 {
-                    int supplierId = Convert.ToInt32(textBox4.Tag); // Get the SupplierID from the Tag
+                    int supplierId = Convert.ToInt32(textBox4.Tag); 
                     string query = "UPDATE Supplier SET SupplierName = @SupplierName, ProductName = @ProductName, Size = @Size, Quantity = @Quantity WHERE SupplierID = @SupplierID";
                     using (SqlCommand command = new SqlCommand(query, con))
                     {
                         command.Parameters.AddWithValue("@SupplierID", supplierId);
                         command.Parameters.AddWithValue("@SupplierName", supplierName);
                         command.Parameters.AddWithValue("@ProductName", productName);
-                        command.Parameters.AddWithValue("@Size", size ?? (object)DBNull.Value); // Handle null Size
+                        command.Parameters.AddWithValue("@Size", size ?? (object)DBNull.Value); 
                         command.Parameters.AddWithValue("@Quantity", quantity);
                         command.ExecuteNonQuery();
                     }
@@ -109,16 +109,16 @@ namespace SuprememartPOS
             }
             finally
             {
-                con.Close(); // Ensure the connection is always closed
+                con.Close(); 
             }
 
-            FILLDGV(); // Refresh DataGridView to reflect the changes
+            FILLDGV(); 
         }
 
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Enable textboxes for editing
+           
             textBox1.Enabled = true;
             textBox2.Enabled = true;
             textBox3.Enabled = true;
@@ -129,7 +129,7 @@ namespace SuprememartPOS
         {
             int supplierID;
 
-            // Validate SupplierID
+            
             if (textBox4.Tag == null || !int.TryParse(textBox4.Tag.ToString(), out supplierID))
             {
                 MessageBox.Show("No supplier selected for deletion.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -154,10 +154,10 @@ namespace SuprememartPOS
             }
             finally
             {
-                con.Close(); // Ensure the connection is always closed
+                con.Close(); 
             }
 
-            FILLDGV(); // Refresh the DataGridView
+            FILLDGV(); 
         }
 
         private void FILLDGV()
@@ -169,7 +169,7 @@ namespace SuprememartPOS
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                dataGridViewSuppliers.DataSource = dt; // Bind the DataTable to the DataGridView
+                dataGridViewSuppliers.DataSource = dt; 
             }
             catch (Exception ex)
             {
@@ -177,34 +177,34 @@ namespace SuprememartPOS
             }
             finally
             {
-                con.Close(); // Ensure the connection is always closed
+                con.Close(); 
             }
             foreach (DataGridViewColumn column in dataGridViewSuppliers.Columns)
             {
-                column.ReadOnly = true; // Prevent editing in the DataGridView directly
+                column.ReadOnly = true; 
             }
 
-            // Fit the columns to the content width
+            
             dataGridViewSuppliers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewSuppliers.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
-            // Change column headers
+            
             dataGridViewSuppliers.Columns["SupplierID"].HeaderText = "ID";
             dataGridViewSuppliers.Columns["SupplierName"].HeaderText = "Supplier Name";
             dataGridViewSuppliers.Columns["ProductName"].HeaderText = "Product Name";
             dataGridViewSuppliers.Columns["Size"].HeaderText = "Size";
             dataGridViewSuppliers.Columns["Quantity"].HeaderText = "Quantity";
 
-            // Additional styling (optional)
-            dataGridViewSuppliers.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10); // Set font
-            dataGridViewSuppliers.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12, System.Drawing.FontStyle.Bold); // Header style
-            dataGridViewSuppliers.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DarkSlateGray; // Header background color
-            dataGridViewSuppliers.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White; // Header text color
+            
+            dataGridViewSuppliers.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10); 
+            dataGridViewSuppliers.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12, System.Drawing.FontStyle.Bold); 
+            dataGridViewSuppliers.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DarkSlateGray; 
+            dataGridViewSuppliers.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White; 
 
-            // Set row selection mode to full row
+            
             dataGridViewSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            // Set alternating row styles
+           
             dataGridViewSuppliers.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
             dataGridViewSuppliers.AlternatingRowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
         }
@@ -216,19 +216,19 @@ namespace SuprememartPOS
 
         private void button4_Click(object sender, EventArgs e)
         {
-            // Clear all textboxes
+            
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
 
-            // Enable textboxes to allow typing again
+            
             textBox1.Enabled = true;
             textBox2.Enabled = true;
             textBox3.Enabled = true;
             textBox4.Enabled = true;
 
-            // Reset ProductID tag
+            
             textBox4.Tag = null;
         }
 

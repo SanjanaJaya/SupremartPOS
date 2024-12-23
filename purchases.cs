@@ -40,7 +40,7 @@ namespace SuprememartPOS
                 con.Open();
                 string query = "SELECT * FROM Product";
 
-                // If there is a search query, modify the query to include a WHERE clause
+                
                 if (!string.IsNullOrEmpty(searchQuery))
                 {
                     query += " WHERE ProductName LIKE @SearchQuery";
@@ -48,7 +48,7 @@ namespace SuprememartPOS
 
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
 
-                // If searching, add the parameter to the query
+               
                 if (!string.IsNullOrEmpty(searchQuery))
                 {
                     da.SelectCommand.Parameters.AddWithValue("@SearchQuery", "%" + searchQuery + "%");
@@ -56,7 +56,7 @@ namespace SuprememartPOS
 
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                dataGridView1.DataSource = dt; // Bind the DataTable to the DataGridView
+                dataGridView1.DataSource = dt; 
             }
             catch (Exception ex)
             {
@@ -64,13 +64,13 @@ namespace SuprememartPOS
             }
             finally
             {
-                con.Close(); // Ensure the connection is always closed
+                con.Close(); 
             }
 
-            // Style the DataGridView
+            
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
-                column.ReadOnly = true; // Prevent editing in the DataGridView directly
+                column.ReadOnly = true; 
             }
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -92,10 +92,10 @@ namespace SuprememartPOS
             dataGridView1.AlternatingRowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
         }
 
-        // Load event to initialize the DataGridView
+       
         private void purchases_Load_1(object sender, EventArgs e)
         {
-            FILLDGV(); // Load all products initially
+            FILLDGV(); 
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -111,15 +111,15 @@ namespace SuprememartPOS
         private void button1_Click(object sender, EventArgs e)
         {
             {
-                string searchQuery = textBox1.Text.Trim(); // Get the search term from textBox1
+                string searchQuery = textBox1.Text.Trim(); 
 
                 if (!string.IsNullOrEmpty(searchQuery))
                 {
-                    FILLDGV(searchQuery); // Call FILLDGV with search query to filter products
+                    FILLDGV(searchQuery); 
                 }
                 else
                 {
-                    FILLDGV(); // If no search term, load all products
+                    FILLDGV(); 
                 }
             }
         }
@@ -130,7 +130,7 @@ namespace SuprememartPOS
 
         private void InitializePurchaseTable()
         {
-            // Create a new DataTable for dataGridView2
+          
             purchaseTable = new DataTable();
             purchaseTable.Columns.Add("ProductID", typeof(int));
             purchaseTable.Columns.Add("ProductName", typeof(string));
@@ -139,10 +139,10 @@ namespace SuprememartPOS
             purchaseTable.Columns.Add("Quantity", typeof(int));
             purchaseTable.Columns.Add("Total", typeof(decimal));
 
-            // Bind the DataTable to dataGridView2
+           
             dataGridView2.DataSource = purchaseTable;
 
-            // Style dataGridView2
+           
             StylePurchaseDataGridView();
         }
 
@@ -176,7 +176,7 @@ namespace SuprememartPOS
                 totalPrice += Convert.ToDecimal(row["Total"]);
             }
 
-            // Specify "si-LK" culture for Sri Lankan Rupees
+           
             System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("si-LK");
             label2.Text = $" {totalPrice.ToString("C", culture)}";
         }
@@ -194,25 +194,25 @@ namespace SuprememartPOS
 
                 foreach (DataGridViewRow selectedRow in dataGridView1.SelectedRows)
                 {
-                    // Get the values from the selected row
+                    
                     int productId = Convert.ToInt32(selectedRow.Cells["ProductID"].Value);
                     string productName = selectedRow.Cells["ProductName"].Value.ToString();
                     decimal price = Convert.ToDecimal(selectedRow.Cells["Price"].Value);
                     string size = selectedRow.Cells["Size"].Value.ToString();
 
-                    // Check if product already exists in purchaseTable
+                  
                     DataRow[] existingRows = purchaseTable.Select($"ProductID = {productId}");
 
                     if (existingRows.Length > 0)
                     {
-                        // Update quantity if product already exists
+                     
                         int currentQty = Convert.ToInt32(existingRows[0]["Quantity"]);
                         existingRows[0]["Quantity"] = currentQty + 1;
                         existingRows[0]["Total"] = (currentQty + 1) * price;
                     }
                     else
                     {
-                        // Add new row if product doesn't exist
+                       
                         DataRow newRow = purchaseTable.NewRow();
                         newRow["ProductID"] = productId;
                         newRow["ProductName"] = productName;
@@ -224,7 +224,7 @@ namespace SuprememartPOS
                     }
                 }
 
-                // Refresh the display
+         
                 dataGridView1.Refresh();
                 dataGridView2.Refresh();
                 UpdateTotalPriceLabel();
@@ -267,11 +267,11 @@ namespace SuprememartPOS
         {
             try
             {
-                // Create a unique file name using the order ID and timestamp
+                
                 string uniqueFileName = $"Bill_{orderId}_{DateTime.Now:yyyyMMddHHmmss}.pdf";
                 string uniqueFilePath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(filePath), uniqueFileName);
 
-                // Create a new PDF document
+                
                 using (System.IO.FileStream fs = new System.IO.FileStream(uniqueFilePath, System.IO.FileMode.Create, System.IO.FileAccess.Write))
                 {
                     using (iTextSharp.text.Document doc = new iTextSharp.text.Document())
@@ -279,21 +279,21 @@ namespace SuprememartPOS
                         iTextSharp.text.pdf.PdfWriter.GetInstance(doc, fs);
                         doc.Open();
 
-                        // Define fonts
+                       
                         iTextSharp.text.Font titleFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 18, iTextSharp.text.Font.BOLD);
                         iTextSharp.text.Font regularFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12);
                         iTextSharp.text.Font headerFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD);
 
-                        // Add Title
+                       
                         doc.Add(new iTextSharp.text.Paragraph("Supreme Mart POS", titleFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
                         doc.Add(new iTextSharp.text.Paragraph($"Date: {DateTime.Now:yyyy-MM-dd HH:mm:ss}", regularFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
                         doc.Add(new iTextSharp.text.Paragraph("\n"));
 
-                        // Add Order ID with #
+                    
                         doc.Add(new iTextSharp.text.Paragraph($"Order ID: #{orderId}", headerFont) { Alignment = iTextSharp.text.Element.ALIGN_LEFT });
                         doc.Add(new iTextSharp.text.Paragraph("\n"));
 
-                        // Add product details
+                      
                         doc.Add(new iTextSharp.text.Paragraph("Products:", headerFont) { Alignment = iTextSharp.text.Element.ALIGN_LEFT });
                         foreach (DataRow row in purchaseTable.Rows)
                         {
@@ -301,14 +301,14 @@ namespace SuprememartPOS
                             doc.Add(new iTextSharp.text.Paragraph(productLine, regularFont));
                         }
 
-                        // Add total amount
-                        doc.Add(new iTextSharp.text.Paragraph("\n", regularFont)); // Blank line
+                       
+                        doc.Add(new iTextSharp.text.Paragraph("\n", regularFont)); 
                         doc.Add(new iTextSharp.text.Paragraph($"Total Bill Amount: LKR {totalBillAmount:0.00}", headerFont) { Alignment = iTextSharp.text.Element.ALIGN_RIGHT });
 
-                        // Add footer
+                   
                         doc.Add(new iTextSharp.text.Paragraph("\n\nThank you for shopping with us!", regularFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
 
-                        // Close the document
+                      
                         doc.Close();
                     }
                 }
@@ -321,15 +321,6 @@ namespace SuprememartPOS
             }
         }
 
-
-
-
-
-
-
-
-
-
         private void button4_Click(object sender, EventArgs e)
         {
             if (purchaseTable.Rows.Count == 0)
@@ -341,18 +332,18 @@ namespace SuprememartPOS
 
             try
             {
-                // Open the connection at the start of the method
+                
                 using (SqlConnection con = new SqlConnection("Server=SANJANAXPRO\\SQLEXPRESS;Database=pos;Integrated Security=True;"))
                 {
                     con.Open();
 
-                    // Prepare the data for insertion
+                    
                     string products = string.Join(", ", purchaseTable.AsEnumerable()
                         .Select(row => $"{row["ProductName"]} (Qty: {row["Quantity"]})"));
                     decimal totalBillAmount = purchaseTable.AsEnumerable()
                         .Sum(row => Convert.ToDecimal(row["Total"]));
 
-                    // Insert data into the sales table and get the OrderID
+                   
                     string query = "INSERT INTO sales (Products, TotalBillAmount) OUTPUT INSERTED.OrderID VALUES (@Products, @TotalBillAmount)";
                     int orderId;
 
@@ -360,26 +351,26 @@ namespace SuprememartPOS
                     {
                         cmd.Parameters.AddWithValue("@Products", products);
                         cmd.Parameters.AddWithValue("@TotalBillAmount", totalBillAmount);
-                        orderId = (int)cmd.ExecuteScalar(); // Get the inserted OrderID
+                        orderId = (int)cmd.ExecuteScalar(); 
                     }
 
-                    // Loop through the purchased products and update the quantity in the Product table
+                    
                     foreach (DataRow row in purchaseTable.Rows)
                     {
                         int productId = Convert.ToInt32(row["ProductID"]);
                         int purchasedQuantity = Convert.ToInt32(row["Quantity"]);
 
-                        // Update the Product table to deduct the purchased quantity
+                        
                         string updateQuery = "UPDATE Product SET Quantity = Quantity - @PurchasedQuantity WHERE ProductID = @ProductID";
                         using (SqlCommand updateCmd = new SqlCommand(updateQuery, con))
                         {
                             updateCmd.Parameters.AddWithValue("@PurchasedQuantity", purchasedQuantity);
                             updateCmd.Parameters.AddWithValue("@ProductID", productId);
-                            updateCmd.ExecuteNonQuery(); // Execute the update
+                            updateCmd.ExecuteNonQuery(); 
                         }
                     }
 
-                    // Use SaveFileDialog to select the save location
+                   
                     SaveFileDialog saveFileDialog = new SaveFileDialog
                     {
                         Filter = "PDF Files|*.pdf",
@@ -388,20 +379,20 @@ namespace SuprememartPOS
 
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        // Generate the PDF bill with a unique file name
+                        
                         GeneratePDFBill(products, totalBillAmount, saveFileDialog.FileName, orderId);
                     }
 
                     MessageBox.Show("Sales data saved and bill generated successfully.", "Success",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Clear the purchaseTable after saving
+                    
                     purchaseTable.Clear();
                     dataGridView2.Refresh();
                     UpdateTotalPriceLabel();
 
-                    // Refresh DataGridView1 to show updated inventory
-                    FILLDGV();  // This will reload the data from the database to DataGridView1
+                   
+                    FILLDGV();  
                 }
             }
             catch (Exception ex)

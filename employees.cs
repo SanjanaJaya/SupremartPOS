@@ -24,19 +24,19 @@ namespace SuprememartPOS
 
         private void dataGridViewEmplyoee_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // Make sure the clicked cell is not the header row
+            if (e.RowIndex >= 0) 
             {
-                // Get the values from the clicked row and fill the textboxes
+               
                 DataGridViewRow row = dataGridViewEmplyoee.Rows[e.RowIndex];
                 textBox1.Text = row.Cells["Name"].Value.ToString();
                 textBox2.Text = row.Cells["Position"].Value.ToString();
                 textBox3.Text = row.Cells["ContactNumber"].Value.ToString();
                 textBox4.Text = row.Cells["NICNumber"].Value.ToString();
 
-                // Store the EmployeeID for future use (for deletion and update)
+             
                 textBox4.Tag = row.Cells["EmployeeID"].Value;
 
-                // Disable textboxes initially to prevent editing
+              
                 textBox1.Enabled = false;
                 textBox2.Enabled = false;
                 textBox3.Enabled = false;
@@ -53,7 +53,7 @@ namespace SuprememartPOS
                 string contactNumber = textBox3.Text;
                 string nicNumber = textBox4.Text;
 
-                // Validate input
+               
                 if (string.IsNullOrEmpty(employeeName) ||
                     string.IsNullOrEmpty(position) ||
                     string.IsNullOrEmpty(contactNumber) ||
@@ -67,9 +67,9 @@ namespace SuprememartPOS
                 {
                     con.Open();
 
-                    if (textBox4.Tag == null) // No employee selected, so it's a new employee (insert)
+                    if (textBox4.Tag == null) 
                     {
-                        // Insert new employee
+                      
                         string query = "INSERT INTO Employee (Name, Position, ContactNumber, NICNumber) VALUES (@Name, @Position, @ContactNumber, @NICNumber)";
                         using (SqlCommand command = new SqlCommand(query, con))
                         {
@@ -81,9 +81,9 @@ namespace SuprememartPOS
                         }
                         MessageBox.Show("Employee added successfully.");
                     }
-                    else // An employee is selected, so it's an update
+                    else 
                     {
-                        int employeeId = Convert.ToInt32(textBox4.Tag); // Get the EmployeeID from the Tag
+                        int employeeId = Convert.ToInt32(textBox4.Tag); 
                         string query = "UPDATE Employee SET Name = @Name, Position = @Position, ContactNumber = @ContactNumber, NICNumber = @NICNumber WHERE EmployeeID = @EmployeeID";
                         using (SqlCommand command = new SqlCommand(query, con))
                         {
@@ -103,16 +103,16 @@ namespace SuprememartPOS
                 }
                 finally
                 {
-                    con.Close(); // Ensure the connection is always closed
+                    con.Close();
                 }
 
-                FILLDGV(); // Refresh DataGridView
+                FILLDGV(); 
             }
         }
 
         private void updateemp_Click(object sender, EventArgs e)
         {
-            // Enable textboxes for editing
+          
             textBox1.Enabled = true;
             textBox2.Enabled = true;
             textBox3.Enabled = true;
@@ -123,7 +123,7 @@ namespace SuprememartPOS
         {
             int employeeID;
 
-            // Validate EmployeeID
+          
             if (textBox4.Tag == null || !int.TryParse(textBox4.Tag.ToString(), out employeeID))
             {
                 MessageBox.Show("No employee selected for deletion.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -148,10 +148,10 @@ namespace SuprememartPOS
             }
             finally
             {
-                con.Close(); // Ensure the connection is always closed
+                con.Close(); 
             }
 
-            FILLDGV(); // Refresh the DataGridView
+            FILLDGV(); 
         }
 
 
@@ -184,7 +184,7 @@ namespace SuprememartPOS
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                dataGridViewEmplyoee.DataSource = dt; // Bind the DataTable to the DataGridView
+                dataGridViewEmplyoee.DataSource = dt;
             }
             catch (Exception ex)
             {
@@ -192,53 +192,53 @@ namespace SuprememartPOS
             }
             finally
             {
-                con.Close(); // Ensure the connection is always closed
+                con.Close(); 
             }
             foreach (DataGridViewColumn column in dataGridViewEmplyoee.Columns)
             {
-                column.ReadOnly = true; // Prevent editing in the DataGridView directly
+                column.ReadOnly = true; 
             }
 
-            // Fit the columns to the content width
+            
             dataGridViewEmplyoee.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewEmplyoee.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
-            // Change column headers
+            
             dataGridViewEmplyoee.Columns["EmployeeID"].HeaderText = "ID";
             dataGridViewEmplyoee.Columns["Name"].HeaderText = "Name";
             dataGridViewEmplyoee.Columns["Position"].HeaderText = "Position";
             dataGridViewEmplyoee.Columns["ContactNumber"].HeaderText = "Contact Number";
             dataGridViewEmplyoee.Columns["NICNumber"].HeaderText = "NIC";
 
-            // Additional styling (optional)
-            dataGridViewEmplyoee.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10); // Set font
-            dataGridViewEmplyoee.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12, System.Drawing.FontStyle.Bold); // Header style
-            dataGridViewEmplyoee.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DarkSlateGray; // Header background color
-            dataGridViewEmplyoee.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White; // Header text color
+            
+            dataGridViewEmplyoee.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10); 
+            dataGridViewEmplyoee.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12, System.Drawing.FontStyle.Bold); 
+            dataGridViewEmplyoee.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DarkSlateGray; 
+            dataGridViewEmplyoee.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White; 
 
-            // Set row selection mode to full row
+            
             dataGridViewEmplyoee.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            // Set alternating row styles
+            
             dataGridViewEmplyoee.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
             dataGridViewEmplyoee.AlternatingRowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            // Clear all textboxes
+            
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
 
-            // Enable textboxes to allow typing again
+            
             textBox1.Enabled = true;
             textBox2.Enabled = true;
             textBox3.Enabled = true;
             textBox4.Enabled = true;
 
-            // Reset ProductID tag
+            
             textBox4.Tag = null;
         }
 

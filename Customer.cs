@@ -18,11 +18,11 @@ namespace SuprememartPOS
             InitializeComponent();
         }
 
-        private string connectionString = "Server=SANJANAXPRO\\SQLEXPRESS;Database=pos;Integrated Security=True;"; // Connection string
+        private string connectionString = "Server=SANJANAXPRO\\SQLEXPRESS;Database=pos;Integrated Security=True;"; 
 
         private void Customer_Load(object sender, EventArgs e)
         {
-            LoadCustomerData(); // Load products when the control is loaded
+            LoadCustomerData(); 
         }
         private void LoadCustomerData()
         {
@@ -38,35 +38,35 @@ namespace SuprememartPOS
                         SqlDataAdapter adapter = new SqlDataAdapter(command);
                         DataTable table = new DataTable();
                         adapter.Fill(table);
-                        dataGridView1.DataSource = table; // Bind the data to DataGridView
+                        dataGridView1.DataSource = table; 
 
-                        // Make DataGridView columns read-only
+                        
                         foreach (DataGridViewColumn column in dataGridView1.Columns)
                         {
-                            column.ReadOnly = true; // Prevent editing in the DataGridView directly
+                            column.ReadOnly = true; 
                         }
 
-                        // Fit the columns to the content width
+                       
                         dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                         dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
-                        // Change column headers
+                       
                         dataGridView1.Columns["customer_id"].HeaderText = "ID";
                         dataGridView1.Columns["first_name"].HeaderText = "First Name";
                         dataGridView1.Columns["last_name"].HeaderText = "Last Name";
                         dataGridView1.Columns["contact_number"].HeaderText = "Contact Number";
                         dataGridView1.Columns["nic_number"].HeaderText = "NIC";
 
-                        // Additional styling (optional)
-                        dataGridView1.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10); // Set font
-                        dataGridView1.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12, System.Drawing.FontStyle.Bold); // Header style
-                        dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DarkSlateGray; // Header background color
-                        dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White; // Header text color
+                       
+                        dataGridView1.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10); 
+                        dataGridView1.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12, System.Drawing.FontStyle.Bold);
+                        dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DarkSlateGray; 
+                        dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White; 
 
-                        // Set row selection mode to full row
+                        
                         dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-                        // Set alternating row styles
+                        
                         dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                         dataGridView1.AlternatingRowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                     }
@@ -91,13 +91,13 @@ namespace SuprememartPOS
         private void addcustomer_Click(object sender, EventArgs e)
         {
 
-            // Retrieve values from textboxes
+            
             string firstName = textBox1.Text;
             string lastName = textBox2.Text;
             string contactNumber = textBox3.Text;
             string nicNumber = textBox4.Text;
 
-            // Validate input
+            
             if (string.IsNullOrEmpty(firstName) ||
                 string.IsNullOrEmpty(lastName) ||
                 string.IsNullOrEmpty(contactNumber) ||
@@ -107,9 +107,9 @@ namespace SuprememartPOS
                 return;
             }
 
-            if (textBox4.Tag == null) // No customer selected, so it's a new customer (insert)
+            if (textBox4.Tag == null) 
             {
-                // Insert new customer
+               
                 string query = "INSERT INTO customer (first_name, last_name, contact_number, nic_number) VALUES (@FirstName, @LastName, @ContactNumber, @NicNumber)";
 
                 try
@@ -133,9 +133,9 @@ namespace SuprememartPOS
                     MessageBox.Show($"Error adding customer: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else // A customer is selected, so it's an update
+            else 
             {
-                int customerId = Convert.ToInt32(textBox4.Tag); // Get the customer_id from the Tag
+                int customerId = Convert.ToInt32(textBox4.Tag); 
                 string query = "UPDATE customer SET first_name = @FirstName, last_name = @LastName, contact_number = @ContactNumber, nic_number = @NicNumber WHERE customer_id = @CustomerId";
 
                 try
@@ -161,24 +161,24 @@ namespace SuprememartPOS
                 }
             }
 
-            LoadCustomerData(); // Refresh DataGridView
+            LoadCustomerData(); 
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // Make sure the clicked cell is not the header row
+            if (e.RowIndex >= 0) 
             {
-                // Get the values from the clicked row and fill the textboxes
+                
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 textBox1.Text = row.Cells["first_name"].Value.ToString();
                 textBox2.Text = row.Cells["last_name"].Value.ToString();
                 textBox3.Text = row.Cells["contact_number"].Value.ToString();
                 textBox4.Text = row.Cells["nic_number"].Value.ToString();
 
-                // Store the ProductID for future use (for deletion and update)
+                
                 textBox4.Tag = row.Cells["customer_id"].Value;
 
-                // Disable textboxes initially to prevent editing
+                
                 textBox1.Enabled = false;
                 textBox2.Enabled = false;
                 textBox3.Enabled = false;
@@ -210,19 +210,19 @@ namespace SuprememartPOS
         private void button4_Click(object sender, EventArgs e)
         {
             {
-                // Clear all textboxes
+                
                 textBox1.Clear();
                 textBox2.Clear();
                 textBox3.Clear();
                 textBox4.Clear();
 
-                // Enable textboxes to allow typing again
+             
                 textBox1.Enabled = true;
                 textBox2.Enabled = true;
                 textBox3.Enabled = true;
                 textBox4.Enabled = true;
 
-                // Reset ProductID tag
+               
                 textBox4.Tag = null;
             }
         }
@@ -237,14 +237,14 @@ namespace SuprememartPOS
 
         private void dltcustomer_Click(object sender, EventArgs e)
         {
-            // Validate if a customer is selected
+           
             if (textBox4.Tag == null || !int.TryParse(textBox4.Tag.ToString(), out int customer_id))
             {
                 MessageBox.Show("No customer selected for deletion.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Query to delete the customer based on customer_id
+           
             string query = "DELETE FROM customer WHERE customer_id = @CustomerId";
 
             try
@@ -260,11 +260,11 @@ namespace SuprememartPOS
                 }
                 MessageBox.Show("Customer deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Refresh the DataGridView to reflect changes
+                
                 LoadCustomerData();
 
-                // Clear the textboxes and reset the Tag
-                button4_Click(sender, e); // Reuse the reset button logic to clear inputs
+                
+                button4_Click(sender, e); 
             }
             catch (Exception ex)
             {

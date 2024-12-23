@@ -42,7 +42,7 @@ namespace SuprememartPOS
                 con.Open();
                 string query = "SELECT * FROM sales";
 
-                // If there is a search query, modify the query to include a WHERE clause
+               
                 if (!string.IsNullOrEmpty(searchQuery))
                 {
                     query += " WHERE OrderID LIKE @SearchQuery";
@@ -50,7 +50,7 @@ namespace SuprememartPOS
 
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
 
-                // If searching, add the parameter to the query
+               
                 if (!string.IsNullOrEmpty(searchQuery))
                 {
                     da.SelectCommand.Parameters.AddWithValue("@SearchQuery", "%" + searchQuery + "%");
@@ -58,7 +58,7 @@ namespace SuprememartPOS
 
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                dataGridView1.DataSource = dt; // Bind the DataTable to the DataGridView
+                dataGridView1.DataSource = dt;
             }
             catch (Exception ex)
             {
@@ -66,13 +66,13 @@ namespace SuprememartPOS
             }
             finally
             {
-                con.Close(); // Ensure the connection is always closed
+                con.Close(); 
             }
 
-            // Style the DataGridView
+            
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
-                column.ReadOnly = true; // Prevent editing in the DataGridView directly
+                column.ReadOnly = true; 
             }
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -100,15 +100,15 @@ namespace SuprememartPOS
         private void button1_Click(object sender, EventArgs e)
         {
             {
-                string searchQuery = textBox1.Text.Trim(); // Get the search term from textBox1
+                string searchQuery = textBox1.Text.Trim(); 
 
                 if (!string.IsNullOrEmpty(searchQuery))
                 {
-                    FILLDGV(searchQuery); // Call FILLDGV with search query to filter products
+                    FILLDGV(searchQuery); 
                 }
                 else
                 {
-                    FILLDGV(); // If no search term, load all products
+                    FILLDGV(); 
                 }
             }
         }
@@ -134,7 +134,7 @@ namespace SuprememartPOS
             {
                 int startOrderId, endOrderId;
 
-                // Validate inputs
+                
                 if (!int.TryParse(textBox2.Text.Trim(), out startOrderId) || !int.TryParse(textBox3.Text.Trim(), out endOrderId))
                 {
                     MessageBox.Show("Please enter valid numeric values for the order range.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -147,7 +147,7 @@ namespace SuprememartPOS
                     return;
                 }
 
-                // Query to get data for the given range
+               
                 string query = @"SELECT OrderID, Products, TotalBillAmount FROM sales 
                          WHERE OrderID BETWEEN @StartOrderId AND @EndOrderId";
 
@@ -168,10 +168,10 @@ namespace SuprememartPOS
                     return;
                 }
 
-                // Calculate total amount
+               
                 decimal totalAmount = dt.AsEnumerable().Sum(row => row.Field<decimal>("TotalBillAmount"));
 
-                // Generate PDF
+               
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
                     saveFileDialog.Title = "Save Total Sales Invoice As";
@@ -189,28 +189,28 @@ namespace SuprememartPOS
                                 iTextSharp.text.pdf.PdfWriter.GetInstance(doc, fs);
                                 doc.Open();
 
-                                // Define fonts
+                              
                                 iTextSharp.text.Font titleFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 18, iTextSharp.text.Font.BOLD);
                                 iTextSharp.text.Font headerFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD);
                                 iTextSharp.text.Font regularFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12);
 
-                                // Add Title
+                            
                                 doc.Add(new iTextSharp.text.Paragraph("Total Sales Invoice", titleFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
                                 doc.Add(new iTextSharp.text.Paragraph($"Date: {DateTime.Now:yyyy-MM-dd HH:mm:ss}", regularFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
                                 doc.Add(new iTextSharp.text.Paragraph($"Order Range: {startOrderId} to {endOrderId}", regularFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
                                 doc.Add(new iTextSharp.text.Paragraph("\n"));
 
-                                // Create a table with 3 columns
+                               
                                 iTextSharp.text.pdf.PdfPTable table = new iTextSharp.text.pdf.PdfPTable(3);
                                 table.WidthPercentage = 100;
-                                table.SetWidths(new float[] { 1, 4, 2 }); // Set column widths (Order ID, Products, Total Amount)
+                                table.SetWidths(new float[] { 1, 4, 2 }); 
 
-                                // Add table headers
+                              
                                 table.AddCell(new iTextSharp.text.Phrase("Order ID", headerFont));
                                 table.AddCell(new iTextSharp.text.Phrase("Products", headerFont));
                                 table.AddCell(new iTextSharp.text.Phrase("Total Amount (LKR)", headerFont));
 
-                                // Add table rows
+                               
                                 foreach (DataRow row in dt.Rows)
                                 {
                                     table.AddCell(new iTextSharp.text.Phrase(row["OrderID"].ToString(), regularFont));
@@ -218,14 +218,14 @@ namespace SuprememartPOS
                                     table.AddCell(new iTextSharp.text.Phrase(Convert.ToDecimal(row["TotalBillAmount"]).ToString("0.00"), regularFont));
                                 }
 
-                                // Add table to document
+                              
                                 doc.Add(table);
 
-                                // Add Total Amount
+                               
                                 doc.Add(new iTextSharp.text.Paragraph("\n"));
                                 doc.Add(new iTextSharp.text.Paragraph($"Total Amount: LKR {totalAmount:0.00}", headerFont) { Alignment = iTextSharp.text.Element.ALIGN_RIGHT });
 
-                                // Add Footer
+                              
                                 doc.Add(new iTextSharp.text.Paragraph("\n\nThank you for choosing SupremeMart!", regularFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
 
                                 doc.Close();
