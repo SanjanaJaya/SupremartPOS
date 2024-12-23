@@ -44,6 +44,7 @@
             textBox3 = new TextBox();
             textBox2 = new TextBox();
             textBox1 = new TextBox();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEmplyoee).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -126,7 +127,7 @@
             updateemp.BackgroundImage = (Image)resources.GetObject("updateemp.BackgroundImage");
             updateemp.FlatAppearance.BorderSize = 0;
             updateemp.FlatStyle = FlatStyle.Flat;
-            updateemp.Location = new Point(907, 659);
+            updateemp.Location = new Point(907, 627);
             updateemp.Name = "updateemp";
             updateemp.Size = new Size(254, 54);
             updateemp.TabIndex = 24;
@@ -141,7 +142,7 @@
             deleteemp.FlatStyle = FlatStyle.Flat;
             deleteemp.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             deleteemp.ForeColor = Color.White;
-            deleteemp.Location = new Point(907, 732);
+            deleteemp.Location = new Point(907, 700);
             deleteemp.Margin = new Padding(2, 1, 2, 1);
             deleteemp.Name = "deleteemp";
             deleteemp.Size = new Size(254, 54);
@@ -157,7 +158,7 @@
             addemp.FlatStyle = FlatStyle.Flat;
             addemp.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             addemp.ForeColor = Color.White;
-            addemp.Location = new Point(907, 587);
+            addemp.Location = new Point(907, 557);
             addemp.Margin = new Padding(2, 1, 2, 1);
             addemp.Name = "addemp";
             addemp.Size = new Size(254, 54);
@@ -171,7 +172,7 @@
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(907, 803);
+            button4.Location = new Point(907, 771);
             button4.Name = "button4";
             button4.Size = new Size(254, 54);
             button4.TabIndex = 32;
@@ -215,10 +216,24 @@
             textBox1.TabIndex = 33;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Location = new Point(907, 844);
+            button1.Name = "button1";
+            button1.Size = new Size(254, 54);
+            button1.TabIndex = 37;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // employees
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button1);
             Controls.Add(textBox4);
             Controls.Add(textBox3);
             Controls.Add(textBox2);
@@ -260,5 +275,6 @@
         private TextBox textBox3;
         private TextBox textBox2;
         private TextBox textBox1;
+        private Button button1;
     }
 }

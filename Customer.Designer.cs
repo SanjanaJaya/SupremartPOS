@@ -44,6 +44,7 @@
             dltcustomer = new Button();
             updateproduct = new Button();
             button4 = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -79,7 +80,7 @@
             addcustomer.FlatStyle = FlatStyle.Flat;
             addcustomer.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             addcustomer.ForeColor = Color.White;
-            addcustomer.Location = new Point(909, 588);
+            addcustomer.Location = new Point(909, 557);
             addcustomer.Margin = new Padding(2, 1, 2, 1);
             addcustomer.Name = "addcustomer";
             addcustomer.Size = new Size(254, 54);
@@ -184,7 +185,7 @@
             dltcustomer.FlatStyle = FlatStyle.Flat;
             dltcustomer.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             dltcustomer.ForeColor = Color.White;
-            dltcustomer.Location = new Point(909, 733);
+            dltcustomer.Location = new Point(909, 702);
             dltcustomer.Margin = new Padding(2, 1, 2, 1);
             dltcustomer.Name = "dltcustomer";
             dltcustomer.Size = new Size(254, 54);
@@ -198,7 +199,7 @@
             updateproduct.BackgroundImage = (Image)resources.GetObject("updateproduct.BackgroundImage");
             updateproduct.FlatAppearance.BorderSize = 0;
             updateproduct.FlatStyle = FlatStyle.Flat;
-            updateproduct.Location = new Point(909, 660);
+            updateproduct.Location = new Point(909, 629);
             updateproduct.Name = "updateproduct";
             updateproduct.Size = new Size(254, 54);
             updateproduct.TabIndex = 18;
@@ -211,17 +212,31 @@
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(909, 805);
+            button4.Location = new Point(909, 774);
             button4.Name = "button4";
             button4.Size = new Size(254, 54);
             button4.TabIndex = 20;
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Location = new Point(909, 847);
+            button1.Name = "button1";
+            button1.Size = new Size(254, 54);
+            button1.TabIndex = 21;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // Customer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button1);
             Controls.Add(button4);
             Controls.Add(updateproduct);
             Controls.Add(dltcustomer);
@@ -264,5 +279,6 @@
         private Button dltcustomer;
         private Button updateproduct;
         private Button button4;
+        private Button button1;
     }
 }

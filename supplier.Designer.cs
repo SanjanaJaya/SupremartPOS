@@ -44,6 +44,7 @@
             button1 = new Button();
             dataGridViewSuppliers = new DataGridView();
             button4 = new Button();
+            button5 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSuppliers).BeginInit();
             SuspendLayout();
@@ -75,7 +76,7 @@
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(909, 658);
+            button2.Location = new Point(909, 630);
             button2.Name = "button2";
             button2.Size = new Size(254, 54);
             button2.TabIndex = 29;
@@ -90,7 +91,7 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button3.ForeColor = Color.White;
-            button3.Location = new Point(909, 733);
+            button3.Location = new Point(909, 705);
             button3.Margin = new Padding(2, 1, 2, 1);
             button3.Name = "button3";
             button3.Size = new Size(254, 54);
@@ -186,7 +187,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(909, 588);
+            button1.Location = new Point(909, 557);
             button1.Margin = new Padding(2, 1, 2, 1);
             button1.Name = "button1";
             button1.Size = new Size(254, 54);
@@ -209,17 +210,31 @@
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(909, 807);
+            button4.Location = new Point(909, 779);
             button4.Name = "button4";
             button4.Size = new Size(254, 54);
             button4.TabIndex = 31;
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
+            // button5
+            // 
+            button5.BackColor = Color.Transparent;
+            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Location = new Point(909, 850);
+            button5.Name = "button5";
+            button5.Size = new Size(254, 54);
+            button5.TabIndex = 32;
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
+            // 
             // supplier
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(dataGridViewSuppliers);
             Controls.Add(button2);
@@ -260,5 +275,6 @@
         private Button button1;
         private DataGridView dataGridViewSuppliers;
         private Button button4;
+        private Button button5;
     }
 }
