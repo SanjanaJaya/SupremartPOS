@@ -328,6 +328,8 @@ namespace SuprememartPOS
 
 
 
+
+
         private void button4_Click(object sender, EventArgs e)
         {
             if (purchaseTable.Rows.Count == 0)
