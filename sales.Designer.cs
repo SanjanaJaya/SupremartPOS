@@ -32,6 +32,9 @@
             salesss = new Label();
             pictureBox1 = new PictureBox();
             dataGridView1 = new DataGridView();
+            button1 = new Button();
+            textBox1 = new TextBox();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -66,11 +69,47 @@
             dataGridView1.TabIndex = 5;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Location = new Point(743, 776);
+            button1.Name = "button1";
+            button1.Size = new Size(42, 37);
+            button1.TabIndex = 13;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = SystemColors.ScrollBar;
+            textBox1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(390, 774);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(347, 39);
+            textBox1.TabIndex = 12;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(29, 776);
+            label3.Name = "label3";
+            label3.Size = new Size(360, 37);
+            label3.TabIndex = 22;
+            label3.Text = "Search With Your Order ID:";
+            // 
             // sales
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(label3);
+            Controls.Add(button1);
+            Controls.Add(textBox1);
             Controls.Add(dataGridView1);
             Controls.Add(pictureBox1);
             Controls.Add(salesss);
@@ -89,5 +128,8 @@
         private Label salesss;
         private PictureBox pictureBox1;
         private DataGridView dataGridView1;
+        private Button button1;
+        private TextBox textBox1;
+        private Label label3;
     }
 }
