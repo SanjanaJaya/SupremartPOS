@@ -80,7 +80,10 @@ namespace SuprememartPOS
 
             dataGridView1.Columns["OrderID"].HeaderText = "Order ID";
             dataGridView1.Columns["Products"].HeaderText = "Products List";
-            dataGridView1.Columns["TotalBillAmount"].HeaderText = "Total Bill Amount (LKR)";
+            dataGridView1.Columns["TotalBillAmount"].HeaderText = "Order Amount(LKR)";
+            dataGridView1.Columns["DiscountPercentage"].HeaderText = "Discount (%)";
+            dataGridView1.Columns["DiscountAmount"].HeaderText = "Discount Amount";
+            dataGridView1.Columns["LastAmount"].HeaderText = "Total Bill Amount (LKR)";
 
             dataGridView1.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10);
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12, System.Drawing.FontStyle.Bold);
@@ -148,7 +151,7 @@ namespace SuprememartPOS
                 }
 
                
-                string query = @"SELECT OrderID, Products, TotalBillAmount FROM sales 
+                string query = @"SELECT OrderID, Products, LastAmount FROM sales 
                          WHERE OrderID BETWEEN @StartOrderId AND @EndOrderId";
 
                 DataTable dt = new DataTable();
@@ -169,7 +172,7 @@ namespace SuprememartPOS
                 }
 
                
-                decimal totalAmount = dt.AsEnumerable().Sum(row => row.Field<decimal>("TotalBillAmount"));
+                decimal totalAmount = dt.AsEnumerable().Sum(row => row.Field<decimal>("LastAmount"));
 
                
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
@@ -215,7 +218,7 @@ namespace SuprememartPOS
                                 {
                                     table.AddCell(new iTextSharp.text.Phrase(row["OrderID"].ToString(), regularFont));
                                     table.AddCell(new iTextSharp.text.Phrase(row["Products"].ToString(), regularFont));
-                                    table.AddCell(new iTextSharp.text.Phrase(Convert.ToDecimal(row["TotalBillAmount"]).ToString("0.00"), regularFont));
+                                    table.AddCell(new iTextSharp.text.Phrase(Convert.ToDecimal(row["LastAmount"]).ToString("0.00"), regularFont));
                                 }
 
                               

@@ -42,6 +42,14 @@
             label2 = new Label();
             label3 = new Label();
             button4 = new Button();
+            textBox2 = new TextBox();
+            labelLastAmount = new Label();
+            labelDiscountAmount = new Label();
+            labelDiscountPercentage = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -164,22 +172,22 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(1308, 826);
+            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(1350, 791);
             label2.Name = "label2";
-            label2.Size = new Size(0, 37);
+            label2.Size = new Size(0, 30);
             label2.TabIndex = 20;
             label2.Click += label2_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(1155, 825);
+            label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(1151, 791);
             label3.Name = "label3";
-            label3.Size = new Size(160, 37);
+            label3.Size = new Size(162, 30);
             label3.TabIndex = 21;
-            label3.Text = "Total Price:";
+            label3.Text = "Order Amount:";
             label3.Click += label3_Click;
             // 
             // button4
@@ -188,17 +196,102 @@
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(828, 813);
+            button4.Location = new Point(766, 809);
             button4.Name = "button4";
             button4.Size = new Size(301, 74);
             button4.TabIndex = 22;
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
+            // textBox2
+            // 
+            textBox2.BackColor = SystemColors.ScrollBar;
+            textBox2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox2.Location = new Point(394, 822);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(347, 39);
+            textBox2.TabIndex = 23;
+            textBox2.TextChanged += textBox2_TextChanged;
+            // 
+            // labelLastAmount
+            // 
+            labelLastAmount.AutoSize = true;
+            labelLastAmount.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            labelLastAmount.Location = new Point(1350, 879);
+            labelLastAmount.Name = "labelLastAmount";
+            labelLastAmount.Size = new Size(0, 30);
+            labelLastAmount.TabIndex = 24;
+            // 
+            // labelDiscountAmount
+            // 
+            labelDiscountAmount.AutoSize = true;
+            labelDiscountAmount.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            labelDiscountAmount.Location = new Point(1344, 850);
+            labelDiscountAmount.Name = "labelDiscountAmount";
+            labelDiscountAmount.Size = new Size(0, 30);
+            labelDiscountAmount.TabIndex = 25;
+            // 
+            // labelDiscountPercentage
+            // 
+            labelDiscountPercentage.AutoSize = true;
+            labelDiscountPercentage.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            labelDiscountPercentage.Location = new Point(1359, 820);
+            labelDiscountPercentage.Name = "labelDiscountPercentage";
+            labelDiscountPercentage.Size = new Size(0, 30);
+            labelDiscountPercentage.TabIndex = 26;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(1075, 820);
+            label4.Name = "label4";
+            label4.Size = new Size(244, 30);
+            label4.TabIndex = 27;
+            label4.Text = "Discounted Percentage:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(1102, 850);
+            label5.Name = "label5";
+            label5.Size = new Size(217, 30);
+            label5.TabIndex = 28;
+            label5.Text = "Discounted Amount:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(1165, 880);
+            label6.Name = "label6";
+            label6.Size = new Size(154, 30);
+            label6.TabIndex = 29;
+            label6.Text = "Total Amount:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(64, 825);
+            label7.Name = "label7";
+            label7.Size = new Size(324, 32);
+            label7.TabIndex = 30;
+            label7.Text = "Enter Discount Percentage:";
+            // 
             // purchases
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(labelDiscountPercentage);
+            Controls.Add(labelDiscountAmount);
+            Controls.Add(labelLastAmount);
+            Controls.Add(textBox2);
             Controls.Add(button4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -237,5 +330,13 @@
         private Label label2;
         private Label label3;
         private Button button4;
+        private TextBox textBox2;
+        private Label labelLastAmount;
+        private Label labelDiscountAmount;
+        private Label labelDiscountPercentage;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
     }
 }

@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
@@ -40,7 +41,7 @@ namespace SuprememartPOS
                 con.Open();
                 string query = "SELECT * FROM Product";
 
-                
+
                 if (!string.IsNullOrEmpty(searchQuery))
                 {
                     query += " WHERE ProductName LIKE @SearchQuery";
@@ -48,7 +49,7 @@ namespace SuprememartPOS
 
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
 
-               
+
                 if (!string.IsNullOrEmpty(searchQuery))
                 {
                     da.SelectCommand.Parameters.AddWithValue("@SearchQuery", "%" + searchQuery + "%");
@@ -56,7 +57,7 @@ namespace SuprememartPOS
 
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                dataGridView1.DataSource = dt; 
+                dataGridView1.DataSource = dt;
             }
             catch (Exception ex)
             {
@@ -64,13 +65,13 @@ namespace SuprememartPOS
             }
             finally
             {
-                con.Close(); 
+                con.Close();
             }
 
-            
+
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
-                column.ReadOnly = true; 
+                column.ReadOnly = true;
             }
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -92,10 +93,10 @@ namespace SuprememartPOS
             dataGridView1.AlternatingRowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
         }
 
-       
+
         private void purchases_Load_1(object sender, EventArgs e)
         {
-            FILLDGV(); 
+            FILLDGV();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -111,15 +112,15 @@ namespace SuprememartPOS
         private void button1_Click(object sender, EventArgs e)
         {
             {
-                string searchQuery = textBox1.Text.Trim(); 
+                string searchQuery = textBox1.Text.Trim();
 
                 if (!string.IsNullOrEmpty(searchQuery))
                 {
-                    FILLDGV(searchQuery); 
+                    FILLDGV(searchQuery);
                 }
                 else
                 {
-                    FILLDGV(); 
+                    FILLDGV();
                 }
             }
         }
@@ -130,7 +131,7 @@ namespace SuprememartPOS
 
         private void InitializePurchaseTable()
         {
-          
+
             purchaseTable = new DataTable();
             purchaseTable.Columns.Add("ProductID", typeof(int));
             purchaseTable.Columns.Add("ProductName", typeof(string));
@@ -139,10 +140,10 @@ namespace SuprememartPOS
             purchaseTable.Columns.Add("Quantity", typeof(int));
             purchaseTable.Columns.Add("Total", typeof(decimal));
 
-           
+
             dataGridView2.DataSource = purchaseTable;
 
-           
+
             StylePurchaseDataGridView();
         }
 
@@ -176,7 +177,7 @@ namespace SuprememartPOS
                 totalPrice += Convert.ToDecimal(row["Total"]);
             }
 
-           
+
             System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("si-LK");
             label2.Text = $" {totalPrice.ToString("C", culture)}";
         }
@@ -194,25 +195,25 @@ namespace SuprememartPOS
 
                 foreach (DataGridViewRow selectedRow in dataGridView1.SelectedRows)
                 {
-                    
+
                     int productId = Convert.ToInt32(selectedRow.Cells["ProductID"].Value);
                     string productName = selectedRow.Cells["ProductName"].Value.ToString();
                     decimal price = Convert.ToDecimal(selectedRow.Cells["Price"].Value);
                     string size = selectedRow.Cells["Size"].Value.ToString();
 
-                  
+
                     DataRow[] existingRows = purchaseTable.Select($"ProductID = {productId}");
 
                     if (existingRows.Length > 0)
                     {
-                     
+
                         int currentQty = Convert.ToInt32(existingRows[0]["Quantity"]);
                         existingRows[0]["Quantity"] = currentQty + 1;
                         existingRows[0]["Total"] = (currentQty + 1) * price;
                     }
                     else
                     {
-                       
+
                         DataRow newRow = purchaseTable.NewRow();
                         newRow["ProductID"] = productId;
                         newRow["ProductName"] = productName;
@@ -224,7 +225,7 @@ namespace SuprememartPOS
                     }
                 }
 
-         
+
                 dataGridView1.Refresh();
                 dataGridView2.Refresh();
                 UpdateTotalPriceLabel();
@@ -263,15 +264,13 @@ namespace SuprememartPOS
         {
 
         }
-        private void GeneratePDFBill(string products, decimal totalBillAmount, string filePath, int orderId)
+        private void GeneratePDFBill(string products, decimal totalBillAmount, string filePath, int orderId, decimal discountPercentage, decimal discountAmount, decimal lastAmount)
         {
             try
             {
-                
                 string uniqueFileName = $"Bill_{orderId}_{DateTime.Now:yyyyMMddHHmmss}.pdf";
                 string uniqueFilePath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(filePath), uniqueFileName);
 
-                
                 using (System.IO.FileStream fs = new System.IO.FileStream(uniqueFilePath, System.IO.FileMode.Create, System.IO.FileAccess.Write))
                 {
                     using (iTextSharp.text.Document doc = new iTextSharp.text.Document())
@@ -279,36 +278,36 @@ namespace SuprememartPOS
                         iTextSharp.text.pdf.PdfWriter.GetInstance(doc, fs);
                         doc.Open();
 
-                       
                         iTextSharp.text.Font titleFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 18, iTextSharp.text.Font.BOLD);
                         iTextSharp.text.Font regularFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12);
                         iTextSharp.text.Font headerFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD);
 
-                       
+                        // Header
                         doc.Add(new iTextSharp.text.Paragraph("Supreme Mart POS", titleFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
                         doc.Add(new iTextSharp.text.Paragraph($"Date: {DateTime.Now:yyyy-MM-dd HH:mm:ss}", regularFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
                         doc.Add(new iTextSharp.text.Paragraph("\n"));
 
-                    
-                        doc.Add(new iTextSharp.text.Paragraph($"Order ID: #{orderId}", headerFont) { Alignment = iTextSharp.text.Element.ALIGN_LEFT });
+                        // Order details
+                        doc.Add(new iTextSharp.text.Paragraph($"Order ID: #{orderId}", headerFont));
                         doc.Add(new iTextSharp.text.Paragraph("\n"));
 
-                      
-                        doc.Add(new iTextSharp.text.Paragraph("Products:", headerFont) { Alignment = iTextSharp.text.Element.ALIGN_LEFT });
+                        // Product details
+                        doc.Add(new iTextSharp.text.Paragraph("Products:", headerFont));
                         foreach (DataRow row in purchaseTable.Rows)
                         {
                             string productLine = $"{row["ProductName"]} (Qty: {row["Quantity"]}) - LKR {Convert.ToDecimal(row["Total"]):0.00}";
                             doc.Add(new iTextSharp.text.Paragraph(productLine, regularFont));
                         }
 
-                       
-                        doc.Add(new iTextSharp.text.Paragraph("\n", regularFont)); 
-                        doc.Add(new iTextSharp.text.Paragraph($"Total Bill Amount: LKR {totalBillAmount:0.00}", headerFont) { Alignment = iTextSharp.text.Element.ALIGN_RIGHT });
+                        doc.Add(new iTextSharp.text.Paragraph("\n"));
 
-                   
+                        // Total and Discount details
+                        doc.Add(new iTextSharp.text.Paragraph($"Total Bill Amount: LKR {totalBillAmount:0.00}", headerFont));
+                        doc.Add(new iTextSharp.text.Paragraph($"Discount: {discountPercentage}% - LKR {discountAmount:0.00}", headerFont));
+                        doc.Add(new iTextSharp.text.Paragraph($"Final Amount: LKR {lastAmount:0.00}", headerFont));
+
                         doc.Add(new iTextSharp.text.Paragraph("\n\nThank you for shopping with us!", regularFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
 
-                      
                         doc.Close();
                     }
                 }
@@ -321,6 +320,7 @@ namespace SuprememartPOS
             }
         }
 
+
         private void button4_Click(object sender, EventArgs e)
         {
             if (purchaseTable.Rows.Count == 0)
@@ -332,69 +332,82 @@ namespace SuprememartPOS
 
             try
             {
-                
                 using (SqlConnection con = new SqlConnection("Server=SANJANAXPRO\\SQLEXPRESS;Database=pos;Integrated Security=True;"))
                 {
                     con.Open();
 
-                    
+                    // Gather data for the transaction
                     string products = string.Join(", ", purchaseTable.AsEnumerable()
                         .Select(row => $"{row["ProductName"]} (Qty: {row["Quantity"]})"));
                     decimal totalBillAmount = purchaseTable.AsEnumerable()
                         .Sum(row => Convert.ToDecimal(row["Total"]));
 
-                   
-                    string query = "INSERT INTO sales (Products, TotalBillAmount) OUTPUT INSERTED.OrderID VALUES (@Products, @TotalBillAmount)";
+                    // Discount calculation
+                    decimal discountPercentage = 0;
+                    decimal discountAmount = 0;
+                    decimal lastAmount = totalBillAmount;
+
+                    if (decimal.TryParse(textBox2.Text, out discountPercentage))
+                    {
+                        discountAmount = (discountPercentage / 100) * totalBillAmount;
+                        lastAmount = totalBillAmount - discountAmount;
+                    }
+
+                    // Insert sales data into the database
+                    string query = "INSERT INTO sales (Products, TotalBillAmount, DiscountPercentage, DiscountAmount, LastAmount) OUTPUT INSERTED.OrderID " +
+                                   "VALUES (@Products, @TotalBillAmount, @DiscountPercentage, @DiscountAmount, @LastAmount)";
                     int orderId;
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@Products", products);
                         cmd.Parameters.AddWithValue("@TotalBillAmount", totalBillAmount);
-                        orderId = (int)cmd.ExecuteScalar(); 
+                        cmd.Parameters.AddWithValue("@DiscountPercentage", discountPercentage);
+                        cmd.Parameters.AddWithValue("@DiscountAmount", discountAmount);
+                        cmd.Parameters.AddWithValue("@LastAmount", lastAmount);
+                        orderId = (int)cmd.ExecuteScalar();
                     }
 
-                    
+                    // Update product quantities in the database
                     foreach (DataRow row in purchaseTable.Rows)
                     {
                         int productId = Convert.ToInt32(row["ProductID"]);
                         int purchasedQuantity = Convert.ToInt32(row["Quantity"]);
 
-                        
                         string updateQuery = "UPDATE Product SET Quantity = Quantity - @PurchasedQuantity WHERE ProductID = @ProductID";
                         using (SqlCommand updateCmd = new SqlCommand(updateQuery, con))
                         {
                             updateCmd.Parameters.AddWithValue("@PurchasedQuantity", purchasedQuantity);
                             updateCmd.Parameters.AddWithValue("@ProductID", productId);
-                            updateCmd.ExecuteNonQuery(); 
+                            updateCmd.ExecuteNonQuery();
                         }
                     }
 
-                   
-                    SaveFileDialog saveFileDialog = new SaveFileDialog
+                    // Save bill to PDF
+                    using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                     {
-                        Filter = "PDF Files|*.pdf",
-                        Title = "Save Bill"
-                    };
+                        saveFileDialog.Title = "Save Total Sales Invoice As";
+                        saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+                        saveFileDialog.FileName = $"TotalSales_{orderId}_{DateTime.Now:yyyyMMddHHmmss}.pdf";
 
-                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        
-                        GeneratePDFBill(products, totalBillAmount, saveFileDialog.FileName, orderId);
+                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            GeneratePDFBill(products, totalBillAmount, saveFileDialog.FileName, orderId, discountPercentage, discountAmount, lastAmount);
+
+                            MessageBox.Show("Sales data saved and bill generated successfully.", "Success",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // Clear the purchase table and refresh UI
+                            purchaseTable.Clear();
+                            dataGridView2.Refresh();
+                            UpdateTotalPriceLabel();
+
+                            FILLDGV();
+                        }
                     }
-
-                    MessageBox.Show("Sales data saved and bill generated successfully.", "Success",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    
-                    purchaseTable.Clear();
-                    dataGridView2.Refresh();
-                    UpdateTotalPriceLabel();
-
-                   
-                    FILLDGV();  
                 }
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show($"Error saving sales data: {ex.Message}", "Error",
@@ -403,7 +416,33 @@ namespace SuprememartPOS
         }
 
 
+        private void ApplyDiscount()
+        {
+            if (decimal.TryParse(textBox2.Text, out decimal discountPercentage))
+            {
+                decimal totalPrice = purchaseTable.AsEnumerable()
+                    .Sum(row => Convert.ToDecimal(row["Total"]));
 
+                decimal discountAmount = (discountPercentage / 100) * totalPrice;
+                decimal lastAmount = totalPrice - discountAmount;
+                System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("si-LK");
+
+                labelDiscountPercentage.Text = $"{discountPercentage}%";
+                labelDiscountAmount.Text = $" -{discountAmount.ToString("C", culture)}";
+                labelLastAmount.Text = $" {lastAmount.ToString("C", culture)}";
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid discount percentage.", "Invalid Discount",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            ApplyDiscount();
+        }
     }
 }
 
