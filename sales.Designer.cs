@@ -35,6 +35,9 @@
             button1 = new Button();
             textBox1 = new TextBox();
             label3 = new Label();
+            textBox2 = new TextBox();
+            textBox3 = new TextBox();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -102,11 +105,40 @@
             label3.TabIndex = 22;
             label3.Text = "Search With Your Order ID:";
             // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(224, 870);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 23);
+            textBox2.TabIndex = 23;
+            textBox2.TextChanged += textBox2_TextChanged;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(414, 870);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(100, 23);
+            textBox3.TabIndex = 24;
+            textBox3.TextChanged += textBox3_TextChanged;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(621, 871);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 25;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // sales
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(button2);
+            Controls.Add(textBox3);
+            Controls.Add(textBox2);
             Controls.Add(label3);
             Controls.Add(button1);
             Controls.Add(textBox1);
@@ -131,5 +163,8 @@
         private Button button1;
         private TextBox textBox1;
         private Label label3;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private Button button2;
     }
 }
