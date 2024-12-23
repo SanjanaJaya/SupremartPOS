@@ -80,7 +80,7 @@ namespace SuprememartPOS
 
             dataGridView1.Columns["OrderID"].HeaderText = "Order ID";
             dataGridView1.Columns["Products"].HeaderText = "Products List";
-            dataGridView1.Columns["TotalBillAmount"].HeaderText = "Total Bill Amount";
+            dataGridView1.Columns["TotalBillAmount"].HeaderText = "Total Bill Amount (LKR)";
 
             dataGridView1.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10);
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12, System.Drawing.FontStyle.Bold);
