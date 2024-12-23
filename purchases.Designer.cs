@@ -50,6 +50,7 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
+            label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -196,7 +197,7 @@
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(766, 809);
+            button4.Location = new Point(757, 805);
             button4.Name = "button4";
             button4.Size = new Size(301, 74);
             button4.TabIndex = 22;
@@ -207,9 +208,9 @@
             // 
             textBox2.BackColor = SystemColors.ScrollBar;
             textBox2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(394, 822);
+            textBox2.Location = new Point(623, 822);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(347, 39);
+            textBox2.Size = new Size(79, 39);
             textBox2.TabIndex = 23;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
@@ -274,16 +275,27 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(64, 825);
+            label7.Location = new Point(298, 826);
             label7.Name = "label7";
             label7.Size = new Size(324, 32);
             label7.TabIndex = 30;
             label7.Text = "Enter Discount Percentage:";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Location = new Point(703, 826);
+            label8.Name = "label8";
+            label8.Size = new Size(35, 32);
+            label8.TabIndex = 31;
+            label8.Text = "%";
+            // 
             // purchases
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -338,5 +350,6 @@
         private Label label5;
         private Label label6;
         private Label label7;
+        private Label label8;
     }
 }
