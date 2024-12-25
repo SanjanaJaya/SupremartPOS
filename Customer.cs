@@ -18,7 +18,7 @@ namespace SuprememartPOS
             InitializeComponent();
         }
 
-        private string connectionString = "Server=SANJANAXPRO\\SQLEXPRESS;Database=pos;Integrated Security=True;";
+        private string connectionString = "Server=26.63.72.206\\SQLEXPRESS,1433;Database=SuprememartPOSTest;User ID=pos_user;Password=pos;";
 
         private void Customer_Load(object sender, EventArgs e)
         {

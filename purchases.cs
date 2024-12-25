@@ -18,7 +18,8 @@ namespace SuprememartPOS
             InitializeComponent();
             InitializePurchaseTable();
         }
-        private SqlConnection con = new SqlConnection("Server=SANJANAXPRO\\SQLEXPRESS;Database=pos;Integrated Security=True;");
+        private SqlConnection con = new SqlConnection("Server=26.63.72.206\\SQLEXPRESS,1433;Database=SuprememartPOSTest;User ID=pos_user;Password=pos;");
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
