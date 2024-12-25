@@ -62,7 +62,7 @@
             panel1.Location = new Point(1, 0);
             panel1.Margin = new Padding(2, 1, 2, 1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1904, 57);
+            panel1.Size = new Size(1931, 57);
             panel1.TabIndex = 0;
             // 
             // label6
@@ -308,6 +308,7 @@
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            WindowState = FormWindowState.Maximized;
             Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

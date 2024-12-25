@@ -141,6 +141,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(617, 46);
             textBox2.TabIndex = 7;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // textBox1
             // 
@@ -149,6 +150,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(617, 46);
             textBox1.TabIndex = 5;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // login
             // 
@@ -162,6 +164,7 @@
             Name = "login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "login";
+            WindowState = FormWindowState.Maximized;
             Load += login_Load;
             loginbtn.ResumeLayout(false);
             loginbtn.PerformLayout();
