@@ -19,11 +19,11 @@ namespace SuprememartPOS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Validate login credentials
-            string email = textBox1.Text; // Email input from TextBox1
-            string password = textBox2.Text; // Password input from TextBox2
+            
+            string email = textBox1.Text; 
+            string password = textBox2.Text; 
 
-            // Check credentials
+           
             if (email == "admin@gmail.com" && password == "123")
             {
                 Form1 form1 = new Form1();
@@ -35,7 +35,7 @@ namespace SuprememartPOS
             }
             else
             {
-                // Show an error message if credentials are invalid
+               
                 MessageBox.Show("Invalid email or password!", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

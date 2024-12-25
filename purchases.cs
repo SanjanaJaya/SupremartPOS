@@ -282,16 +282,16 @@ namespace SuprememartPOS
                         iTextSharp.text.Font regularFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12);
                         iTextSharp.text.Font headerFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD);
 
-                        // Header
+                        
                         doc.Add(new iTextSharp.text.Paragraph("Supreme Mart POS", titleFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
                         doc.Add(new iTextSharp.text.Paragraph($"Date: {DateTime.Now:yyyy-MM-dd HH:mm:ss}", regularFont) { Alignment = iTextSharp.text.Element.ALIGN_CENTER });
                         doc.Add(new iTextSharp.text.Paragraph("\n"));
 
-                        // Order details
+                       
                         doc.Add(new iTextSharp.text.Paragraph($"Order ID: #{orderId}", headerFont));
                         doc.Add(new iTextSharp.text.Paragraph("\n"));
 
-                        // Product details
+                       
                         doc.Add(new iTextSharp.text.Paragraph("Products:", headerFont));
                         foreach (DataRow row in purchaseTable.Rows)
                         {
@@ -301,7 +301,7 @@ namespace SuprememartPOS
 
                         doc.Add(new iTextSharp.text.Paragraph("\n"));
 
-                        // Total and Discount details
+                      
                         doc.Add(new iTextSharp.text.Paragraph($"Total Bill Amount: LKR {totalBillAmount:0.00}", headerFont));
                         doc.Add(new iTextSharp.text.Paragraph($"Discount: {discountPercentage}% - LKR {discountAmount:0.00}", headerFont));
                         doc.Add(new iTextSharp.text.Paragraph($"Final Amount: LKR {lastAmount:0.00}", headerFont));
@@ -336,13 +336,13 @@ namespace SuprememartPOS
                 {
                     con.Open();
 
-                    // Gather data for the transaction
+                   
                     string products = string.Join(", ", purchaseTable.AsEnumerable()
                         .Select(row => $"{row["ProductName"]} (Qty: {row["Quantity"]})"));
                     decimal totalBillAmount = purchaseTable.AsEnumerable()
                         .Sum(row => Convert.ToDecimal(row["Total"]));
 
-                    // Discount calculation
+                  
                     decimal discountPercentage = 0;
                     decimal discountAmount = 0;
                     decimal lastAmount = totalBillAmount;
@@ -353,7 +353,7 @@ namespace SuprememartPOS
                         lastAmount = totalBillAmount - discountAmount;
                     }
 
-                    // Insert sales data into the database
+                    
                     string query = "INSERT INTO sales (Products, TotalBillAmount, DiscountPercentage, DiscountAmount, LastAmount) OUTPUT INSERTED.OrderID " +
                                    "VALUES (@Products, @TotalBillAmount, @DiscountPercentage, @DiscountAmount, @LastAmount)";
                     int orderId;
@@ -368,7 +368,7 @@ namespace SuprememartPOS
                         orderId = (int)cmd.ExecuteScalar();
                     }
 
-                    // Update product quantities in the database
+                  
                     foreach (DataRow row in purchaseTable.Rows)
                     {
                         int productId = Convert.ToInt32(row["ProductID"]);
@@ -383,7 +383,7 @@ namespace SuprememartPOS
                         }
                     }
 
-                    // Save bill to PDF
+                   
                     using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                     {
                         saveFileDialog.Title = "Save Total Sales Invoice As";
@@ -397,7 +397,7 @@ namespace SuprememartPOS
                             MessageBox.Show("Sales data saved and bill generated successfully.", "Success",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            // Clear the purchase table and refresh UI
+                            
                             purchaseTable.Clear();
                             dataGridView2.Refresh();
                             UpdateTotalPriceLabel();
