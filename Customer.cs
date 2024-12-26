@@ -87,7 +87,7 @@ namespace SuprememartPOS
         {
 
         }
-
+        //Add a New Customer
         private void addcustomer_Click(object sender, EventArgs e)
         {
 
@@ -227,6 +227,7 @@ namespace SuprememartPOS
             }
         }
 
+        //Update Customers Will Unlock All Textboxes & The User Can Type Anything and Click Add New Product Again
         private void updateproduct_Click(object sender, EventArgs e)
         {
             textBox1.Enabled = true;
@@ -235,6 +236,7 @@ namespace SuprememartPOS
             textBox4.Enabled = true;
         }
 
+        //Delete Customers
         private void dltcustomer_Click(object sender, EventArgs e)
         {
 
@@ -272,6 +274,7 @@ namespace SuprememartPOS
             }
         }
 
+        //Generate Customers List
         private void button1_Click(object sender, EventArgs e)
         {
             try

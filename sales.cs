@@ -131,6 +131,7 @@ namespace SuprememartPOS
 
         }
 
+        //Generate Sales Invoice(From Order ID to Which Order ID)
         private void button2_Click(object sender, EventArgs e)
         {
             try

@@ -46,6 +46,7 @@ namespace SuprememartPOS
             }
         }
 
+        //Add Supplier
         private void addcustomer_Click(object sender, EventArgs e)
         {
             string supplierName = textBox1.Text;
@@ -116,7 +117,7 @@ namespace SuprememartPOS
             FILLDGV();
         }
 
-
+        //Update Supplier Will Unlock All Textboxes & The User Can Type Anything and Click Add New Product Again
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -126,6 +127,7 @@ namespace SuprememartPOS
             textBox4.Enabled = true;
         }
 
+        //Delete Supplier
         private void button1_Click(object sender, EventArgs e)
         {
             int supplierID;
@@ -247,7 +249,7 @@ namespace SuprememartPOS
         {
 
         }
-
+        //Generate Suppliers List
         private void button5_Click(object sender, EventArgs e)
         {
             try

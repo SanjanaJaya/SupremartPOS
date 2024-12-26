@@ -116,7 +116,7 @@ namespace SuprememartPOS
             }
         }
 
-
+        //Add New Product
         private void button1_Click(object sender, EventArgs e)
         {
             string productName = textBox1.Text;
@@ -190,7 +190,7 @@ namespace SuprememartPOS
             LoadProductsData();
         }
 
-
+        //Update Product Will Unlock All Textboxes & The User Can Type Anything and Click Add New Product Again
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -200,7 +200,7 @@ namespace SuprememartPOS
             textBox4.Enabled = true;
         }
 
-
+        //Delete Product
         private void button3_Click(object sender, EventArgs e)
         {
             int productId = Convert.ToInt32(textBox4.Tag);
@@ -234,7 +234,7 @@ namespace SuprememartPOS
             }
         }
 
-
+        //Clear All Fields(This Will Clear All Input Text Boxes)
         private void button4_Click(object sender, EventArgs e)
         {
 
@@ -253,6 +253,8 @@ namespace SuprememartPOS
             textBox4.Tag = null;
         }
 
+
+        //Generate Stock Report
         private void button5_Click(object sender, EventArgs e)
         {
             try

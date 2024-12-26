@@ -45,7 +45,7 @@ namespace SuprememartPOS
             }
 
         }
-
+        //Add New Employee
         private void addemp_Click(object sender, EventArgs e)
         {
             {
@@ -110,7 +110,7 @@ namespace SuprememartPOS
                 FILLDGV();
             }
         }
-
+        //Update Emplooye Will Unlock All Textboxes & The User Can Type Anything and Click Add New Product Again
         private void updateemp_Click(object sender, EventArgs e)
         {
 
@@ -119,7 +119,7 @@ namespace SuprememartPOS
             textBox3.Enabled = true;
             textBox4.Enabled = true;
         }
-
+        //Delete Employee
         private void deleteemp_Click(object sender, EventArgs e)
         {
             int employeeID;
@@ -252,7 +252,7 @@ namespace SuprememartPOS
         {
 
         }
-
+        //Generate Employees List
         private void button1_Click(object sender, EventArgs e)
         {
             try
