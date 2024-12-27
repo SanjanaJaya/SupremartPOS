@@ -343,7 +343,6 @@ namespace SuprememartPOS
                     decimal totalBillAmount = purchaseTable.AsEnumerable()
                         .Sum(row => Convert.ToDecimal(row["Total"]));
 
-                  
                     decimal discountPercentage = 0;
                     decimal discountAmount = 0;
                     decimal lastAmount = totalBillAmount;
@@ -369,22 +368,65 @@ namespace SuprememartPOS
                         orderId = (int)cmd.ExecuteScalar();
                     }
 
-                  
+                    bool canGenerateBill = true;
+
+                    
                     foreach (DataRow row in purchaseTable.Rows)
                     {
                         int productId = Convert.ToInt32(row["ProductID"]);
                         int purchasedQuantity = Convert.ToInt32(row["Quantity"]);
 
-                        string updateQuery = "UPDATE Product SET Quantity = Quantity - @PurchasedQuantity WHERE ProductID = @ProductID";
+                        string selectQuery = "SELECT Quantity FROM Product WHERE ProductID = @ProductID";
+                        int currentQuantity;
+
+                        using (SqlCommand selectCmd = new SqlCommand(selectQuery, con))
+                        {
+                            selectCmd.Parameters.AddWithValue("@ProductID", productId);
+                            currentQuantity = Convert.ToInt32(selectCmd.ExecuteScalar());
+                        }
+
+                        int newQuantity = currentQuantity - purchasedQuantity;
+
+                        if (newQuantity < 0)
+                        {
+                            MessageBox.Show($"Insufficient stock for product ID: {productId}. Cannot reduce quantity below zero.",
+                                "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            canGenerateBill = false;
+                            break;
+                        }
+
+                        if (newQuantity == 0)
+                        {
+                            MessageBox.Show($"Product ID {productId} has reached zero stock. The bill cannot be generated.",
+                                "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            canGenerateBill = false;
+                            break;
+                        }
+
+                        if (newQuantity < 5)
+                        {
+                            MessageBox.Show($"Warning: Product ID {productId} is running low on stock. Current Quantity: {newQuantity}.",
+                                "Low Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                        string updateQuery = "UPDATE Product SET Quantity = @NewQuantity WHERE ProductID = @ProductID";
                         using (SqlCommand updateCmd = new SqlCommand(updateQuery, con))
                         {
-                            updateCmd.Parameters.AddWithValue("@PurchasedQuantity", purchasedQuantity);
+                            updateCmd.Parameters.AddWithValue("@NewQuantity", newQuantity);
                             updateCmd.Parameters.AddWithValue("@ProductID", productId);
                             updateCmd.ExecuteNonQuery();
                         }
                     }
 
-                   
+                    
+                    if (!canGenerateBill)
+                    {
+                        MessageBox.Show("Cannot generate the bill due to insufficient stock.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    
                     using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                     {
                         saveFileDialog.Title = "Save Total Sales Invoice As";
@@ -402,19 +444,20 @@ namespace SuprememartPOS
                             purchaseTable.Clear();
                             dataGridView2.Refresh();
                             UpdateTotalPriceLabel();
-
                             FILLDGV();
                         }
                     }
                 }
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show($"Error saving sales data: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
 
 
         private void ApplyDiscount()
