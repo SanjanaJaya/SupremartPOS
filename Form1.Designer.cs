@@ -64,18 +64,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1931, 57);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
-            label6.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold | FontStyle.Italic | FontStyle.Strikeout, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Segoe UI Black", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(918, 9);
+            label6.Location = new Point(912, 0);
             label6.Name = "label6";
-            label6.Size = new Size(187, 40);
+            label6.Size = new Size(221, 45);
             label6.TabIndex = 0;
             label6.Text = "SUPREMART";
+            label6.TextAlign = ContentAlignment.TopCenter;
+            label6.Click += label6_Click_1;
             // 
             // panel2
             // 
@@ -257,6 +260,7 @@
             panel4.Controls.Add(label5);
             panel4.Controls.Add(label4);
             panel4.Controls.Add(label3);
+            panel4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel4.Location = new Point(390, 59);
             panel4.Margin = new Padding(2, 1, 2, 1);
             panel4.Name = "panel4";
@@ -277,10 +281,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Black", 72F, FontStyle.Bold | FontStyle.Italic | FontStyle.Strikeout, GraphicsUnit.Point, 0);
-            label4.Location = new Point(458, 331);
+            label4.Font = new Font("Segoe UI Black", 72F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = SystemColors.MenuText;
+            label4.Location = new Point(435, 334);
             label4.Name = "label4";
-            label4.Size = new Size(655, 128);
+            label4.Size = new Size(654, 128);
             label4.TabIndex = 1;
             label4.Text = "SUPREMART";
             label4.Click += label4_Click;
