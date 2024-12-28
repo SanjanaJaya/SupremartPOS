@@ -57,7 +57,7 @@
             dataGridViewEmplyoee.Margin = new Padding(2, 1, 2, 1);
             dataGridViewEmplyoee.Name = "dataGridViewEmplyoee";
             dataGridViewEmplyoee.RowHeadersWidth = 82;
-            dataGridViewEmplyoee.Size = new Size(1494, 449);
+            dataGridViewEmplyoee.Size = new Size(1513, 449);
             dataGridViewEmplyoee.TabIndex = 6;
             dataGridViewEmplyoee.CellContentClick += dataGridViewEmplyoee_CellContentClick;
             // 
