@@ -74,9 +74,9 @@
             label6.ForeColor = Color.White;
             label6.Location = new Point(840, 3);
             label6.Name = "label6";
-            label6.Size = new Size(412, 45);
+            label6.Size = new Size(397, 45);
             label6.TabIndex = 0;
-            label6.Text = "SUPREMART (Managers)";
+            label6.Text = "SUPREMART (Manager)";
             label6.TextAlign = ContentAlignment.TopCenter;
             label6.Click += label6_Click_1;
             // 
@@ -151,10 +151,10 @@
             logout.FlatStyle = FlatStyle.Flat;
             logout.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             logout.ForeColor = Color.White;
-            logout.Location = new Point(28, 780);
+            logout.Location = new Point(118, 814);
             logout.Margin = new Padding(2, 1, 2, 1);
             logout.Name = "logout";
-            logout.Size = new Size(301, 75);
+            logout.Size = new Size(268, 75);
             logout.TabIndex = 6;
             logout.UseVisualStyleBackColor = false;
             logout.Click += button1_Click_2;

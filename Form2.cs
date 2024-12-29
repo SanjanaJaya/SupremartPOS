@@ -81,5 +81,10 @@ namespace SuprememartPOS
 
             login.FormClosed += (s, args) => this.Close();
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

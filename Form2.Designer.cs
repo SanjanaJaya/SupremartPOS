@@ -115,10 +115,10 @@
             logout.FlatStyle = FlatStyle.Flat;
             logout.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             logout.ForeColor = Color.White;
-            logout.Location = new Point(28, 780);
+            logout.Location = new Point(113, 838);
             logout.Margin = new Padding(2, 1, 2, 1);
             logout.Name = "logout";
-            logout.Size = new Size(301, 75);
+            logout.Size = new Size(273, 75);
             logout.TabIndex = 6;
             logout.UseVisualStyleBackColor = false;
             logout.Click += logout_Click;
@@ -131,7 +131,7 @@
             Products.FlatStyle = FlatStyle.Flat;
             Products.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Products.ForeColor = Color.White;
-            Products.Location = new Point(28, 163);
+            Products.Location = new Point(34, 341);
             Products.Margin = new Padding(2, 1, 2, 1);
             Products.Name = "Products";
             Products.Size = new Size(301, 75);
@@ -147,7 +147,7 @@
             Purchases.FlatStyle = FlatStyle.Flat;
             Purchases.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Purchases.ForeColor = Color.White;
-            Purchases.Location = new Point(28, 40);
+            Purchases.Location = new Point(34, 217);
             Purchases.Margin = new Padding(2, 1, 2, 1);
             Purchases.Name = "Purchases";
             Purchases.Size = new Size(301, 75);
@@ -163,7 +163,7 @@
             Customers.FlatStyle = FlatStyle.Flat;
             Customers.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Customers.ForeColor = Color.White;
-            Customers.Location = new Point(28, 291);
+            Customers.Location = new Point(34, 464);
             Customers.Margin = new Padding(2, 1, 2, 1);
             Customers.Name = "Customers";
             Customers.Size = new Size(301, 75);
@@ -236,10 +236,11 @@
             label6.ForeColor = Color.White;
             label6.Location = new Point(840, 3);
             label6.Name = "label6";
-            label6.Size = new Size(386, 45);
+            label6.Size = new Size(371, 45);
             label6.TabIndex = 0;
-            label6.Text = "SUPREMART (Cashiers)";
+            label6.Text = "SUPREMART (Cashier)";
             label6.TextAlign = ContentAlignment.TopCenter;
+            label6.Click += label6_Click;
             // 
             // Form2
             // 
