@@ -63,7 +63,7 @@
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Segoe UI", 72F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(529, -1);
+            label5.Location = new Point(639, -1);
             label5.Name = "label5";
             label5.Size = new Size(627, 128);
             label5.TabIndex = 3;
@@ -75,11 +75,12 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(673, 127);
+            label1.Location = new Point(795, 137);
             label1.Name = "label1";
             label1.Size = new Size(301, 65);
             label1.TabIndex = 4;
             label1.Text = "POS SYSTEM";
+            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -163,7 +164,7 @@
             loginbtn.Controls.Add(label3);
             loginbtn.Controls.Add(textBox1);
             loginbtn.Controls.Add(label2);
-            loginbtn.Location = new Point(945, 195);
+            loginbtn.Location = new Point(1058, 240);
             loginbtn.Name = "loginbtn";
             loginbtn.Size = new Size(745, 734);
             loginbtn.TabIndex = 5;
@@ -209,7 +210,7 @@
             panel1.Controls.Add(label7);
             panel1.Controls.Add(textBox4);
             panel1.Controls.Add(label8);
-            panel1.Location = new Point(104, 195);
+            panel1.Location = new Point(105, 240);
             panel1.Name = "panel1";
             panel1.Size = new Size(745, 734);
             panel1.TabIndex = 6;

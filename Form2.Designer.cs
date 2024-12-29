@@ -115,7 +115,7 @@
             logout.FlatStyle = FlatStyle.Flat;
             logout.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             logout.ForeColor = Color.White;
-            logout.Location = new Point(113, 838);
+            logout.Location = new Point(113, 861);
             logout.Margin = new Padding(2, 1, 2, 1);
             logout.Name = "logout";
             logout.Size = new Size(273, 75);
@@ -131,7 +131,7 @@
             Products.FlatStyle = FlatStyle.Flat;
             Products.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Products.ForeColor = Color.White;
-            Products.Location = new Point(34, 341);
+            Products.Location = new Point(34, 367);
             Products.Margin = new Padding(2, 1, 2, 1);
             Products.Name = "Products";
             Products.Size = new Size(301, 75);
@@ -147,7 +147,7 @@
             Purchases.FlatStyle = FlatStyle.Flat;
             Purchases.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Purchases.ForeColor = Color.White;
-            Purchases.Location = new Point(34, 217);
+            Purchases.Location = new Point(34, 240);
             Purchases.Margin = new Padding(2, 1, 2, 1);
             Purchases.Name = "Purchases";
             Purchases.Size = new Size(301, 75);
@@ -163,7 +163,7 @@
             Customers.FlatStyle = FlatStyle.Flat;
             Customers.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Customers.ForeColor = Color.White;
-            Customers.Location = new Point(34, 464);
+            Customers.Location = new Point(34, 492);
             Customers.Margin = new Padding(2, 1, 2, 1);
             Customers.Name = "Customers";
             Customers.Size = new Size(301, 75);
