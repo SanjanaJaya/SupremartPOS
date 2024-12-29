@@ -387,27 +387,7 @@ namespace SuprememartPOS
 
                         int newQuantity = currentQuantity - purchasedQuantity;
 
-                        if (newQuantity < 0)
-                        {
-                            MessageBox.Show($"Insufficient stock for product ID: {productId}. Cannot reduce quantity below zero.",
-                                "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            canGenerateBill = false;
-                            break;
-                        }
-
-                        if (newQuantity == 0)
-                        {
-                            MessageBox.Show($"Product ID {productId} has reached zero stock. The bill cannot be generated.",
-                                "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            canGenerateBill = false;
-                            break;
-                        }
-
-                        if (newQuantity < 5)
-                        {
-                            MessageBox.Show($"Warning: Product ID {productId} is running low on stock. Current Quantity: {newQuantity}.",
-                                "Low Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        
 
                         string updateQuery = "UPDATE Product SET Quantity = @NewQuantity WHERE ProductID = @ProductID";
                         using (SqlCommand updateCmd = new SqlCommand(updateQuery, con))
