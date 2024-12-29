@@ -72,11 +72,11 @@
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Segoe UI Black", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(912, 0);
+            label6.Location = new Point(840, 3);
             label6.Name = "label6";
-            label6.Size = new Size(221, 45);
+            label6.Size = new Size(412, 45);
             label6.TabIndex = 0;
-            label6.Text = "SUPREMART";
+            label6.Text = "SUPREMART (Managers)";
             label6.TextAlign = ContentAlignment.TopCenter;
             label6.Click += label6_Click_1;
             // 

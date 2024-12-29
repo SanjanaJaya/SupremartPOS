@@ -33,17 +33,28 @@
             Label label2;
             Label label3;
             Label label4;
+            Label label6;
+            Label label7;
+            Label label8;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(login));
             loginbtn = new Panel();
             button1 = new Button();
             textBox2 = new TextBox();
             textBox1 = new TextBox();
+            panel1 = new Panel();
+            button2 = new Button();
+            textBox3 = new TextBox();
+            textBox4 = new TextBox();
             label5 = new Label();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
             loginbtn.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label5
@@ -52,7 +63,7 @@
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Segoe UI", 72F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(140, 404);
+            label5.Location = new Point(529, -1);
             label5.Name = "label5";
             label5.Size = new Size(627, 128);
             label5.TabIndex = 3;
@@ -64,7 +75,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(284, 532);
+            label1.Location = new Point(673, 127);
             label1.Name = "label1";
             label1.Size = new Size(301, 65);
             label1.TabIndex = 4;
@@ -76,11 +87,11 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(189, 46);
+            label2.Location = new Point(184, 45);
             label2.Name = "label2";
-            label2.Size = new Size(356, 65);
+            label2.Size = new Size(431, 65);
             label2.TabIndex = 4;
-            label2.Text = "ADMIN LOGIN";
+            label2.Text = "MANAGER LOGIN";
             // 
             // label3
             // 
@@ -106,6 +117,42 @@
             label4.TabIndex = 8;
             label4.Text = "Password";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(66, 363);
+            label6.Name = "label6";
+            label6.Size = new Size(163, 45);
+            label6.TabIndex = 8;
+            label6.Text = "Password";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
+            label7.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(66, 222);
+            label7.Name = "label7";
+            label7.Size = new Size(116, 45);
+            label7.TabIndex = 6;
+            label7.Text = "E-Mail";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.Transparent;
+            label8.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(184, 45);
+            label8.Name = "label8";
+            label8.Size = new Size(388, 65);
+            label8.TabIndex = 4;
+            label8.Text = "CASHIER LOGIN";
+            // 
             // loginbtn
             // 
             loginbtn.BackColor = Color.Transparent;
@@ -116,7 +163,7 @@
             loginbtn.Controls.Add(label3);
             loginbtn.Controls.Add(textBox1);
             loginbtn.Controls.Add(label2);
-            loginbtn.Location = new Point(946, 168);
+            loginbtn.Location = new Point(945, 195);
             loginbtn.Name = "loginbtn";
             loginbtn.Size = new Size(745, 734);
             loginbtn.TabIndex = 5;
@@ -152,12 +199,59 @@
             textBox1.TabIndex = 5;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Transparent;
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.Controls.Add(button2);
+            panel1.Controls.Add(label6);
+            panel1.Controls.Add(textBox3);
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(textBox4);
+            panel1.Controls.Add(label8);
+            panel1.Location = new Point(104, 195);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(745, 734);
+            panel1.TabIndex = 6;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Transparent;
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Popup;
+            button2.Location = new Point(280, 510);
+            button2.Name = "button2";
+            button2.Size = new Size(174, 66);
+            button2.TabIndex = 9;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // textBox3
+            // 
+            textBox3.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox3.Location = new Point(66, 411);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(617, 46);
+            textBox3.TabIndex = 7;
+            textBox3.TextChanged += textBox3_TextChanged;
+            // 
+            // textBox4
+            // 
+            textBox4.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox4.Location = new Point(66, 270);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(617, 46);
+            textBox4.TabIndex = 5;
+            textBox4.TextChanged += textBox4_TextChanged;
+            // 
             // login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1904, 1041);
+            Controls.Add(panel1);
             Controls.Add(loginbtn);
             Controls.Add(label1);
             Controls.Add(label5);
@@ -168,6 +262,8 @@
             Load += login_Load;
             loginbtn.ResumeLayout(false);
             loginbtn.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -178,5 +274,9 @@
         private Button button1;
         private TextBox textBox2;
         private TextBox textBox1;
+        private Panel panel1;
+        private Button button2;
+        private TextBox textBox3;
+        private TextBox textBox4;
     }
 }

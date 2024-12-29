@@ -19,12 +19,12 @@ namespace SuprememartPOS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            string email = textBox1.Text; 
-            string password = textBox2.Text; 
 
-           
-            if (email == "admin@gmail.com" && password == "123")
+            string email = textBox1.Text;
+            string password = textBox2.Text;
+
+
+            if (email == "manager@gmail.com" && password == "123")
             {
                 Form1 form1 = new Form1();
                 form1.Show();
@@ -35,7 +35,7 @@ namespace SuprememartPOS
             }
             else
             {
-               
+
                 MessageBox.Show("Invalid email or password!", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -51,6 +51,39 @@ namespace SuprememartPOS
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            string email = textBox4.Text;
+            string password = textBox3.Text;
+
+
+            if (email == "cashier@gmail.com" && password == "123")
+            {
+                Form2 form2 = new Form2();
+                form2.Show();
+
+                this.Hide();
+
+                form2.FormClosed += (s, args) => this.Close();
+            }
+            else
+            {
+
+                MessageBox.Show("Invalid email or password!", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
         }
